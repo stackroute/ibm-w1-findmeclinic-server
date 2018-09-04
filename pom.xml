@@ -53,12 +53,11 @@
 
 		<module>ApiGateway</module>
 		<module>SpringBootAdminService</module>
-<<<<<<< HEAD
+
 
                 <module>PatientAuth</module>
-=======
                 <module>DoctorAuth</module>
->>>>>>> 2db2d0d2c11b94925c681610d3af80d8b515d08d
+
 						
 				
 		
