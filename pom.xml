@@ -46,17 +46,15 @@
 		</plugins>
 	</build>
 	<modules>
-		<module>BookingService</module>
-		<module>CalendarService</module>
+		
 		<module>ConfigService</module>
-		<module>DoctorService</module>
-		<module>HospitalService</module>
-		<module>NotificationService</module>
-		<module>OAuthService</module>
-		<module>PatientService</module>
-		<module>PaymentService</module>
-		<module>SearchService</module>
+		
+		
+
 		<module>ApiGateway</module>
+		<module>SpringBootAdminService</module>
+
+
 						
 				
 		
