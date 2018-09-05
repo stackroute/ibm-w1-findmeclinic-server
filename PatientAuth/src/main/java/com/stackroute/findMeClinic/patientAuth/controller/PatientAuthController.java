@@ -50,33 +50,20 @@ public class PatientAuthController {
 	
 	
 	@PostMapping(value = "/login")
-	public String loginPatient(@RequestBody Patient newPatient) throws ServletException {
+	public ResponseEntity<?> loginPatient(@RequestBody Patient newPatient)  {
+		String jwtToken="";
+		ResponseEntity<?> responseEntity= null;
 
-	    String jwtToken = "";
+		try {
+			jwtToken=patientService.loginPatientAuth(newPatient);
+			responseEntity = new ResponseEntity<>(jwtToken,HttpStatus.CREATED);
+		}
+		catch(ServletException exception) {
+			responseEntity = new ResponseEntity<>(exception.getMessage(),HttpStatus.CONFLICT);
+		}
+		return responseEntity;
 
-	    if (newPatient.getPatientEmail() == null || newPatient.getPatientPassword() == null) {
-	        throw new ServletException("Please fill in username and password");
-	    }
-
-	    String email = newPatient.getPatientEmail();
-	    String password = newPatient.getPatientPassword();
-
-	    Patient fetchedPatient  = patientService.getPatientByEmail(email);
-
-	    if (fetchedPatient == null) {
-	        throw new ServletException("User email not found.");
-	    }
-
-	    String pwd = fetchedPatient.getPatientPassword();
-
-	    if (!password.equals(pwd)) {
-	        throw new ServletException("Invalid login. Please check your name and password.");
-	    }
-
-	    jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
-	            .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
-
-	    return jwtToken;
+	   
 	}
 
 }
