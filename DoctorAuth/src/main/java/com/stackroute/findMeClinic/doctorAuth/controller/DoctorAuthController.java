@@ -1,8 +1,13 @@
 package com.stackroute.findMeClinic.doctorAuth.controller;
 
+<<<<<<< HEAD
 import java.util.Date;
 
 import javax.servlet.ServletException;
+=======
+import javax.persistence.RollbackException;
+//import javax.validation.ConstraintViolationException;
+>>>>>>> c2399f6c8869f8a3989bbf3e3a632ba679ffd2de
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +37,7 @@ public class DoctorAuthController {
 	}
 
 	@PostMapping
+<<<<<<< HEAD
 	public ResponseEntity<?> registerDoctor(@RequestBody Doctor doctor) {
 		ResponseEntity<?> responseEntity = null;
 
@@ -75,5 +81,20 @@ public class DoctorAuthController {
 
 	    return jwtToken;
 	}
+=======
+    public ResponseEntity<?> registerDoctor(@RequestBody Doctor doctor) {
+        ResponseEntity<?> responseEntity = null;
+
+        try {
+            if (docService.registerDoctor(doctor)) {
+                responseEntity = new ResponseEntity<>(doctor, HttpStatus.OK);
+            }
+        } catch (Exception exception) {
+            responseEntity = new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
+        }
+
+        return responseEntity;
+    }
+>>>>>>> c2399f6c8869f8a3989bbf3e3a632ba679ffd2de
 
 }

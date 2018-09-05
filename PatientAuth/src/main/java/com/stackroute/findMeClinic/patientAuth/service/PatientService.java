@@ -7,6 +7,6 @@ public interface PatientService {
 
 	
 	public boolean registerPatient(Patient patient) throws PatientAlreadyExistsException;
-	 
+	public Patient getPatientByEmail(String patientEmail);
 	 
 }
