@@ -1,5 +1,8 @@
 package com.stackroute.findMeClinic.doctorAuth.controller;
 
+import javax.persistence.RollbackException;
+//import javax.validation.ConstraintViolationException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,18 +27,18 @@ public class DoctorAuthController {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> registerDoctor(@RequestBody Doctor doctor) {
-		ResponseEntity<?> responseEntity = null;
+    public ResponseEntity<?> registerDoctor(@RequestBody Doctor doctor) {
+        ResponseEntity<?> responseEntity = null;
 
-		try {
-			if (docService.registerDoctor(doctor)) {
-				responseEntity = new ResponseEntity<>(doctor, HttpStatus.OK);
-			}
-		} catch (DoctorAlreadyExistsEcxeption exception) {
-			responseEntity = new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
-		}
+        try {
+            if (docService.registerDoctor(doctor)) {
+                responseEntity = new ResponseEntity<>(doctor, HttpStatus.OK);
+            }
+        } catch (Exception exception) {
+            responseEntity = new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
+        }
 
-		return responseEntity;
-	}
+        return responseEntity;
+    }
 
 }
