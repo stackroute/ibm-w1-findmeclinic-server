@@ -7,44 +7,49 @@ import javax.persistence.Id;
 public class Doctor {
 
 	@Id
-	private String email;
-	private String phoneNumber;
-	private String password;
+	private String doctorEmail;
+	private String doctorPhoneNumber;
+	private String doctorPassword;
 
 	public Doctor() {
 		super();
+    }
+	
+	
 
-	}
-
-	public Doctor(String email, String phoneNumber, String password) {
+	public Doctor(String doctorEmail, String doctorPhoneNumber, String doctorPassword) {
 		super();
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.password = password;
+		this.doctorEmail = doctorEmail;
+		this.doctorPhoneNumber = doctorPhoneNumber;
+		this.doctorPassword = doctorPassword;
 	}
 
-	public String getEmail() {
-		return email;
+
+
+	public String getDoctorEmail() {
+		return doctorEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDoctorEmail(String doctorEmail) {
+		this.doctorEmail = doctorEmail;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getDoctorPhoneNumber() {
+		return doctorPhoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setDoctorPhoneNumber(String doctorPhoneNumber) {
+		this.doctorPhoneNumber = doctorPhoneNumber;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getDoctorPassword() {
+		return doctorPassword;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setDoctorPassword(String doctorPassword) {
+		this.doctorPassword = doctorPassword;
 	}
+
+
 
 }

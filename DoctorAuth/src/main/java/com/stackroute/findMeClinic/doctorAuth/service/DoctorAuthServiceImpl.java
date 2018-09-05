@@ -22,14 +22,14 @@ public class DoctorAuthServiceImpl implements DoctorAuthService {
 	@Override
 	public boolean registerDoctor(Doctor doctor) throws DoctorAlreadyExistsEcxeption {
 		boolean flag = false;
-		String info = doctor.getEmail();
+		String info = doctor.getDoctorEmail();
 
 		try {
-			if (!doctorAuth.existsById(info) && (findDoctorByphoneNumber(doctor.getPhoneNumber()) == null)) {
+			if (!doctorAuth.existsById(info) && (findDoctorBydoctorPhoneNumber(doctor.getDoctorPhoneNumber()) == null)) {
 				doctorAuth.save(doctor);
 				flag = true;
 			} else {
-				throw new DoctorAlreadyExistsEcxeption("Doctor Informatio already present");
+				throw new DoctorAlreadyExistsEcxeption("Doctor Information already present");
 			}
 			if (flag == true) {
 				return flag;
@@ -37,12 +37,12 @@ public class DoctorAuthServiceImpl implements DoctorAuthService {
 				return false;
 			}
 		} catch (NoSuchElementException exception) {
-			throw new DoctorAlreadyExistsEcxeption("Doctor Informatio already present");
+			throw new DoctorAlreadyExistsEcxeption("Doctor Information already present");
 		}
 	}
 
-	public Doctor findDoctorByphoneNumber(String phoneNumber) {
-		Doctor info = doctorAuth.findDoctorByphoneNumber(phoneNumber);
+	public Doctor findDoctorBydoctorPhoneNumber(String doctorPhoneNumber) {
+		Doctor info = doctorAuth.findDoctorBydoctorPhoneNumber(doctorPhoneNumber);
 		if (info != null) {
 			return info;
 		} else {
