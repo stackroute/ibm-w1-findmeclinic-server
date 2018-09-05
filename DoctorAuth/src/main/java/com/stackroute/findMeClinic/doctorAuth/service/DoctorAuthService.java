@@ -9,5 +9,6 @@ public interface DoctorAuthService {
 	public boolean registerDoctor(Doctor doctor) throws DoctorAlreadyExistsEcxeption;
 	
 	public Doctor findDoctorBydoctorPhoneNumber(String doctorPhoneNumber);
+	public Doctor findDoctorBydoctorEmail(String doctorEmail);
 	
 }

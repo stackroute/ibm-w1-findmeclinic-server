@@ -49,4 +49,13 @@ public class DoctorAuthServiceImpl implements DoctorAuthService {
 			return null;
 		}
 	}
+	
+	public Doctor findDoctorBydoctorEmail(String doctorEmail) {
+		Doctor info = doctorAuth.findDoctorBydoctorEmail(doctorEmail);
+		if (info != null) {
+			return info;
+		} else {
+			return null;
+		}
+	}
 }
