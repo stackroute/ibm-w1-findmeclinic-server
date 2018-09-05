@@ -1,0 +1,16 @@
+server:
+  port: 9001
+  
+spring:
+  application:
+    name: ConfigService
+  boot:
+    admin:
+      client:
+        url:
+        - http://localhost:9000
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sonu3706/spring-cloud-config-demo
