@@ -26,6 +26,8 @@ public class PatientServiceImpl implements PatientService{
 	public boolean registerPatient(Patient patient) throws PatientAlreadyExistsException {
 		boolean flag=false;
 		try {
+			
+			System.out.println("ggggggggggggg"+patient.getPatientEmail());
 		if(!patientRepository.existsById(patient.getPatientEmail()) && findPatientBypatientPhoneNumber(patient.getPatientPhoneNumber() )== null) {
 			patientRepository.save(patient);
 			flag=true;	
@@ -55,6 +57,17 @@ public class PatientServiceImpl implements PatientService{
 			return null;
 		}
 	}
+	
+	
+	
+
+
+
+	@Override
+	public Patient getPatientByEmail(String patientEmail) {
+		Patient fetchedPatient = patientRepository.findPatientByPatientEmail(patientEmail);
+		return fetchedPatient;
+		}
 
 
 
