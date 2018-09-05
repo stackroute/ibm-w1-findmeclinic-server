@@ -2,13 +2,18 @@ package com.stackroute.findMeClinic.doctorAuth.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Doctor {
 
 	@Id
+	@Email
 	private String doctorEmail;
+@NotBlank
 	private String doctorPhoneNumber;
+@NotBlank
 	private String doctorPassword;
 
 	public Doctor() {
