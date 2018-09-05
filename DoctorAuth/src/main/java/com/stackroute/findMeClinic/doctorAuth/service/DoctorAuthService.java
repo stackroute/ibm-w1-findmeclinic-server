@@ -1,5 +1,7 @@
 package com.stackroute.findMeClinic.doctorAuth.service;
 
+import javax.servlet.ServletException;
+
 import com.stackroute.findMeClinic.doctorAuth.exception.DoctorAlreadyExistsEcxeption;
 import com.stackroute.findMeClinic.doctorAuth.model.Doctor;
 
@@ -7,8 +9,7 @@ public interface DoctorAuthService {
 
 	
 	public boolean registerDoctor(Doctor doctor) throws DoctorAlreadyExistsEcxeption;
-	
 	public Doctor findDoctorBydoctorPhoneNumber(String doctorPhoneNumber);
-	public Doctor findDoctorBydoctorEmail(String doctorEmail);
+	public String loginToken(Doctor login) throws ServletException;
 	
 }
