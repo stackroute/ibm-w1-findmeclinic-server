@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute.findMeClinic</groupId>
-	<artifactId>DoctorAuth</artifactId>
+	<artifactId>SpringBootAdminService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>DoctorAuth</name>
+	<name>SpringBootAdminService</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -27,23 +27,9 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-   <groupId>io.jsonwebtoken</groupId>
-   <artifactId>jjwt</artifactId>
-   <version>0.2</version>
-</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

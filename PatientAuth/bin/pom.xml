@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute.findMeClinic</groupId>
-	<artifactId>DoctorAuth</artifactId>
+	<artifactId>PatientAuth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>DoctorAuth</name>
-	<description>Demo project for Spring Boot</description>
+	<name>PatientAuth</name>
+	<description>PatientAuthentication</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -29,11 +29,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<dependency>
-   <groupId>io.jsonwebtoken</groupId>
-   <artifactId>jjwt</artifactId>
-   <version>0.2</version>
-</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

@@ -57,4 +57,12 @@ public class Doctor {
 
 
 
+	@Override
+	public String toString() {
+		return "Doctor [doctorEmail=" + doctorEmail + ", doctorPhoneNumber=" + doctorPhoneNumber + ", doctorPassword="
+				+ doctorPassword + "]";
+	}
+
+
+
 }
