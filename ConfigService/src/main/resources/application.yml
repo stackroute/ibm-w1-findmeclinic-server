@@ -13,4 +13,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/sonu3706/spring-cloud-config-demo
+          uri: https://github.com/stackroute/ibm-w1-findmeclinic-server/ConfigProperties
+
+
+      
+      
+   
+      
