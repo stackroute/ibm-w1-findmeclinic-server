@@ -1,6 +1,7 @@
 package com.stackroute.findmeclinic.patientauth.service;
 
 import java.util.Date;
+
 import java.util.NoSuchElementException;
 
 import javax.servlet.ServletException;
@@ -8,9 +9,9 @@ import javax.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.stackroute.findmeclinic.patientauth.Repository.PatientRepository;
 import com.stackroute.findmeclinic.patientauth.exception.PatientAlreadyExistsException;
 import com.stackroute.findmeclinic.patientauth.model.Patient;
+import com.stackroute.findmeclinic.patientauth.repository.PatientRepository;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -36,11 +37,8 @@ public class PatientServiceImpl implements PatientService {
 			} else {
 				throw new PatientAlreadyExistsException("patient already exist");
 			}
-			if (flag == true) {
+			
 				return flag;
-			} else {
-				return false;
-			}
 		} catch (NoSuchElementException exception) {
 			throw new PatientAlreadyExistsException("Patient already exist");
 		}

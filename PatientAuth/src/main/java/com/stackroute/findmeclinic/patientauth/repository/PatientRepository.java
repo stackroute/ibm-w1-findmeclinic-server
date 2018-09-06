@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.patientauth.Repository;
+package com.stackroute.findmeclinic.patientauth.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
