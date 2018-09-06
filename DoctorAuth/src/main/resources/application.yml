@@ -1,0 +1,14 @@
+spring:
+   jpa:
+     show-sql: true
+     hibernate:
+            ddl-auto: update
+
+   application:
+     name: DoctorAuth
+
+   datasource:
+      url: jdbc:mysql://localhost:3306/doctorAuthenDb
+      username: root
+      password: root
+
