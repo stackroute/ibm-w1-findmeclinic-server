@@ -1,22 +1,13 @@
 package com.stackroute.findmeclinic.doctorauth.service;
 
-import java.util.Date;
 import java.util.NoSuchElementException;
-import javax.servlet.ServletException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD:DoctorAuth/src/main/java/com/stackroute/findmeclinic/doctorauth/service/DoctorAuthServiceImpl.java
 
 import com.stackroute.findmeclinic.doctorauth.exception.DoctorAlreadyExistsEcxeption;
 import com.stackroute.findmeclinic.doctorauth.model.Doctor;
 import com.stackroute.findmeclinic.doctorauth.repository.DoctorAuthRepository;
-=======
-import com.stackroute.findMeClinic.doctorAuth.exception.DoctorAlreadyExistsEcxeption;
-import com.stackroute.findMeClinic.doctorAuth.model.Doctor;
-import com.stackroute.findMeClinic.doctorAuth.repository.DoctorAuthRepository;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
->>>>>>> b186585a9bb447da5645d6f465a69226253650fc:DoctorAuth/src/main/java/com/stackroute/findMeClinic/doctorAuth/service/DoctorAuthServiceImpl.java
 
 @Service
 public class DoctorAuthServiceImpl implements DoctorAuthService {
@@ -59,52 +50,4 @@ public class DoctorAuthServiceImpl implements DoctorAuthService {
 			return null;
 		}
 	}
-	
-
-	public String loginToken(Doctor login) throws ServletException {
-		
-		String pwd1=null;
-	    String pwd2=null;
-	    String jwtToken = "";
-
-//	    if ((login.getDoctorEmail() == null && login.getDoctorPhoneNumber() == null) || login.getDoctorPassword() == null ) {
-//	        throw new ServletException("Please fill in username and password");
-//	    }
-        
-	    String phoneNumber = login.getDoctorPhoneNumber();
-	    String email = login.getDoctorEmail();
-	    String password = login.getDoctorPassword();
-
-	    Doctor doctor1 = doctorAuth.findDoctorBydoctorEmail(email);
-	    Doctor doctor2 = doctorAuth.findDoctorBydoctorPhoneNumber(phoneNumber);
-
-	    
-	    if (doctor1 != null ) {
-	    	 pwd1 = doctor1.getDoctorPassword();
-	    }
-	    else if(doctor2 !=null) {
-	     pwd2 = doctor2.getDoctorPassword();
-	    }
-	    else {
-	    	 throw new ServletException("User name not found.");
-	    }
-	   
-	    if (password.equals(pwd1)) {
-	    	jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
-		            .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
-
-	    }
-	    else if(password.equals(pwd2)){
-	    	jwtToken = Jwts.builder().setSubject(phoneNumber).claim("roles", "user").setIssuedAt(new Date())
-		            .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
-
-	    }
-	    else {
-	    	throw new ServletException("Invalid login. Please check your name and password.");
-	    }
-
-	    
-	    return jwtToken;
-	}
-
 }

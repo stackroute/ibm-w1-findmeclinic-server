@@ -1,6 +1,9 @@
 package com.stackroute.findmeclinic.patientauth.service;
 
+import java.util.Date;
 import java.util.NoSuchElementException;
+
+import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +11,9 @@ import org.springframework.stereotype.Service;
 import com.stackroute.findmeclinic.patientauth.Repository.PatientRepository;
 import com.stackroute.findmeclinic.patientauth.exception.PatientAlreadyExistsException;
 import com.stackroute.findmeclinic.patientauth.model.Patient;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -24,21 +30,23 @@ public class PatientServiceImpl implements PatientService {
 		boolean flag = false;
 		try {
 			if (!patientRepository.existsById(patient.getPatientEmail())
-					&& findPatientBypatientPhoneNumber(patient.getPatientPhoneNumber()) == null) {
+					&& getPatientBypatientPhoneNumber(patient.getPatientPhoneNumber()) == null) {
 				patientRepository.save(patient);
 				flag = true;
 			} else {
 				throw new PatientAlreadyExistsException("patient already exist");
 			}
-			
+			if (flag == true) {
 				return flag;
-			
+			} else {
+				return false;
+			}
 		} catch (NoSuchElementException exception) {
 			throw new PatientAlreadyExistsException("Patient already exist");
 		}
 	}
 
-	public Patient findPatientBypatientPhoneNumber(String patientPhoneNumber) {
+	public Patient getPatientBypatientPhoneNumber(String patientPhoneNumber) {
 		Patient patientInfo = patientRepository.findPatientBypatientPhoneNumber(patientPhoneNumber);
 		if (patientInfo != null) {
 			return patientInfo;
@@ -46,5 +54,57 @@ public class PatientServiceImpl implements PatientService {
 			return null;
 		}
 	}
+	
+	public Patient getPatientByEmail(String patientEmail) {
+        Patient fetchedPatient = patientRepository.findPatientByPatientEmail(patientEmail);
+        return fetchedPatient;
+    }
+
+    @Override
+    public String loginPatientAuth(Patient patient) throws ServletException {
+        String jwtToken = "";
+        Patient fetchedPatient = new Patient();
+
+        String email = patient.getPatientEmail();
+        String password = patient.getPatientPassword();
+        String phoneNumber = patient.getPatientPhoneNumber();
+
+
+        if (email != null) {
+
+            if ((patientRepository.existsById(email) == false)) {
+
+                throw new ServletException("User email not found.");
+            } else {
+
+                fetchedPatient = getPatientByEmail(email);
+            }
+        } else if (phoneNumber != null) {
+
+            if ((patientRepository.existsBypatientPhoneNumber(phoneNumber) == false)) {
+
+                throw new ServletException("User Phone number not found.");
+            } else {
+                fetchedPatient = getPatientBypatientPhoneNumber(phoneNumber);
+
+            }
+        }
+
+        String fetchedPassword = fetchedPatient.getPatientPassword();
+
+        if (!password.equals(fetchedPassword)) {
+            throw new ServletException("Invalid login. Please check your password");
+        }
+
+        if (email != null) {
+            jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
+                    .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
+
+        } else if (phoneNumber != null) {
+            jwtToken = Jwts.builder().setSubject(phoneNumber).claim("roles", "user").setIssuedAt(new Date())
+                    .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
+        }
+        return jwtToken;
+    }
 
 }

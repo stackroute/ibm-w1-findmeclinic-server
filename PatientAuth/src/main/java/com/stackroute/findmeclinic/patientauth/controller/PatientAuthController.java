@@ -1,7 +1,5 @@
 package com.stackroute.findmeclinic.patientauth.controller;
 
-import java.util.Date;
-
 import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.stackroute.findmeclinic.patientauth.exception.PatientAlreadyExistsException;
 import com.stackroute.findmeclinic.patientauth.model.Patient;
 import com.stackroute.findmeclinic.patientauth.service.PatientService;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
 @RequestMapping("/api/v1/patient")
@@ -48,22 +43,21 @@ public class PatientAuthController {
 		return responseEntity;
 	}
 	
-	
 	@PostMapping(value = "/login")
-	public ResponseEntity<?> loginPatient(@RequestBody Patient newPatient)  {
-		String jwtToken="";
-		ResponseEntity<?> responseEntity= null;
+    public ResponseEntity<?> loginPatient(@RequestBody Patient newPatient)  {
+        String jwtToken="";
+        ResponseEntity<?> responseEntity= null;
 
-		try {
-			jwtToken=patientService.loginPatientAuth(newPatient);
-			responseEntity = new ResponseEntity<>(jwtToken,HttpStatus.CREATED);
-		}
-		catch(ServletException exception) {
-			responseEntity = new ResponseEntity<>(exception.getMessage(),HttpStatus.CONFLICT);
-		}
-		return responseEntity;
+        try {
+            jwtToken=patientService.loginPatientAuth(newPatient);
+            responseEntity = new ResponseEntity<>(jwtToken,HttpStatus.CREATED);
+        }
+        catch(ServletException exception) {
+            responseEntity = new ResponseEntity<>(exception.getMessage(),HttpStatus.CONFLICT);
+        }
+        return responseEntity;
 
-	   
-	}
+      
+    }
 
 }

@@ -9,6 +9,5 @@ import com.stackroute.findmeclinic.doctorauth.model.Doctor;
 public interface DoctorAuthRepository extends JpaRepository<Doctor, String>{
 
 	public Doctor findDoctorBydoctorPhoneNumber(String doctorPhoneNumber);
-	public Doctor findDoctorBydoctorEmail(String doctorEmail);
 	
 }

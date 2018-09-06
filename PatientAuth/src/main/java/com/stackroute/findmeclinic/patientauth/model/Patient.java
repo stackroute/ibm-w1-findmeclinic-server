@@ -1,21 +1,17 @@
 package com.stackroute.findmeclinic.patientauth.model;
 
-
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 
 @Entity
 public class Patient {
 	
 	
 	@Id
-	
 	private String patientEmail;
-
+	@Column(unique=true)
 	private String patientPhoneNumber;
-	
 	private String patientPassword;
 	
 	public Patient () {
