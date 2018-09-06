@@ -3,6 +3,9 @@ spring:
    show-sql: true
    hibernate:
      ddl-auto: update
+ 
+  
+ 
  boot:
    admin:
      client:
@@ -10,7 +13,6 @@ spring:
        - http://172.23.239.225:9000
  application:
    name: PatientAuth
-
 
 
 
