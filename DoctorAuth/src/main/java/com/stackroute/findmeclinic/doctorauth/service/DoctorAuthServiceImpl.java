@@ -21,22 +21,21 @@ public class DoctorAuthServiceImpl implements DoctorAuthService {
 	}
 
 	@Override
-    public boolean registerDoctor(Doctor doctor) throws DoctorAlreadyExistsEcxeption {
-        boolean flag = false;
+    public Doctor registerDoctor(Doctor doctor) throws DoctorAlreadyExistsEcxeption {
+       // boolean flag = false;
         String info = doctor.getDoctorEmail();
 
         try {
             if (!doctorAuth.existsById(info) && (findDoctorBydoctorPhoneNumber(doctor.getDoctorPhoneNumber()) == null)) {
                 doctorAuth.save(doctor);
-                flag = true;
+                return doctor;
+               // flag = true;
             } else {
                 throw new DoctorAlreadyExistsEcxeption("Doctor Information already present");
             }
-            if (flag == true) {
-                return flag;
-            } else {
-                return false;
-            }
+            
+                
+            
         } catch (NoSuchElementException exception) {
             throw new DoctorAlreadyExistsEcxeption("Doctor Information already present");
         }

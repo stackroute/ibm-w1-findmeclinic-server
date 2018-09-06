@@ -31,7 +31,7 @@ public class DoctorAuthController {
         ResponseEntity<?> responseEntity = null;
 
         try {
-            if (docService.registerDoctor(doctor)) {
+            if (docService.registerDoctor(doctor)!=null) {
                 responseEntity = new ResponseEntity<>(doctor, HttpStatus.OK);
             }
         } catch (Exception exception) {
