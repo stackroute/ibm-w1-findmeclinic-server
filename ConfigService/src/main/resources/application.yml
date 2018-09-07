@@ -13,8 +13,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/stackroute/ibm-w1-findmeclinic-server/ConfigProperties
-
+          uri: https://github.com/stackroute/ibm-w1-findmeclinic-server/tree/v1.0.0/ConfigProperties
 
       
       

@@ -1,20 +1,22 @@
+
+
 spring:
-   jpa:
-     show-sql: true
-     hibernate:
-            ddl-auto: update
-   boot:
-     admin:
-      client:
-      url:
-      - http://172.23.239.225:9000            
+ boot:
+   admin:
+     client:
+       url:
+       - http://172.23.239.225:9000
+ cloud:
+    config:
+      uri:
+      -  http://172.23.239.225:9001     
+ application:
+   name: doctorAuth
 
-   application:
-     name: DoctorAuth
-     
+info:
+ app:
+   description: Doctor service is up and has no problem
+   name: Doctor-Auth
+   version: 1.0.0
 
-   datasource:
-      url: jdbc:mysql://localhost:3306/doctorAuthenDb
-      username: root
-      password: root
-
+  
