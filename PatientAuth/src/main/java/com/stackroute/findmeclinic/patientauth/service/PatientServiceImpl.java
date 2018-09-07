@@ -27,21 +27,24 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public boolean registerPatient(Patient patient) throws PatientAlreadyExistsException {
-		boolean flag = false;
+	public Patient registerPatient(Patient patient)  throws PatientAlreadyExistsException{
+		
 		try {
 			if (!patientRepository.existsById(patient.getPatientEmail())
 					&& getPatientBypatientPhoneNumber(patient.getPatientPhoneNumber()) == null) {
 				patientRepository.save(patient);
-				flag = true;
+				
+				return patient;
+			
 			} else {
 				throw new PatientAlreadyExistsException("patient already exist");
 			}
 			
-				return flag;
+	
 		} catch (NoSuchElementException exception) {
 			throw new PatientAlreadyExistsException("Patient already exist");
 		}
+	
 	}
 
 	public Patient getPatientBypatientPhoneNumber(String patientPhoneNumber) {

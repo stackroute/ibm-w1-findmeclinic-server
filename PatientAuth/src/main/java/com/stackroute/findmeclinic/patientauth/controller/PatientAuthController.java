@@ -35,8 +35,9 @@ public class PatientAuthController {
 		
 		ResponseEntity<?> responseEntity= null;
 		try {
-			patientService.registerPatient(patient);
+			if (patientService.registerPatient(patient) != null) {
 			responseEntity = new ResponseEntity<>(patient,HttpStatus.CREATED);
+			}
 		}
 		catch(PatientAlreadyExistsException exception) {
 			responseEntity = new ResponseEntity<>(exception.getMessage(),HttpStatus.CONFLICT);

@@ -8,7 +8,7 @@ import com.stackroute.findmeclinic.patientauth.model.Patient;
 public interface PatientService {
 
 	
-	public boolean registerPatient(Patient patient) throws PatientAlreadyExistsException;
+	public Patient registerPatient(Patient patient) throws PatientAlreadyExistsException;
 	 
 	public String loginPatientAuth(Patient patient) throws ServletException;
 }
