@@ -5,11 +5,11 @@ spring:
    admin:
      client:
        url:
-       - http://172.23.239.225:9000
+       - http://172.23.239.225:8000
  cloud:
     config:
       uri:
-      -  http://172.23.239.225:9001     
+      -  http://172.23.239.225:8001     
  application:
    name: doctorAuth
 
