@@ -8,7 +8,7 @@ spring:
  cloud:
     config:
       uri:
-      -  http://172.23.239.225:8888     
+      -  http://172.23.239.225:8060   
  application:
    name: patient-auth
   
