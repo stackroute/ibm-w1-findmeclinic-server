@@ -45,7 +45,6 @@ public class DoctorAuthRepositoryTest {
 	 
 	 
 	 @Test
-	 @Ignore
 	 public void  registerDoctorTest() {
 		 doctorAuthRepository.save(doctor);
 		 Doctor fetchedDoctor = doctorAuthRepository.findDoctorBydoctorPhoneNumber("9994224303");
