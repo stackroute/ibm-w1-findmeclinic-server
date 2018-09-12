@@ -1,4 +1,4 @@
-package com.stackroute.findmelinic.configservice;
+package com.stackroute.findmeclinic.configservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
