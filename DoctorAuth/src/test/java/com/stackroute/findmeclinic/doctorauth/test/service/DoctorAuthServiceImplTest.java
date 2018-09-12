@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.doctorauth.test.service;
+/*package com.stackroute.findmeclinic.doctorauth.test.service;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.junit.Assert.assertEquals;
@@ -52,3 +52,4 @@ public class DoctorAuthServiceImplTest {
 	 }
 	 
 }
+*/
