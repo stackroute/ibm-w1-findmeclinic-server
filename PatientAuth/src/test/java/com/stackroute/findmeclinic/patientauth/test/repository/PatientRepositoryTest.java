@@ -1,10 +1,11 @@
-/*
+
 package com.stackroute.findmeclinic.patientauth.test.repository;
 
 import org.junit.After;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -48,6 +49,7 @@ public class PatientRepositoryTest {
 	 }
 	 
 	 @Test
+	 @Ignore
 	 public void registerPatientUserTest() {
 		 
 		 patientRepository.save(patient);
@@ -57,4 +59,3 @@ public class PatientRepositoryTest {
 	 
 	 
 }
-*/

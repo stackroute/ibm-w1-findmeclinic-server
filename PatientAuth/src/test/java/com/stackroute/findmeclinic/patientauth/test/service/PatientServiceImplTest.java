@@ -1,4 +1,4 @@
-/*package com.stackroute.findmeclinic.patientauth.test.service;
+package com.stackroute.findmeclinic.patientauth.test.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -56,4 +56,3 @@ public class PatientServiceImplTest {
 	 }
 	
 }
-*/

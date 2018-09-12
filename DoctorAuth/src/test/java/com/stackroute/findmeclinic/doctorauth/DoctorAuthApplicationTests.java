@@ -1,4 +1,4 @@
-/*package com.stackroute.findmeclinic.doctorauth;
+package com.stackroute.findmeclinic.doctorauth;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,4 +14,3 @@ public class DoctorAuthApplicationTests {
 	}
 
 }
-*/

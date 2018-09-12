@@ -1,4 +1,4 @@
-/*package com.stackroute.findmeclinic.doctorauth.test.controller;
+package com.stackroute.findmeclinic.doctorauth.test.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -50,9 +50,9 @@ public class DoctorAuthControllerTest {
 	      doctor.setDoctorEmail("sanela97@gmail.com");
 	      doctor.setDoctorPhoneNumber("9994224303");
 	      doctor.setDoctorPassword("sanjana");
-	      doctor1.setDoctorEmail("sanela97@gmail.com");
+	    /*  doctor1.setDoctorEmail("sanela97@gmail.com");
 	      doctor1.setDoctorPhoneNumber("9994224303");
-	      doctor1.setDoctorPassword("sanjana");
+	      doctor1.setDoctorPassword("sanjana");*/
 	    }
 	    
 	    
@@ -84,4 +84,3 @@ public class DoctorAuthControllerTest {
 	    }
 	    
 }
-*/
