@@ -50,7 +50,7 @@ public class PatientRepositoryTest {
 	 }
 	 
 	 @Test
-	 @Ignore
+	 
 	 public void registerPatientUserTest() {
 		 
 		 patientRepository.save(patient);
