@@ -1,4 +1,4 @@
-
+/*
 package com.stackroute.findmeclinic.patientauth.test.repository;
 
 import org.junit.After;
@@ -57,3 +57,4 @@ public class PatientRepositoryTest {
 	 
 	 
 }
+*/
