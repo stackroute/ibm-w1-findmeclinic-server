@@ -52,4 +52,10 @@ public class DoctorAuthRepositoryTest {
 		 System.out.println(fetchedDoctor);
 		 Assert.assertEquals(doctor.getDoctorEmail(), fetchedDoctor.getDoctorEmail());
 	 }
+	 
+	 public void loginDoctorTest() {
+         Doctor doctor1=   doctorAuthRepository.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(),doctor.getDoctorPassword());
+         Assert.assertEquals(doctor.getDoctorEmail(),doctor1.getDoctorPassword());
+	 } 
+
 }

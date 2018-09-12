@@ -88,6 +88,23 @@ public class PatientAuthControllerTest {
 	    }
 	    
 		
+		
+		@Test
+	    public void loginPatientSuccess() throws Exception{
+			when(patientService.findPatientByPatientEmailAndPatientPassword(patient.getPatientEmail(), patient.getPatientPassword())).thenReturn(patient);
+			mockMvc.perform(post("/api/v1/patient/login")
+					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient))).andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
+		
+	    }
+		
+		@Test
+		public void loginPatientFailure() throws Exception{
+			when(patientService.findPatientByPatientEmailAndPatientPassword(patient.getPatientEmail(), patient.getPatientPassword())).thenReturn(null);
+			mockMvc.perform(post("/api/v1/patient/login")
+					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient))).andExpect(status().isUnauthorized()).andDo(MockMvcResultHandlers.print());
+		
+			
+		}
 	    
 }
 

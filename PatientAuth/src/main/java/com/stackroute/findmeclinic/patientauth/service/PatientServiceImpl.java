@@ -61,51 +61,13 @@ public class PatientServiceImpl implements PatientService {
         return fetchedPatient;
     }
 
-    @Override
-    public String loginPatientAuth(Patient patient) throws ServletException {
-        String jwtToken = "";
-        Patient fetchedPatient = new Patient();
+	
 
-        String email = patient.getPatientEmail();
-        String password = patient.getPatientPassword();
-        String phoneNumber = patient.getPatientPhoneNumber();
+	@Override
+	public Patient findPatientByPatientEmailAndPatientPassword(String patientEmail, String patientPassword) {
+		Patient fetchedPatient = patientRepository.findPatientByPatientEmailAndPatientPassword(patientEmail, patientPassword);
+		return fetchedPatient;
+	}
 
-
-        if (email != null) {
-
-            if ((patientRepository.existsById(email) == false)) {
-
-                throw new ServletException("User email not found.");
-            } else {
-
-                fetchedPatient = getPatientByEmail(email);
-            }
-        } else if (phoneNumber != null) {
-
-            if ((patientRepository.existsBypatientPhoneNumber(phoneNumber) == false)) {
-
-                throw new ServletException("User Phone number not found.");
-            } else {
-                fetchedPatient = getPatientBypatientPhoneNumber(phoneNumber);
-
-            }
-        }
-
-        String fetchedPassword = fetchedPatient.getPatientPassword();
-
-        if (!password.equals(fetchedPassword)) {
-            throw new ServletException("Invalid login. Please check your password");
-        }
-
-        if (email != null) {
-            jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
-                    .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
-
-        } else if (phoneNumber != null) {
-            jwtToken = Jwts.builder().setSubject(phoneNumber).claim("roles", "user").setIssuedAt(new Date())
-                    .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
-        }
-        return jwtToken;
-    }
-
+  
 }

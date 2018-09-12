@@ -10,5 +10,6 @@ public interface DoctorAuthRepository extends JpaRepository<Doctor, String>{
 
 	public Doctor findDoctorBydoctorPhoneNumber(String doctorPhoneNumber);
 	public Doctor findDoctorBydoctorEmail(String doctorEmail);
+	public Doctor findDoctorByDoctorEmailAndDoctorPassword(String doctorEmail,String doctorPassword);
 	
 }

@@ -58,5 +58,11 @@ public class PatientRepositoryTest {
 		 Assert.assertEquals(patient.getPatientEmail(), patient1.getPatientEmail());
 	 }
 	 
+	 @Test
+	 public void loginPatientTest() {
+          Patient patient1=   patientRepository.findPatientByPatientEmailAndPatientPassword(patient.getPatientEmail(), patient.getPatientPassword());
+          Assert.assertEquals(patient.getPatientEmail(), patient1.getPatientEmail());
+	 } 
+
 	 
 }

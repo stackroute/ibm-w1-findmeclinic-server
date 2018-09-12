@@ -60,7 +60,7 @@ public class DoctorAuthControllerTest {
 	    public void registerDoctorSuccess() throws Exception {
 
 	        when(doctorAuthService.registerDoctor(doctor)).thenReturn(doctor);
-	        mockMvc.perform(post("/Doctor/Auth")
+	        mockMvc.perform(post("/doctor/auth")
 	                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor)))
 	                .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
 
@@ -70,7 +70,7 @@ public class DoctorAuthControllerTest {
 	    public void registerDoctorFailure() throws Exception {
 
 	        when(doctorAuthService.registerDoctor(any())).thenThrow(DoctorAlreadyExistsEcxeption.class);
-	        mockMvc.perform(post("/Doctor/Auth")
+	        mockMvc.perform(post("/doctor/auth")
 	                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor)))
 	                .andExpect(status().isConflict()).andDo(MockMvcResultHandlers.print());
 }
@@ -82,5 +82,22 @@ public class DoctorAuthControllerTest {
 	            throw new RuntimeException(e);
 	        }
 	    }
+	    
+		@Test
+	    public void loginDoctorSuccess() throws Exception{
+			when(doctorAuthService.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(), doctor.getDoctorPassword())).thenReturn(doctor);
+			mockMvc.perform(post("/doctor/auth")
+					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor))).andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
+		
+	    }
+		
+		@Test
+		public void loginDoctorFailure() throws Exception{
+			when(doctorAuthService.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(), doctor.getDoctorPassword())).thenReturn(null);
+			mockMvc.perform(post("/api/v1/patient/login")
+					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor))).andExpect(status().isUnauthorized()).andDo(MockMvcResultHandlers.print());
+		
+			
+		}
 	    
 }
