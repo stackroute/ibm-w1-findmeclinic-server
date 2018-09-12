@@ -38,6 +38,7 @@ public class PatientRepositoryTest {
          patient = new Patient();
         patient.setPatientEmail("abcd@gmail.com");
         patient.setPatientPhoneNumber("4567");
+        patient.setPatientPassword("xyz");
         
         
     }
@@ -49,7 +50,7 @@ public class PatientRepositoryTest {
 	 }
 	 
 	 @Test
-	 @Ignore
+	 
 	 public void registerPatientUserTest() {
 		 
 		 patientRepository.save(patient);
