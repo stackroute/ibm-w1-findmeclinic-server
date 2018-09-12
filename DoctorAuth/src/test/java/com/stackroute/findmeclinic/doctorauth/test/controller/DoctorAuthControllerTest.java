@@ -86,7 +86,7 @@ public class DoctorAuthControllerTest {
 		@Test
 	    public void loginDoctorSuccess() throws Exception{
 			when(doctorAuthService.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(), doctor.getDoctorPassword())).thenReturn(doctor);
-			mockMvc.perform(post("/doctor/auth")
+			mockMvc.perform(post("/doctor/auth/login")
 					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor))).andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
 		
 	    }
@@ -94,7 +94,7 @@ public class DoctorAuthControllerTest {
 		@Test
 		public void loginDoctorFailure() throws Exception{
 			when(doctorAuthService.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(), doctor.getDoctorPassword())).thenReturn(null);
-			mockMvc.perform(post("/api/v1/patient/login")
+			mockMvc.perform(post("/doctor/auth/login")
 					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor))).andExpect(status().isUnauthorized()).andDo(MockMvcResultHandlers.print());
 		
 			
