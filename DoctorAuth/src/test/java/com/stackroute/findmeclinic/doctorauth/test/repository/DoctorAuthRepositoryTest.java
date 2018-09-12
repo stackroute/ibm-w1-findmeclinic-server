@@ -52,6 +52,7 @@ public class DoctorAuthRepositoryTest {
 		 Assert.assertEquals(doctor.getDoctorEmail(), fetchedDoctor.getDoctorEmail());
 	 }
 	 @Ignore
+	 @Test
 	 public void loginDoctorTest() {
          Doctor doctor1=   doctorAuthRepository.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(),doctor.getDoctorPassword());
          Assert.assertEquals(doctor.getDoctorEmail(),doctor1.getDoctorPassword());
