@@ -1,6 +1,6 @@
-package com.stackroute.findmeclinic.doctorauth.test.repository;
+/*package com.stackroute.findmeclinic.doctorauth.test.repository;
 
-/*import static org.junit.Assert.assertEquals;*/
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -52,3 +52,4 @@ public class DoctorAuthRepositoryTest {
 		 Assert.assertEquals(doctor.getDoctorEmail(), fetchedDoctor.getDoctorEmail());
 	 }
 }
+*/
