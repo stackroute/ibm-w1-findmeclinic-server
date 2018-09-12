@@ -36,6 +36,7 @@ public class DoctorAuthRepositoryTest {
 		 doctor.setDoctorEmail("esanvi97@gmail.com");
 		 doctor.setDoctorPhoneNumber("9994224303");
 		 doctor.setDoctorPassword("sanju");
+		 doctorAuthRepository.save(doctor);
 	 }
 	 
 	 @After
@@ -46,7 +47,7 @@ public class DoctorAuthRepositoryTest {
 	 
 	 @Test
 	 public void  registerDoctorTest() {
-		 doctorAuthRepository.save(doctor);
+		 
 		 Doctor fetchedDoctor = doctorAuthRepository.findDoctorBydoctorPhoneNumber("9994224303");
 		 System.out.println(fetchedDoctor);
 		 Assert.assertEquals(doctor.getDoctorEmail(), fetchedDoctor.getDoctorEmail());

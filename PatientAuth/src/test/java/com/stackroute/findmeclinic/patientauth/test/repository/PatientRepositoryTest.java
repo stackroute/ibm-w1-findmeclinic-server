@@ -39,6 +39,8 @@ public class PatientRepositoryTest {
         patient.setPatientEmail("abcd@gmail.com");
         patient.setPatientPhoneNumber("4567");
         patient.setPatientPassword("xyz");
+		 patientRepository.save(patient);
+
         
         
     }
@@ -53,13 +55,13 @@ public class PatientRepositoryTest {
 	 
 	 public void registerPatientUserTest() {
 		 
-		 patientRepository.save(patient);
 		 Patient  patient1 = patientRepository.findPatientBypatientPhoneNumber("4567");
 		 Assert.assertEquals(patient.getPatientEmail(), patient1.getPatientEmail());
 	 }
 	
 	 @Test
 	 public void loginPatientTest() {
+
           Patient patient1=   patientRepository.findPatientByPatientEmailAndPatientPassword(patient.getPatientEmail(), patient.getPatientPassword());
           Assert.assertEquals(patient.getPatientEmail(), patient1.getPatientEmail());
 	 } 
