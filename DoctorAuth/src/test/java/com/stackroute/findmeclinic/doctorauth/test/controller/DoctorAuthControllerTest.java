@@ -25,79 +25,78 @@ import com.stackroute.findmeclinic.doctorauth.exception.DoctorAlreadyExistsEcxep
 import com.stackroute.findmeclinic.doctorauth.model.Doctor;
 import com.stackroute.findmeclinic.doctorauth.service.DoctorAuthService;
 
-
 @RunWith(SpringRunner.class)
 @WebMvcTest
 public class DoctorAuthControllerTest {
-	
-	
-	 @Autowired
-	    private MockMvc mockMvc;
-	    @MockBean
-	    private Doctor doctor;
-	    @MockBean
-	    DoctorAuthService doctorAuthService;
-	    @InjectMocks
-	    DoctorAuthController doctorAuthController;
 
-	    
-	    @Before
-	    public void setUp() {
-	        MockitoAnnotations.initMocks(this);
-	        mockMvc = MockMvcBuilders.standaloneSetup(doctorAuthController).build();
-	        doctor = new Doctor();
-	       // doctor1= new Doctor();
-	      doctor.setDoctorEmail("sanela97@gmail.com");
-	      doctor.setDoctorPhoneNumber("9994224303");
-	      doctor.setDoctorPassword("sanjana");
-	    /*  doctor1.setDoctorEmail("sanela97@gmail.com");
-	      doctor1.setDoctorPhoneNumber("9994224303");
-	      doctor1.setDoctorPassword("sanjana");*/
-	    }
-	    
-	    
-	    @Test
-	    public void registerDoctorSuccess() throws Exception {
+	@Autowired
+	private MockMvc mockMvc;
+	@MockBean
+	private Doctor doctor;
+	@MockBean
+	DoctorAuthService doctorAuthService;
+	@InjectMocks
+	DoctorAuthController doctorAuthController;
 
-	        when(doctorAuthService.registerDoctor(doctor)).thenReturn(doctor);
-	        mockMvc.perform(post("/doctor/auth")
-	                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor)))
-	                .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
+	@Before
+	public void setUp() {
+		MockitoAnnotations.initMocks(this);
+		mockMvc = MockMvcBuilders.standaloneSetup(doctorAuthController).build();
+		doctor = new Doctor();
+		// doctor1= new Doctor();
+		doctor.setDoctorEmail("sanela97@gmail.com");
+		doctor.setDoctorPhoneNumber("9994224303");
+		doctor.setDoctorPassword("sanjana");
+		/*
+		 * doctor1.setDoctorEmail("sanela97@gmail.com");
+		 * doctor1.setDoctorPhoneNumber("9994224303");
+		 * doctor1.setDoctorPassword("sanjana");
+		 */
+	}
 
-	    }
-	    
-	    @Test
-	    public void registerDoctorFailure() throws Exception {
+	@Test
+	public void registerDoctorSuccess() throws Exception {
 
-	        when(doctorAuthService.registerDoctor(any())).thenThrow(DoctorAlreadyExistsEcxeption.class);
-	        mockMvc.perform(post("/doctor/auth")
-	                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor)))
-	                .andExpect(status().isConflict()).andDo(MockMvcResultHandlers.print());
-}
-	    
-	    public static String asJsonString(final Object obj) {
-	        try {
-	            return new ObjectMapper().writeValueAsString(obj);
-	        } catch (Exception e) {
-	            throw new RuntimeException(e);
-	        }
-	    }
-	    
-		@Test
-	    public void loginDoctorSuccess() throws Exception{
-			when(doctorAuthService.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(), doctor.getDoctorPassword())).thenReturn(doctor);
-			mockMvc.perform(post("/doctor/auth/login")
-					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor))).andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
-		
-	    }
-		
-		@Test
-		public void loginDoctorFailure() throws Exception{
-			when(doctorAuthService.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(), doctor.getDoctorPassword())).thenReturn(null);
-			mockMvc.perform(post("/doctor/auth/login")
-					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor))).andExpect(status().isUnauthorized()).andDo(MockMvcResultHandlers.print());
-		
-			
+		when(doctorAuthService.registerDoctor(doctor)).thenReturn(doctor);
+		mockMvc.perform(post("/doctor/auth").contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor)))
+				.andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
+
+	}
+
+	@Test
+	public void registerDoctorFailure() throws Exception {
+
+		when(doctorAuthService.registerDoctor(any())).thenThrow(DoctorAlreadyExistsEcxeption.class);
+		mockMvc.perform(post("/doctor/auth").contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor)))
+				.andExpect(status().isConflict()).andDo(MockMvcResultHandlers.print());
+	}
+
+	public static String asJsonString(final Object obj) {
+		try {
+			return new ObjectMapper().writeValueAsString(obj);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
-	    
+	}
+
+	@Test
+	public void loginDoctorSuccess() throws Exception {
+		when(doctorAuthService.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(),
+				doctor.getDoctorPassword())).thenReturn(doctor);
+		mockMvc.perform(
+				post("/doctor/auth/login").contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor)))
+				.andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
+
+	}
+
+	@Test
+	public void loginDoctorFailure() throws Exception {
+		when(doctorAuthService.findDoctorByDoctorEmailAndDoctorPassword(doctor.getDoctorEmail(),
+				doctor.getDoctorPassword())).thenReturn(null);
+		mockMvc.perform(
+				post("/doctor/auth/login").contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor)))
+				.andExpect(status().isUnauthorized()).andDo(MockMvcResultHandlers.print());
+
+	}
+
 }

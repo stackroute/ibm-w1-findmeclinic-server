@@ -11,16 +11,14 @@ public class Doctor {
 	@Id
 	@Email
 	private String doctorEmail;
-@NotBlank
+	@NotBlank
 	private String doctorPhoneNumber;
-@NotBlank
+	@NotBlank
 	private String doctorPassword;
 
 	public Doctor() {
 		super();
-    }
-	
-	
+	}
 
 	public Doctor(String doctorEmail, String doctorPhoneNumber, String doctorPassword) {
 		super();
@@ -28,8 +26,6 @@ public class Doctor {
 		this.doctorPhoneNumber = doctorPhoneNumber;
 		this.doctorPassword = doctorPassword;
 	}
-
-
 
 	public String getDoctorEmail() {
 		return doctorEmail;
@@ -55,14 +51,10 @@ public class Doctor {
 		this.doctorPassword = doctorPassword;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Doctor [doctorEmail=" + doctorEmail + ", doctorPhoneNumber=" + doctorPhoneNumber + ", doctorPassword="
 				+ doctorPassword + "]";
 	}
-
-
 
 }

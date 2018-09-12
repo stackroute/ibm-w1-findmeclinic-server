@@ -11,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
 import com.stackroute.findmeclinic.patientauth.exception.PatientAlreadyExistsException;
 import com.stackroute.findmeclinic.patientauth.model.Patient;
 import com.stackroute.findmeclinic.patientauth.repository.PatientRepository;
@@ -21,38 +20,33 @@ public class PatientServiceImplTest {
 
 	@Mock
 	private PatientRepository patientRepository;
-	
+
 	Patient patient, patient1;
-	
+
 	@InjectMocks
 	private PatientServiceImpl patientServiceImpl;
-	
 
-	 @Before
-	    public void setUp() {
-	        MockitoAnnotations.initMocks(this);
-	        patient = new Patient();
-	        patient1 = new Patient();
-	 }
-	 
-	 
-	 
-	 @Test
-	 public void registerPatientSuccess() throws PatientAlreadyExistsException{
-		 when(patientRepository.save((Patient) any())).thenReturn(patient);
-		 Patient registerPatient  = patientServiceImpl.registerPatient(patient);
-		 assertEquals(patient, registerPatient);
-		 
-	 }
-	 
-	 
-	 
-	 @Test
-	 public void registerPatientFailure() throws PatientAlreadyExistsException{
-		 when(patientRepository.save((Patient) any())).thenReturn(patient);
-		 Patient registerPatient  = patientServiceImpl.registerPatient(patient);
-		 assertNotEquals(patient1, registerPatient);
-		 
-	 }
-	
+	@Before
+	public void setUp() {
+		MockitoAnnotations.initMocks(this);
+		patient = new Patient();
+		patient1 = new Patient();
+	}
+
+	@Test
+	public void registerPatientSuccess() throws PatientAlreadyExistsException {
+		when(patientRepository.save((Patient) any())).thenReturn(patient);
+		Patient registerPatient = patientServiceImpl.registerPatient(patient);
+		assertEquals(patient, registerPatient);
+
+	}
+
+	@Test
+	public void registerPatientFailure() throws PatientAlreadyExistsException {
+		when(patientRepository.save((Patient) any())).thenReturn(patient);
+		Patient registerPatient = patientServiceImpl.registerPatient(patient);
+		assertNotEquals(patient1, registerPatient);
+
+	}
+
 }

@@ -31,80 +31,70 @@ import com.stackroute.findmeclinic.patientauth.service.PatientService;
 @RunWith(SpringRunner.class)
 @WebMvcTest
 public class PatientAuthControllerTest {
-	 @Autowired
-	    private MockMvc mockMvc;
-	    @MockBean
-	    private Patient patient;
-	    @MockBean
-	    private PatientService patientService;
-	    @InjectMocks
-	   PatientAuthController patientAuthController;
-	    
+	@Autowired
+	private MockMvc mockMvc;
+	@MockBean
+	private Patient patient;
+	@MockBean
+	private PatientService patientService;
+	@InjectMocks
+	PatientAuthController patientAuthController;
 
-	    @Before
-	    public void setUp() {
-	        MockitoAnnotations.initMocks(this);
-	        mockMvc = MockMvcBuilders.standaloneSetup(patientAuthController).build();
-	         patient = new Patient();
-	        patient.setPatientEmail("abcde89@gmail.com");
-	        patient.setPatientPhoneNumber("1234567");
-	        patient.setPatientPassword("password");
-	        
-	        
-	    }
-	        
-	    @Test
-	    public void registerPatientUserSuccess() throws Exception {
-	    	
-	    	when(patientService.registerPatient(patient)).thenReturn(patient); 
-	    	 mockMvc.perform(post("/api/v1/patient")
-	    	                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient)))
-                            .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
-	    	 
-	    	
-	    }
+	@Before
+	public void setUp() {
+		MockitoAnnotations.initMocks(this);
+		mockMvc = MockMvcBuilders.standaloneSetup(patientAuthController).build();
+		patient = new Patient();
+		patient.setPatientEmail("abcde89@gmail.com");
+		patient.setPatientPhoneNumber("1234567");
+		patient.setPatientPassword("password");
 
-	    
-	   
-	    @Test
-	    public void registerPatientUserFailure() throws Exception {
-	    	
-	    	when(patientService.registerPatient(any())).thenThrow(PatientAlreadyExistsException.class); 
-	    	 mockMvc.perform(post("/api/v1/patient")
-	    	           .contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient)))
-                       .andExpect(status().isConflict()).andDo(MockMvcResultHandlers.print());
-	    	 
-	    	
-	    }
+	}
 
-	   
+	@Test
+	public void registerPatientUserSuccess() throws Exception {
 
-		public static String asJsonString(final Object obj) {
-	        try {
-	            return new ObjectMapper().writeValueAsString(obj);
-	        } catch (Exception e) {
-	            throw new RuntimeException(e);
-	        }
-	    }
-	    
-		
-		
-		@Test
-	    public void loginPatientSuccess() throws Exception{
-			when(patientService.findPatientByPatientEmailAndPatientPassword(patient.getPatientEmail(), patient.getPatientPassword())).thenReturn(patient);
-			mockMvc.perform(post("/api/v1/patient/login")
-					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient))).andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
-		
-	    }
-		
-		@Test
-		public void loginPatientFailure() throws Exception{
-			when(patientService.findPatientByPatientEmailAndPatientPassword(patient.getPatientEmail(), patient.getPatientPassword())).thenReturn(null);
-			mockMvc.perform(post("/api/v1/patient/login")
-					.contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient))).andExpect(status().isUnauthorized()).andDo(MockMvcResultHandlers.print());
-		
-			
+		when(patientService.registerPatient(patient)).thenReturn(patient);
+		mockMvc.perform(post("/api/v1/patient").contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient)))
+				.andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
+
+	}
+
+	@Test
+	public void registerPatientUserFailure() throws Exception {
+
+		when(patientService.registerPatient(any())).thenThrow(PatientAlreadyExistsException.class);
+		mockMvc.perform(post("/api/v1/patient").contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient)))
+				.andExpect(status().isConflict()).andDo(MockMvcResultHandlers.print());
+
+	}
+
+	public static String asJsonString(final Object obj) {
+		try {
+			return new ObjectMapper().writeValueAsString(obj);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
-	    
-}
+	}
 
+	@Test
+	public void loginPatientSuccess() throws Exception {
+		when(patientService.findPatientByPatientEmailAndPatientPassword(patient.getPatientEmail(),
+				patient.getPatientPassword())).thenReturn(patient);
+		mockMvc.perform(
+				post("/api/v1/patient/login").contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient)))
+				.andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
+
+	}
+
+	@Test
+	public void loginPatientFailure() throws Exception {
+		when(patientService.findPatientByPatientEmailAndPatientPassword(patient.getPatientEmail(),
+				patient.getPatientPassword())).thenReturn(null);
+		mockMvc.perform(
+				post("/api/v1/patient/login").contentType(MediaType.APPLICATION_JSON).content(asJsonString(patient)))
+				.andExpect(status().isUnauthorized()).andDo(MockMvcResultHandlers.print());
+
+	}
+
+}

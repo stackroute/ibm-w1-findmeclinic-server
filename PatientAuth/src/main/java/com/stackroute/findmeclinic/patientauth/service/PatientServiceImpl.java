@@ -27,24 +27,23 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public Patient registerPatient(Patient patient)  throws PatientAlreadyExistsException{
-		
+	public Patient registerPatient(Patient patient) throws PatientAlreadyExistsException {
+
 		try {
 			if (!patientRepository.existsById(patient.getPatientEmail())
 					&& getPatientBypatientPhoneNumber(patient.getPatientPhoneNumber()) == null) {
 				patientRepository.save(patient);
-				
+
 				return patient;
-			
+
 			} else {
 				throw new PatientAlreadyExistsException("patient already exist");
 			}
-			
-	
+
 		} catch (NoSuchElementException exception) {
 			throw new PatientAlreadyExistsException("Patient already exist");
 		}
-	
+
 	}
 
 	public Patient getPatientBypatientPhoneNumber(String patientPhoneNumber) {
@@ -55,19 +54,17 @@ public class PatientServiceImpl implements PatientService {
 			return null;
 		}
 	}
-	
+
 	public Patient getPatientByEmail(String patientEmail) {
-        Patient fetchedPatient = patientRepository.findPatientByPatientEmail(patientEmail);
-        return fetchedPatient;
-    }
-
-	
-
-	@Override
-	public Patient findPatientByPatientEmailAndPatientPassword(String patientEmail, String patientPassword) {
-		Patient fetchedPatient = patientRepository.findPatientByPatientEmailAndPatientPassword(patientEmail, patientPassword);
+		Patient fetchedPatient = patientRepository.findPatientByPatientEmail(patientEmail);
 		return fetchedPatient;
 	}
 
-  
+	@Override
+	public Patient findPatientByPatientEmailAndPatientPassword(String patientEmail, String patientPassword) {
+		Patient fetchedPatient = patientRepository.findPatientByPatientEmailAndPatientPassword(patientEmail,
+				patientPassword);
+		return fetchedPatient;
+	}
+
 }

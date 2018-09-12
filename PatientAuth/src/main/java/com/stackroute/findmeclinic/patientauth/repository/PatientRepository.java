@@ -9,7 +9,8 @@ import com.stackroute.findmeclinic.patientauth.model.Patient;
 public interface PatientRepository extends JpaRepository<Patient, String> {
 
 	public Patient findPatientBypatientPhoneNumber(String patientPhoneNumber);
+
 	public Patient findPatientByPatientEmail(String patientEmail);
 
-	public Patient findPatientByPatientEmailAndPatientPassword(String patientEmail,String patientPassword);
+	public Patient findPatientByPatientEmailAndPatientPassword(String patientEmail, String patientPassword);
 }
