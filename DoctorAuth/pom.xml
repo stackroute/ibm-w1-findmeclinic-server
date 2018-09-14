@@ -10,7 +10,7 @@
 	<packaging>jar</packaging>
 
 	<name>DoctorAuth</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Doctor Authentication Service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

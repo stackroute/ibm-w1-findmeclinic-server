@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>ConfigService</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Configuration Service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

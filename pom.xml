@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 
 	<name>FindMeClinic</name>
-	<description>Demo project for Spring Boot</description>
+	<description>FindMeClinic Application</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
