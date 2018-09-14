@@ -1,0 +1,35 @@
+spring:
+
+ h2:
+   console:
+     enabled: true
+     path: /console
+
+
+
+
+
+#spring:
+# boot:
+#   admin:
+#     client:
+#       url:
+#       - http://172.23.239.225:8000
+#               
+# cloud:
+#    config:
+#      uri:
+#      -  http://172.23.239.225:8060   
+# application:
+#   name: patient-auth
+#  
+#info:
+# app:
+#   description: Patient service is up and has no problem
+#   name: Patient-Auth
+#   version: 1.0.0
+#
+#   
+#   
+#   
+#   

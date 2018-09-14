@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: SpringBootAdminService
+    
+server:
+  port: 8000 
