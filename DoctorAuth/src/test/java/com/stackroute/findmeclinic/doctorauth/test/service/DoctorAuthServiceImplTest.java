@@ -11,7 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.stackroute.findmeclinic.doctorauth.exception.DoctorAlreadyExistsEcxeption;
+import com.stackroute.findmeclinic.doctorauth.exception.DoctorAlreadyExistsException;
 import com.stackroute.findmeclinic.doctorauth.model.Doctor;
 import com.stackroute.findmeclinic.doctorauth.repository.DoctorAuthRepository;
 import com.stackroute.findmeclinic.doctorauth.service.DoctorAuthServiceImpl;
@@ -34,14 +34,14 @@ public class DoctorAuthServiceImplTest {
 	}
 
 	@Test
-	public void registerDoctorSuccess() throws DoctorAlreadyExistsEcxeption {
+	public void registerDoctorSuccess() throws DoctorAlreadyExistsException {
 		when(doctorAuth.save((Doctor) any())).thenReturn(doctor);
 		Doctor regDoctor = doctorImpl.registerDoctor(doctor);
 		assertEquals(doctor, regDoctor);
 	}
 
 	@Test
-	public void registerDoctorFailure() throws DoctorAlreadyExistsEcxeption {
+	public void registerDoctorFailure() throws DoctorAlreadyExistsException {
 		when(doctorAuth.save((Doctor) any())).thenReturn(doctor);
 		Doctor regDoctor = doctorImpl.registerDoctor(doctor);
 		assertNotEquals(doctor1, regDoctor);

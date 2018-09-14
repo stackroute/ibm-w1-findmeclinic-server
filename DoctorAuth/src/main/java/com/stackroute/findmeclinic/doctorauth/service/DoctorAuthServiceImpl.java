@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.stackroute.findmeclinic.doctorauth.exception.DoctorAlreadyExistsEcxeption;
+import com.stackroute.findmeclinic.doctorauth.exception.DoctorAlreadyExistsException;
 import com.stackroute.findmeclinic.doctorauth.model.Doctor;
 import com.stackroute.findmeclinic.doctorauth.repository.DoctorAuthRepository;
 
@@ -21,7 +21,7 @@ public class DoctorAuthServiceImpl implements DoctorAuthService {
 	}
 
 	@Override
-	public Doctor registerDoctor(Doctor doctor) throws DoctorAlreadyExistsEcxeption {
+	public Doctor registerDoctor(Doctor doctor) throws DoctorAlreadyExistsException {
 		// boolean flag = false;
 		String info = doctor.getDoctorEmail();
 
@@ -32,11 +32,11 @@ public class DoctorAuthServiceImpl implements DoctorAuthService {
 				return doctor;
 				// flag = true;
 			} else {
-				throw new DoctorAlreadyExistsEcxeption("Doctor Information already present");
+				throw new DoctorAlreadyExistsException("Doctor Information already present");
 			}
 
 		} catch (NoSuchElementException exception) {
-			throw new DoctorAlreadyExistsEcxeption("Doctor Information already present");
+			throw new DoctorAlreadyExistsException("Doctor Information already present");
 		}
 	}
 

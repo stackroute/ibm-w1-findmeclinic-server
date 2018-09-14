@@ -21,7 +21,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.findmeclinic.doctorauth.controller.DoctorAuthController;
-import com.stackroute.findmeclinic.doctorauth.exception.DoctorAlreadyExistsEcxeption;
+import com.stackroute.findmeclinic.doctorauth.exception.DoctorAlreadyExistsException;
 import com.stackroute.findmeclinic.doctorauth.model.Doctor;
 import com.stackroute.findmeclinic.doctorauth.service.DoctorAuthService;
 
@@ -66,7 +66,7 @@ public class DoctorAuthControllerTest {
 	@Test
 	public void registerDoctorFailure() throws Exception {
 
-		when(doctorAuthService.registerDoctor(any())).thenThrow(DoctorAlreadyExistsEcxeption.class);
+		when(doctorAuthService.registerDoctor(any())).thenThrow(DoctorAlreadyExistsException.class);
 		mockMvc.perform(post("/doctor/auth").contentType(MediaType.APPLICATION_JSON).content(asJsonString(doctor)))
 				.andExpect(status().isConflict()).andDo(MockMvcResultHandlers.print());
 	}
