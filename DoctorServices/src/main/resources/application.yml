@@ -1,0 +1,12 @@
+
+server:
+  port: 8080
+  
+spring:
+   data:
+       mongodb:
+           database: DoctorServiceDbMongo
+           host: localhost
+           password: root1234
+           port: 27017
+           username: sanvi

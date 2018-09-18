@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.doctorservice;
+package com.stackroute.findmeclinic.doctorservices;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
