@@ -1,5 +1,11 @@
 package com.stackroute.findmeclinic.bookingappointment.service;
 
-public class BookingAppointmentService {
+import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
+
+public interface BookingAppointmentService {
+	
+  BookingAppointment createBookingAppointment(BookingAppointment bookingDetails);
+  BookingAppointment getAllAppointment();
+	
 
 }

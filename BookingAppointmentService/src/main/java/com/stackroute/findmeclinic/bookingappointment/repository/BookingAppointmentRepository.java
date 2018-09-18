@@ -1,5 +1,10 @@
 package com.stackroute.findmeclinic.bookingappointment.repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public class BookingAppointmentRepository {
+import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
+
+
+
+public interface BookingAppointmentRepository extends MongoRepository<BookingAppointment , String>{
 
 }
