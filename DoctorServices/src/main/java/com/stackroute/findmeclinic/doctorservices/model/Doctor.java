@@ -13,7 +13,6 @@ public class Doctor {
 	
    @Id
 	private String doctorLicenceId;
-	;
 	private String doctorGender;
 	private String doctorQualification;
 	private String doctorSpeciality;
