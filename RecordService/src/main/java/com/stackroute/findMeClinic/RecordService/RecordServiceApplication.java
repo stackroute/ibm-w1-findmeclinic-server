@@ -1,12 +1,12 @@
-package com.stackroute.findmeclinic.doctorservice;
+package com.stackroute.findMeClinic.RecordService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DoctorServicesApplication {
+public class RecordServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DoctorServicesApplication.class, args);
+		SpringApplication.run(RecordServiceApplication.class, args);
 	}
 }

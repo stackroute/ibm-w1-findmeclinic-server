@@ -53,13 +53,12 @@
 
 		<module>ApiGateway</module>
 		<module>SpringBootAdminService</module>
-
-
                 <module>PatientAuth</module>
                 <module>DoctorAuth</module>
-<module>DoctorServices</module>
+                <module>DoctorServices</module>
                 <module>BookingAppointmentService</module>
 		<module>PatientService</module>	
+                <module>RecordService</module>
 	</modules>
 	
 
