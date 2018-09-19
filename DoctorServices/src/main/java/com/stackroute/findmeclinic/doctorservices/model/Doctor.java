@@ -13,11 +13,14 @@ public class Doctor {
 
 	
    @Id
+
    @Email
 	private String doctorEmail;
 	private String doctorFirstName;
 	private String doctorLastName;
 	private String doctorName;
+
+	
 	private String doctorGender;
 	private String doctorQualification;
 	private String doctorSpeciality;
