@@ -1,4 +1,4 @@
-package com.stackroute.findMeClinic.RecordService;
+package com.stackroute.findmeclinic.recordservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

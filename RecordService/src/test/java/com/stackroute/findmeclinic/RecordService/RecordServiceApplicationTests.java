@@ -1,4 +1,4 @@
-package com.stackroute.findMeClinic.RecordService;
+package com.stackroute.findmeclinic.RecordService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
