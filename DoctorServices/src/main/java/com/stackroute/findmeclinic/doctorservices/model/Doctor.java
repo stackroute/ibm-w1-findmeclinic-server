@@ -2,6 +2,7 @@ package com.stackroute.findmeclinic.doctorservices.model;
 
 import java.util.List;
 
+import javax.validation.constraints.Email;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,8 +13,11 @@ public class Doctor {
 
 	
    @Id
-	private String doctorLicenceId;
-	;
+   @Email
+	private String doctorEmail;
+	private String doctorFirstName;
+	private String doctorLastName;
+	private String doctorName;
 	private String doctorGender;
 	private String doctorQualification;
 	private String doctorSpeciality;
@@ -24,11 +28,17 @@ public class Doctor {
 		
 	}
 
-	public Doctor(String doctorLicenceId, String doctorGender, String doctorQualification,
-			String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress) {
+	
+
+	
+	public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName,
+			String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience,
+			List<DoctorAddress> doctorAddress) {
 		super();
-		this.doctorLicenceId=doctorLicenceId;
-		
+		this.doctorEmail = doctorEmail;
+		this.doctorFirstName = doctorFirstName;
+		this.doctorLastName = doctorLastName;
+		this.doctorName = doctorName;
 		this.doctorGender = doctorGender;
 		this.doctorQualification = doctorQualification;
 		this.doctorSpeciality = doctorSpeciality;
@@ -37,6 +47,45 @@ public class Doctor {
 	}
 
 
+
+
+	public String getDoctorName() {
+		return doctorName;
+	}
+
+
+
+
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
+	}
+
+
+
+
+	public String getDoctorEmail() {
+		return doctorEmail;
+	}
+
+	public void setDoctorEmail(String doctorEmail) {
+		this.doctorEmail = doctorEmail;
+	}
+
+	public String getDoctorFirstName() {
+		return doctorFirstName;
+	}
+
+	public void setDoctorFirstName(String doctorFirstName) {
+		this.doctorFirstName = doctorFirstName;
+	}
+
+	public String getDoctorLastName() {
+		return doctorLastName;
+	}
+
+	public void setDoctorLastName(String doctorLastName) {
+		this.doctorLastName = doctorLastName;
+	}
 
 	public String getDoctorGender() {
 		return doctorGender;
@@ -78,22 +127,18 @@ public class Doctor {
 		this.doctorAddress = doctorAddress;
 	}
 
-	
-	public String getDoctorLicenceId() {
-		return doctorLicenceId;
-	}
 
-	public void setDoctorLicenceId(String doctorLicenceId) {
-		this.doctorLicenceId = doctorLicenceId;
-	}
+
 
 	@Override
 	public String toString() {
-		return "Doctor [doctorLicenceId=" + doctorLicenceId +  ", doctorGender=" + doctorGender + ", doctorQualification="
-				+ doctorQualification + ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience="
-				+ doctorExperience + ", doctorAddress=" + doctorAddress + "]";
+		return "Doctor [doctorEamil=" + doctorEmail + ", doctorFirstName=" + doctorFirstName
+				+ ", doctorLastName=" + doctorLastName + ", doctorName=" + doctorName + ", doctorGender=" + doctorGender
+				+ ", doctorQualification=" + doctorQualification + ", doctorSpeciality=" + doctorSpeciality
+				+ ", doctorExperience=" + doctorExperience + ", doctorAddress=" + doctorAddress + "]";
 	}
 
+	
 	
 	
 	

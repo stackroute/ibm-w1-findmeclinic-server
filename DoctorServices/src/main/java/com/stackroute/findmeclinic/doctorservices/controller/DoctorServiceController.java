@@ -3,6 +3,7 @@ package com.stackroute.findmeclinic.doctorservices.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ import com.stackroute.findmeclinic.doctorservices.service.DoctorService;
 
 @RestController
 @RequestMapping("/api/v2/doctor")
+@CrossOrigin("*")
 public class DoctorServiceController {
 
 	
@@ -56,12 +58,14 @@ public class DoctorServiceController {
 		
 		ResponseEntity<?> responseEntity;
 		
+	try {
+		doctorService.addDoctorDetails(id,doctorAddress);
+			responseEntity = new ResponseEntity<>(doctorAddress,HttpStatus.OK);
+			
+			
+	}
 	
-			if(doctorService.addDoctorDetails(id,doctorAddress)) {
-			responseEntity = new ResponseEntity<>(doctorAddress,HttpStatus.CREATED);
-			}
-		
-			else {
+		catch(Exception e){
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.CONFLICT);
 		
 		
