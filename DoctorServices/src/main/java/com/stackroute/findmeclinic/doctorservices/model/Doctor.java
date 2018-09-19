@@ -1,5 +1,6 @@
 package com.stackroute.findmeclinic.doctorservices.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.Email;
@@ -20,7 +21,7 @@ public class Doctor {
 	private String doctorLastName;
 	private String doctorName;
     private String doctorPhoneNumber;
-	
+	private Date doctorDob;
 	private String doctorGender;
 	private String doctorQualification;
 	private String doctorSpeciality;
@@ -48,6 +49,7 @@ public class Doctor {
 		this.doctorSpeciality = doctorSpeciality;
 		this.doctorExperience = doctorExperience;
 		this.doctorAddress = doctorAddress;
+	
 	}
 
 
@@ -64,6 +66,13 @@ public class Doctor {
 		this.doctorName = doctorName;
 	}
 
+
+
+
+	
+
+
+	
 
 
 
