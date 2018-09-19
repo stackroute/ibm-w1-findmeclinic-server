@@ -36,6 +36,9 @@ public class DoctorServiceImpl implements DoctorService {
 			throw new DoctorAlreadyExistException("Doctor already exist");
 		}
 		else {
+			String name=doctor.getDoctorFirstName()+doctor.getDoctorLastName();
+			doctor.setDoctorName(name);
+			
 			doctorRepository.insert(doctor);
 		}
 		return doctor;

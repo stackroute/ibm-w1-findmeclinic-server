@@ -19,7 +19,7 @@ public class Doctor {
 	private String doctorFirstName;
 	private String doctorLastName;
 	private String doctorName;
-
+    private String doctorPhoneNumber;
 	
 	private String doctorGender;
 	private String doctorQualification;
@@ -34,7 +34,7 @@ public class Doctor {
 	
 
 	
-	public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName,
+	public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber,
 			String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience,
 			List<DoctorAddress> doctorAddress) {
 		super();
@@ -42,6 +42,7 @@ public class Doctor {
 		this.doctorFirstName = doctorFirstName;
 		this.doctorLastName = doctorLastName;
 		this.doctorName = doctorName;
+		this.doctorPhoneNumber=doctorPhoneNumber;
 		this.doctorGender = doctorGender;
 		this.doctorQualification = doctorQualification;
 		this.doctorSpeciality = doctorSpeciality;
@@ -61,6 +62,20 @@ public class Doctor {
 
 	public void setDoctorName(String doctorName) {
 		this.doctorName = doctorName;
+	}
+
+
+
+
+	public String getDoctorPhoneNumber() {
+		return doctorPhoneNumber;
+	}
+
+
+
+
+	public void setDoctorPhoneNumber(String doctorPhoneNumber) {
+		this.doctorPhoneNumber = doctorPhoneNumber;
 	}
 
 
@@ -135,11 +150,14 @@ public class Doctor {
 
 	@Override
 	public String toString() {
-		return "Doctor [doctorEamil=" + doctorEmail + ", doctorFirstName=" + doctorFirstName
-				+ ", doctorLastName=" + doctorLastName + ", doctorName=" + doctorName + ", doctorGender=" + doctorGender
-				+ ", doctorQualification=" + doctorQualification + ", doctorSpeciality=" + doctorSpeciality
-				+ ", doctorExperience=" + doctorExperience + ", doctorAddress=" + doctorAddress + "]";
+		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
+				+ doctorLastName + ", doctorName=" + doctorName + ", doctorPhoneNumber=" + doctorPhoneNumber
+				+ ", doctorGender=" + doctorGender + ", doctorQualification=" + doctorQualification
+				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience=" + doctorExperience
+				+ ", doctorAddress=" + doctorAddress + "]";
 	}
+
+
 
 	
 	
