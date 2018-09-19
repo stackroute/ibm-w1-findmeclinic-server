@@ -24,7 +24,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
-@RequestMapping("/api/v1/patient")
+@RequestMapping("/api/v1/patientauth")
 @CrossOrigin("*")
 public class PatientAuthController {
 
