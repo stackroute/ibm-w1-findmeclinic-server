@@ -39,6 +39,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             Slot slot = new Slot();
             slot.setStartDate(startDate);
             slot.setTime(time_per_patient);
+            slot.setStatus("unblocked");
             slots.add(slot);
             startDate = startDate.plusMinutes(timeInPatient);
             i++;
@@ -53,7 +54,6 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public Schedule createSchedule(Schedule schedule) {
         schedule.setScheduleCreationDate(new Date());
-        schedule.setStatus("unblocked");
         schedule.setSlots(addSlots(schedule.getStartDate(), schedule.getEndDate(), schedule.getTime_per_patient()));
         Schedule scheduleNew = scheduleRepository.insert(schedule);
         return scheduleNew;

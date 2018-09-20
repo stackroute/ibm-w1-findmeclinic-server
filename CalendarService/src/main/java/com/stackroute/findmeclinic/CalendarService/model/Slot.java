@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 public class Slot {
     private LocalDateTime startDate;
     private long time;
+    private String status;
 
     public LocalDateTime getStartDate() {
         return startDate;
@@ -17,15 +18,16 @@ public class Slot {
         return time;
     }
 
-    @Override
-    public String toString() {
-        return "Slot{" +
-                "startDate=" + startDate +
-                ", time=" + time +
-                '}';
-    }
-
     public void setTime(long time) {
         this.time = time;
     }
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+    
 }
