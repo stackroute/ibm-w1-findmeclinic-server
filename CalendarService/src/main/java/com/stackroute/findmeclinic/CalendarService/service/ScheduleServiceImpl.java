@@ -39,6 +39,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             Slot slot = new Slot();
             slot.setStartDate(startDate);
             slot.setTime(time_per_patient);
+            slot.setStatus("unblocked");
             slots.add(slot);
             startDate = startDate.plusMinutes(timeInPatient);
             i++;
