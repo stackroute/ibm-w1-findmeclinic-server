@@ -1,4 +1,4 @@
-package com.example.demo.upstreamproducer;
+package com.stackroute.findmeclinic.upstreamproducer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

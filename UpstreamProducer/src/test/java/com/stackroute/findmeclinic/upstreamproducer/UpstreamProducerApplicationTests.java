@@ -1,4 +1,4 @@
-package com.example.demo.upstreamproducer;
+package com.stackroute.findmeclinic.upstreamproducer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
