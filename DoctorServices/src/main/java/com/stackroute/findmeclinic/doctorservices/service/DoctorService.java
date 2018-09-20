@@ -18,6 +18,7 @@ public interface DoctorService {
 	public Doctor updateDoctorDetails(Doctor doctor) throws DoctorNotFoundException;
 	
 	public Doctor getDoctorDetail(String doctorEmail) throws DoctorNotFoundException;
-	
-	
+	 
+
+	public String getBadge(String doctorEmail);
 }
