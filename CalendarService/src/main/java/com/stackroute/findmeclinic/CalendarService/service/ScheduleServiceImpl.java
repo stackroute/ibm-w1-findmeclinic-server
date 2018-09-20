@@ -29,16 +29,16 @@ public class ScheduleServiceImpl implements ScheduleService {
     List<Slot> slots;
 
 
-    public List<Slot> addSlots(LocalDateTime startDate, LocalDateTime endDate, long time_per_patient) {
+    public List<Slot> addSlots(LocalDateTime startDate, LocalDateTime endDate, long timePerpatient) {
         long timePeriod = Duration.between(startDate, endDate).toMinutes();
-        long timeInPatient = time_per_patient;
+        long timeInPatient = timePerpatient;
         long slotCount = timePeriod / timeInPatient;
         slots = new ArrayList<>();
         long i = 0;
         while (i != slotCount) {
             Slot slot = new Slot();
             slot.setStartDate(startDate);
-            slot.setTime(time_per_patient);
+            slot.setTime(timePerpatient);
             slot.setStatus("unblocked");
             slots.add(slot);
             startDate = startDate.plusMinutes(timeInPatient);
@@ -54,7 +54,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public Schedule createSchedule(Schedule schedule) {
         schedule.setScheduleCreationDate(new Date());
-        schedule.setSlots(addSlots(schedule.getStartDate(), schedule.getEndDate(), schedule.getTime_per_patient()));
+        schedule.setSlots(addSlots(schedule.getStartDate(), schedule.getEndDate(), schedule.getTimePerpatient()));
         Schedule scheduleNew = scheduleRepository.insert(schedule);
         return scheduleNew;
     }

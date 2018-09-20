@@ -2,8 +2,6 @@ package com.stackroute.findmeclinic.CalendarService.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -19,16 +17,16 @@ public class Schedule {
     private LocalDateTime endDate;
     private String createdBy;
     private Date scheduleCreationDate;
-    private long time_Per_patient;
+    private long timePerpatient;
     private List<Slot> slots;
 
-    public Schedule(String scheduleId, String description, String workPlace, LocalDateTime startDate, LocalDateTime endDate, long time_per_patient, String createdBy, Date scheduleCreationDate) {
+    public Schedule(String scheduleId, String description, String workPlace, LocalDateTime startDate, LocalDateTime endDate, long timePerpatient, String createdBy, Date scheduleCreationDate) {
         this.scheduleId = scheduleId;
         this.description = description;
         this.workPlace = workPlace;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.time_Per_patient=time_per_patient;
+        this.setTimePerpatient(timePerpatient);
         this.createdBy=createdBy;
         this.scheduleCreationDate = scheduleCreationDate;
     }
@@ -82,14 +80,6 @@ public class Schedule {
         this.scheduleCreationDate = scheduleCreationDate;
     }
 
-    public long getTime_per_patient() {
-        return time_Per_patient;
-    }
-
-    public void setTime_per_patient(long time_per_patient) {
-        this.time_Per_patient = time_per_patient;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -113,4 +103,16 @@ public class Schedule {
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
+
+
+
+	public long getTimePerpatient() {
+		return timePerpatient;
+	}
+
+
+
+	public void setTimePerpatient(long timePerpatient) {
+		this.timePerpatient = timePerpatient;
+	}
 }
