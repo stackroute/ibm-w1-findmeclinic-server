@@ -1,12 +1,12 @@
-package com.stackroute.findMeClinic.RecordService;
+package com.stackroute.findmeclinic.upstreamproducer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RecordServiceApplication {
+public class UpstreamProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RecordServiceApplication.class, args);
+		SpringApplication.run(UpstreamProducerApplication.class, args);
 	}
 }

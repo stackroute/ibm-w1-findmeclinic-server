@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute.findmeclinic</groupId>
-	<artifactId>RecordService</artifactId>
+	<artifactId>UpstreamProducer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>RecordService</name>
-	<description>Record Service for files</description>
+	<name>UpstreamProducer</name>
+	<description>UpstreamProducer</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,6 +28,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
 		</dependency>
 
 		<dependency>
