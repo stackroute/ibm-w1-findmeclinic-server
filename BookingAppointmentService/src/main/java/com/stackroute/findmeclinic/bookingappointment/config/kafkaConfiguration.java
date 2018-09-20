@@ -23,7 +23,6 @@ import com.stackroute.findmeclinic.bookingappointment.model.Appointment;
 import com.stackroute.findmeclinic.bookingappointment.model.Doctor;
 import com.stackroute.findmeclinic.bookingappointment.model.Schedule;
 
-@EnableKafka
 @Configuration
 public class kafkaConfiguration {
 
@@ -46,20 +45,4 @@ public class kafkaConfiguration {
 	}
 	
 	
-	@Bean
-    public ConsumerFactory<String, Schedule> consumerFactory() {
-        Map<String, Object> map = new HashMap<>();
-        map.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.228:9092");
-        map.put(ConsumerConfig.GROUP_ID_CONFIG, "groupjson");
-        map.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        map.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-        return new DefaultKafkaConsumerFactory<>(map, new StringDeserializer(), new JsonDeserializer<>(Schedule.class));
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Schedule> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String,Schedule> KafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
-        KafkaListenerContainerFactory.setConsumerFactory(consumerFactory());
-        return KafkaListenerContainerFactory;
-    }
 }
