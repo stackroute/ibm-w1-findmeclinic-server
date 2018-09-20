@@ -10,29 +10,25 @@ import com.stackroute.findmeclinic.upstreamproducer.model.Prescription;
 @Service
 public class UpStreamProducerServiceImpl implements UpStreamProducerService {
 
-
 	private KafkaTemplate<String, Prescription> kafkaTemplate;
-	
+
 	@Autowired
 	public UpStreamProducerServiceImpl(KafkaTemplate<String, Prescription> kafkaTemplate) {
-		
-		this.kafkaTemplate=kafkaTemplate;
+
+		this.kafkaTemplate = kafkaTemplate;
 	}
-	
+
 //	public void send(String TOPIC, Prescription prescription) {
 //	    kafkaTemplate.send(TOPIC, prescription);
 //	}
-	
-	
+
 	@Override
-	public boolean sendPrescription(Prescription prescription) {
+	public void sendPrescription(Prescription prescription) {
 		System.out.println("inside service");
 
-	boolean status = false;
-		if( 	kafkaTemplate.send("prescription", "prescription-1", prescription) != null) {
-			status = true;
-		}
+		boolean status = false;
+		kafkaTemplate.send("prescription2", prescription);
 		
-		return status;
+
 	}
 }
