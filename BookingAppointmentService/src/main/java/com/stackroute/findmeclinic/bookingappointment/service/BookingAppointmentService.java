@@ -6,9 +6,9 @@ import com.stackroute.findmeclinic.bookingappointment.model.Appointment;
 
 public interface BookingAppointmentService {
 	
-  boolean createBookingAppointment(Appointment appointment);
+  public boolean createBookingAppointment(Appointment appointment);
   
-  List<Appointment> getAllAppointment();
+  public List<Appointment> getAllAppointment();
 	
-
+  public void post(Appointment appointment) ;
 }
