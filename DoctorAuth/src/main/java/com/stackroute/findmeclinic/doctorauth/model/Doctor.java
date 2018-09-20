@@ -23,7 +23,6 @@ public class Doctor {
 		super();
 	}
 
-
 	public Doctor(@Email String doctorEmail, @NotBlank String doctorPhoneNumber, @NotBlank String doctorPassword,
 			String doctorFirstName, String doctorLastName) {
 		super();
