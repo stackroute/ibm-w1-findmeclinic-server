@@ -4,9 +4,9 @@ import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-@Document
+
 public class BookingAppointment {
-	@Id
+	
 	private String bookingId;
     private Date bookingDate;
 	private String bookingStatus;
