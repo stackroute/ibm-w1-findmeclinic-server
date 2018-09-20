@@ -19,7 +19,7 @@ public class Schedule {
     private LocalDateTime endDate;
     private String createdBy;
     private Date scheduleCreationDate;
-    private Duration time_per_patient;
+    private long timePerpatient;
     private String status;
     private List<Slot> slots;
 
