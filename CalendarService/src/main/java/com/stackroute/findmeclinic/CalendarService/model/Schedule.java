@@ -19,18 +19,18 @@ public class Schedule {
     private LocalDateTime endDate;
     private String createdBy;
     private Date scheduleCreationDate;
-    private long timePerpatient;
+    private long time_Per_patient;
     private String status;
     private List<Slot> slots;
 
-    public Schedule(String scheduleId, String description, String status, String workPlace, LocalDateTime startDate, LocalDateTime endDate, Duration time_per_patient, String createdBy, Date scheduleCreationDate) {
+    public Schedule(String scheduleId, String description, String status, String workPlace, LocalDateTime startDate, LocalDateTime endDate, long time_per_patient, String createdBy, Date scheduleCreationDate) {
         this.scheduleId = scheduleId;
         this.description = description;
         this.status = status;
         this.workPlace = workPlace;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.time_per_patient=time_per_patient;
+        this.time_Per_patient=time_per_patient;
         this.createdBy=createdBy;
         this.scheduleCreationDate = scheduleCreationDate;
     }
@@ -92,12 +92,12 @@ public class Schedule {
         this.scheduleCreationDate = scheduleCreationDate;
     }
 
-    public Duration getTime_per_patient() {
-        return time_per_patient;
+    public long getTime_per_patient() {
+        return time_Per_patient;
     }
 
-    public void setTime_per_patient(Duration time_per_patient) {
-        this.time_per_patient = time_per_patient;
+    public void setTime_per_patient(long time_per_patient) {
+        this.time_Per_patient = time_per_patient;
     }
 
     public String getDescription() {

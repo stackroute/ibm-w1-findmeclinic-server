@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Slot {
     private LocalDateTime startDate;
-    private Duration time;
+    private long time;
 
     public LocalDateTime getStartDate() {
         return startDate;
@@ -15,7 +15,7 @@ public class Slot {
         this.startDate = startDate;
     }
 
-    public Duration getTime() {
+    public long getTime() {
         return time;
     }
 
@@ -27,7 +27,7 @@ public class Slot {
                 '}';
     }
 
-    public void setTime(Duration time) {
+    public void setTime(long time) {
         this.time = time;
     }
 }
