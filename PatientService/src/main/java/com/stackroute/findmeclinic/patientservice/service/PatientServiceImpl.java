@@ -1,6 +1,7 @@
 package com.stackroute.findmeclinic.patientservice.service;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,10 @@ public class PatientServiceImpl implements PatientService{
 
 	@Override
 	public Patient updatePatient(Patient patient) {
+		 int currentYear= Calendar.getInstance().get(Calendar.YEAR);
+		int birthYear = patient.getPatientDobYear();
+		int age = currentYear-birthYear;
+		patient.setPatientAge(age);
 		patientRepository.save(patient);
 		return patient;
 	}
