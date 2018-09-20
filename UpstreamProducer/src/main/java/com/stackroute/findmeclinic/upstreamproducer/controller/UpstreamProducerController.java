@@ -22,15 +22,14 @@ public class UpstreamProducerController {
 		this.service = service;
 	}
 	
-//	private static final String TOPIC = "PrescriptionTopic";
 	
 	@PostMapping()
 	public ResponseEntity<?> sendToTopic(@RequestBody Prescription prescription){
 		System.out.println("inside controller");
-		//ResponseEntity<?> response = new ResponseEntity<>(prescription,HttpStatus.OK);
 		service.sendPrescription(prescription);
-		//return response;
-		return null;
+		ResponseEntity<?> response = new ResponseEntity<>(prescription,HttpStatus.OK);
+		return response;
+		
 		
 	}
 

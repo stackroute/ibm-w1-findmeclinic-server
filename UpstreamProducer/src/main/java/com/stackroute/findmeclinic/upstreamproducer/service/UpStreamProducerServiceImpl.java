@@ -18,17 +18,14 @@ public class UpStreamProducerServiceImpl implements UpStreamProducerService {
 		this.kafkaTemplate = kafkaTemplate;
 	}
 
-//	public void send(String TOPIC, Prescription prescription) {
-//	    kafkaTemplate.send(TOPIC, prescription);
-//	}
 
 	@Override
 	public void sendPrescription(Prescription prescription) {
 		System.out.println("inside service");
 
 		boolean status = false;
-		kafkaTemplate.send("prescription2", prescription);
-		
-
+		kafkaTemplate.send("prescription2", prescription) ;
+			status=true;
+		}
+	
 	}
-}
