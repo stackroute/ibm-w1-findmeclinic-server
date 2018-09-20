@@ -32,10 +32,13 @@ public class DoctorServiceImpl implements DoctorService {
 	
 	@Override
 	public Doctor createDoctorDetails(Doctor doctor) throws DoctorAlreadyExistException {
-		if(doctorRepository.existsById(doctor.getDoctorLicenceId())) {
+		if(doctorRepository.existsById(doctor.getDoctorEmail())) {
 			throw new DoctorAlreadyExistException("Doctor already exist");
 		}
 		else {
+			String name=doctor.getDoctorFirstName()+doctor.getDoctorLastName();
+			doctor.setDoctorName(name);
+			
 			doctorRepository.insert(doctor);
 		}
 		return doctor;
@@ -43,14 +46,14 @@ public class DoctorServiceImpl implements DoctorService {
 
 
 
-	public boolean addDoctorDetails(String doctorLicenceId,DoctorAddress doctorAddress){
+	public boolean addDoctorDetails(String doctorEmail,DoctorAddress doctorAddress){
 		
 		Doctor doctorUser = new Doctor();
 		List<DoctorAddress>  doctorAdd =new ArrayList<>();
 		int count=1;
 		
-		if(doctorRepository.existsById(doctorLicenceId)) {
-			doctorUser = doctorRepository.findById(doctorLicenceId).get();
+		if(doctorRepository.existsById(doctorEmail)) {
+			doctorUser = doctorRepository.findById(doctorEmail).get();
 			doctorAdd = doctorUser.getDoctorAddress();
 			Iterator<DoctorAddress> doctorIterator = doctorAdd.iterator();
 			while(doctorIterator.hasNext()) {
@@ -70,7 +73,7 @@ public class DoctorServiceImpl implements DoctorService {
 		    
 		}
 		else {
-			doctorUser.setDoctorLicenceId(doctorLicenceId);
+			doctorUser.setDoctorEmail(doctorEmail);
 			doctorAddress.setAddressNo(count);
 			doctorAdd.add(doctorAddress);
 			doctorUser.setDoctorAddress(doctorAdd);
@@ -87,7 +90,7 @@ public class DoctorServiceImpl implements DoctorService {
 
 	@Override
 	public Doctor updateDoctorDetails(Doctor doctor) throws DoctorNotFoundException {
-		if(doctorRepository.findById(doctor.getDoctorLicenceId()) != null) {
+		if(doctorRepository.findById(doctor.getDoctorEmail()) != null) {
 			doctorRepository.save(doctor);
 		}
 		else {
@@ -97,10 +100,10 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
-	public Doctor getDoctorDetail(String doctorLicenceId) throws DoctorNotFoundException {
+	public Doctor getDoctorDetail(String doctorEmail) throws DoctorNotFoundException {
 	 Doctor doctorFetch;
-	 if(doctorRepository.existsById(doctorLicenceId)) {
-		 doctorFetch = doctorRepository.findById(doctorLicenceId).get();
+	 if(doctorRepository.existsById(doctorEmail)) {
+		 doctorFetch = doctorRepository.findById(doctorEmail).get();
 	 }
 	 else {
 			throw new DoctorNotFoundException("Doctor Not Found");
@@ -108,13 +111,6 @@ public class DoctorServiceImpl implements DoctorService {
 	 }
 		return doctorFetch;
 	}
-
-	
-
-	
-
-	
-	
 
 
 }

@@ -59,6 +59,7 @@
                 <module>BookingAppointmentService</module>
 		<module>PatientService</module>	
                 <module>RecordService</module>
+                <module>UpstreamProducer</module>
 	</modules>
 	
 

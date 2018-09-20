@@ -13,11 +13,11 @@ public interface DoctorService {
 	
 	public Doctor createDoctorDetails(Doctor doctor) throws DoctorAlreadyExistException ;
 	
-	public boolean addDoctorDetails(String doctorLicenceId,DoctorAddress doctorAddress);
+	public boolean addDoctorDetails(String doctorEmail,DoctorAddress doctorAddress);
 	
 	public Doctor updateDoctorDetails(Doctor doctor) throws DoctorNotFoundException;
 	
-	public Doctor getDoctorDetail(String doctorLicenceId) throws DoctorNotFoundException;
+	public Doctor getDoctorDetail(String doctorEmail) throws DoctorNotFoundException;
 	
 	
 }
