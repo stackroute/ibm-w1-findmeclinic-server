@@ -108,6 +108,20 @@ public class DoctorServiceController {
 			return responseEntity;
 		
 	}
+	@GetMapping("/get/{doctorName}")
+	public ResponseEntity<?> getAllDoctors(@PathVariable("doctorName") String doctorName){
+		ResponseEntity<?> responseEntity = null;
+		if(doctorService.getAllDoctorsByDoctorName(doctorName)!=null) {
+			responseEntity=new ResponseEntity<>(doctorService.getAllDoctorsByDoctorName(doctorName),HttpStatus.OK);
+			
+		}
+		else {
+			responseEntity = new ResponseEntity<>("Not Found!", HttpStatus.NOT_FOUND);
+
+		}
+		return responseEntity;
+
+	}
 	
 	
 }
