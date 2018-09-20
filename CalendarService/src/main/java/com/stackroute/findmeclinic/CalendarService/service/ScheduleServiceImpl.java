@@ -29,9 +29,9 @@ public class ScheduleServiceImpl implements ScheduleService {
     List<Slot> slots;
 
 
-    public List<Slot> addSlots(LocalDateTime startDate, LocalDateTime endDate, Duration time_per_patient) {
+    public List<Slot> addSlots(LocalDateTime startDate, LocalDateTime endDate, long time_per_patient) {
         long timePeriod = Duration.between(startDate, endDate).toMinutes();
-        long timeInPatient = time_per_patient.toMinutes();
+        long timeInPatient = time_per_patient;
         long slotCount = timePeriod / timeInPatient;
         slots = new ArrayList<>();
         long i = 0;
