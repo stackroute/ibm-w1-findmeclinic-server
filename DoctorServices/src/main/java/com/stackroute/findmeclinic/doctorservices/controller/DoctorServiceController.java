@@ -123,5 +123,12 @@ public class DoctorServiceController {
 
 	}
 	
-	
+	@GetMapping("/badge/{id}")
+	public ResponseEntity<String> getBadge(@PathVariable String id){
+		ResponseEntity<String> responseEntity;
+		
+		String badge = doctorService.getBadge(id);
+		responseEntity = new ResponseEntity<String>(badge, HttpStatus.OK);
+		return responseEntity;
+	}
 }

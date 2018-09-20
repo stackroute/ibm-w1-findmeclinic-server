@@ -23,4 +23,7 @@ public interface DoctorService {
 	List<Doctor> getAllDoctorsByDoctorName(String doctorName);
 
 	
+	 
+
+	public String getBadge(String doctorEmail);
 }
