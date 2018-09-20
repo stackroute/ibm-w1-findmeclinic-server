@@ -20,13 +20,11 @@ public class Schedule {
     private String createdBy;
     private Date scheduleCreationDate;
     private long time_Per_patient;
-    private String status;
     private List<Slot> slots;
 
-    public Schedule(String scheduleId, String description, String status, String workPlace, LocalDateTime startDate, LocalDateTime endDate, long time_per_patient, String createdBy, Date scheduleCreationDate) {
+    public Schedule(String scheduleId, String description, String workPlace, LocalDateTime startDate, LocalDateTime endDate, long time_per_patient, String createdBy, Date scheduleCreationDate) {
         this.scheduleId = scheduleId;
         this.description = description;
-        this.status = status;
         this.workPlace = workPlace;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -63,14 +61,6 @@ public class Schedule {
 
     public void setWorkPlace(String workPlace) {
         this.workPlace = workPlace;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getScheduleId() {
