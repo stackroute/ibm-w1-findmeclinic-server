@@ -4,6 +4,6 @@ import com.stackroute.findmeclinic.upstreamproducer.model.Prescription;
 
 public interface UpStreamProducerService {
 	
-	public boolean sendPrescription(Prescription prescription);
+	public void sendPrescription(Prescription prescription);
 
 }
