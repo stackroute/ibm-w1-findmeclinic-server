@@ -12,7 +12,7 @@ public class BookingAppointment {
 	private String bookingStatus;
     private Doctor bookedFor;
 	private Patient BookedBy;
-	private Calender bookedAt;
+	private Schedule bookedAt;
 	
 	
 	
@@ -20,7 +20,7 @@ public class BookingAppointment {
 		super();
 	}
 	public BookingAppointment(String bookingId, Date bookingDate, String bookingStatus, Doctor bookedFor,
-			Patient bookedBy, Calender bookedAt) {
+			Patient bookedBy, Schedule bookedAt) {
 		super();
 		this.bookingId = bookingId;
 		this.bookingDate = bookingDate;
@@ -59,10 +59,10 @@ public class BookingAppointment {
 	public void setBookedBy(Patient bookedBy) {
 		BookedBy = bookedBy;
 	}
-	public Calender getBookedAt() {
+	public Schedule getBookedAt() {
 		return bookedAt;
 	}
-	public void setBookedAt(Calender bookedAt) {
+	public void setBookedAt(Schedule bookedAt) {
 		this.bookedAt = bookedAt;
 	}
 	@Override

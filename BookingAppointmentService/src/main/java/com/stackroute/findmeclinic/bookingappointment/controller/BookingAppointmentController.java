@@ -3,7 +3,6 @@ package com.stackroute.findmeclinic.bookingappointment.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
-import com.stackroute.findmeclinic.bookingappointment.model.Calender;
 import com.stackroute.findmeclinic.bookingappointment.model.Doctor;
-import com.stackroute.findmeclinic.bookingappointment.model.DoctorCalender;
 import com.stackroute.findmeclinic.bookingappointment.service.BookingAppointmentService;
 
 @RestController
@@ -21,13 +18,13 @@ import com.stackroute.findmeclinic.bookingappointment.service.BookingAppointment
 public class BookingAppointmentController {
 
 	@Autowired
-	private KafkaTemplate<String, DoctorCalender> kafkaTemplate;
+	private KafkaTemplate<String, Doctor> kafkaTemplate;
 	private static final String TOPIC = "Calender_Topic";
 
 	@PostMapping("/publish")
-	public String post(@RequestBody DoctorCalender doctorCalender) {
+	public String post(@RequestBody Doctor doctor) {
 
-		kafkaTemplate.send(TOPIC, doctorCalender);
+		kafkaTemplate.send(TOPIC, doctor);
 		
 		return "Publish successfully";
 

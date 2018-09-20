@@ -113,4 +113,17 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 
+	@Override
+	public String getBadge(String doctorEmail) {
+		Doctor doctorFetch = new Doctor();
+		doctorFetch = doctorRepository.findById(doctorEmail).get();
+		String firstName = doctorFetch.getDoctorFirstName();
+		String lastName = doctorFetch.getDoctorLastName();
+		String badge = firstName.substring(0,1).toUpperCase()+lastName.substring(0,1).toUpperCase();
+		return badge;
+	}
+
+	
+
+
 }
