@@ -1,8 +1,11 @@
 package com.stackroute.findmeclinic.bookingappointment.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.stackroute.findmeclinic.bookingappointment.model.Appointment;
 import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
 import com.stackroute.findmeclinic.bookingappointment.repository.BookingAppointmentRepository;
 
@@ -20,17 +23,24 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	
 	
 	@Override
-	public BookingAppointment createBookingAppointment(BookingAppointment bookingDetails) {
-	
-		return null;
+	public boolean createBookingAppointment(Appointment appointment) {
+		boolean flag=false;
+		
+		if(bookingRepository.insert(appointment)!=null)
+			flag=true;
+		return flag;
 		
 	}
 
 	
-
-	public BookingAppointment getAllAppointment() {
+	@Override
+	public List<Appointment> getAllAppointment() {
 	
-		return null;
+			List<Appointment> list=null;
+			
+			  list=bookingRepository.findAll();
+			
+			return list;
 	}
 
 	
