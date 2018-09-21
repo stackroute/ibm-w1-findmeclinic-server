@@ -11,7 +11,6 @@ public class Prescription {
 	private List<Medicine> medicines;
 	public Prescription() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Prescription(Patient patient, Doctor doctor, Appointment appointment, String findings,

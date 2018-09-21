@@ -24,7 +24,7 @@ public class UpStreamProducerServiceImpl implements UpStreamProducerService {
 		System.out.println("inside service");
 
 		boolean status = false;
-		kafkaTemplate.send("prescription2", prescription) ;
+		kafkaTemplate.send("prescription", prescription) ;
 			status=true;
 		}
 	
