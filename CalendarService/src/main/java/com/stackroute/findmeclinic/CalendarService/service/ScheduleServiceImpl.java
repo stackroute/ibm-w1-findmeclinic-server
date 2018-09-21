@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,19 +29,21 @@ public class ScheduleServiceImpl implements ScheduleService {
     List<Slot> slots;
 
 
-    public List<Slot> addSlots(LocalDateTime startDate, LocalDateTime endDate, long timePerpatient) {
-        long timePeriod = Duration.between(startDate, endDate).toMinutes();
-        long timeInPatient = timePerpatient;
+    public List<Slot> addSlots(LocalTime startTime, LocalTime endTime, long timePerPatient) {
+        long timePeriod = Duration.between(startTime, endTime).toMinutes();
+        long timeInPatient = timePerPatient;
         long slotCount = timePeriod / timeInPatient;
         slots = new ArrayList<>();
         long i = 0;
         while (i != slotCount) {
+
             Slot slot = new Slot();
-            slot.setStartDate(startDate);
-            slot.setTime(timePerpatient);
+            slot.setSlotId(i+1);
+            slot.setSlotStart(startTime);
+            slot.setTimePerPatient(timePerPatient);
             slot.setStatus("unblocked");
             slots.add(slot);
-            startDate = startDate.plusMinutes(timeInPatient);
+            startTime = startTime.plusMinutes(timeInPatient);
             i++;
         }
         return slots;
@@ -54,7 +56,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public Schedule createSchedule(Schedule schedule) {
         schedule.setScheduleCreationDate(new Date());
-        schedule.setSlots(addSlots(schedule.getStartDate(), schedule.getEndDate(), schedule.getTimePerpatient()));
+        schedule.setSlots(addSlots(schedule.getStartTime(), schedule.getEndTime(), schedule.getTimePerPatient()));
         Schedule scheduleNew = scheduleRepository.insert(schedule);
         return scheduleNew;
     }
@@ -82,9 +84,17 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public List<Schedule> getAllScheduleCreatedBy(String createdBy) {
-        List<Schedule> schedules = scheduleRepository.getAllByCreatedBy(createdBy);
+        List<Schedule> schedules= scheduleRepository.getAllcheduleByCreatedBy(createdBy);
+        return schedules;
+    }
+
+
+    @Override
+    public List<Schedule> getAllSchedule() {
+        List<Schedule> schedules = scheduleRepository.findAll();
         return schedules;
     }
 
 
 }
+
