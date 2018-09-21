@@ -118,5 +118,26 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
 
+	@Override
+	public List<Slot> getAllSlotsCreatedBy(String createdBy) {
+		
+		List<Schedule> schedules= scheduleRepository.getAllcheduleByCreatedBy(createdBy);
+		List<Slot> allSlots = new ArrayList<Slot>();
+		
+		for(int i=0;i< schedules.size();i++) {
+			
+			Schedule schedule=schedules.get(i);
+			
+			List<Slot> slots=schedule.getSlots();
+			
+			for(int j=0;j< slots.size(); j++) {
+				
+				allSlots.add(slots.get(j));
+			}
+		}
+		return allSlots;
+	}
+
+
 }
 

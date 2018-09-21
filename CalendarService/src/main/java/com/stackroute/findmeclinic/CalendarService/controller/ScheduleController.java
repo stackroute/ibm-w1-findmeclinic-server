@@ -1,6 +1,7 @@
 package com.stackroute.findmeclinic.CalendarService.controller;
 
 import com.stackroute.findmeclinic.CalendarService.model.Schedule;
+import com.stackroute.findmeclinic.CalendarService.model.Slot;
 import com.stackroute.findmeclinic.CalendarService.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,14 @@ public class ScheduleController {
         List<Schedule> schedulesDoc = scheduleService.getAllScheduleCreatedBy(docId);
         responseEntity = new ResponseEntity<>(schedulesDoc, HttpStatus.OK);
         return responseEntity;
+    }
+    
+    @GetMapping("/api/calendar/getSlots/{docId}")
+    ResponseEntity<?> getSlotsByDoc(@PathVariable  String docId){
+    	 ResponseEntity<?> responseEntity = null;
+         List<Slot> schedulesDoc = scheduleService.getAllSlotsCreatedBy(docId);
+         responseEntity = new ResponseEntity<>(schedulesDoc, HttpStatus.OK);
+         return responseEntity;
     }
 
 
