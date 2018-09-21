@@ -2,6 +2,9 @@ package com.stackroute.findmeclinic.recordservice.model;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Prescription {
 	
 	private Patient patient;
@@ -11,7 +14,6 @@ public class Prescription {
 	private List<Medicine> medicines;
 	public Prescription() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Prescription(Patient patient, Doctor doctor, Appointment appointment, String findings,
