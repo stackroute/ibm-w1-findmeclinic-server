@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.recordservice.model;
+package com.stackroute.findmeclinic.upstreamproducer.model;
 
 public class Medicine {
 
