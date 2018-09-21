@@ -1,6 +1,7 @@
 package com.stackroute.findmeclinic.CalendarService.service;
 
 import com.stackroute.findmeclinic.CalendarService.model.Schedule;
+import com.stackroute.findmeclinic.CalendarService.model.Slot;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface ScheduleService {
     public void listen(@Payload Schedule schedule);
 
     List<Schedule> getAllSchedule();
+    
+    List<Slot> getAllSlotsCreatedBy(String createdBy);
 }
