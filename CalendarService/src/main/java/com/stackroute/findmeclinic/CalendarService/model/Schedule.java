@@ -1,66 +1,44 @@
 package com.stackroute.findmeclinic.CalendarService.model;
 
-import org.springframework.data.annotation.Id;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
 @Document
 public class Schedule {
-
-    @Id
     private String scheduleId;
     private String description;
     private String workPlace;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDate scheduleDate;
+    private LocalTime startTime;
+    private LocalTime endTime;
+    private long timePerPatient;
     private String createdBy;
     private Date scheduleCreationDate;
-    private long time_Per_patient;
     private List<Slot> slots;
 
-    public Schedule(String scheduleId, String description, String workPlace, LocalDateTime startDate, LocalDateTime endDate, long time_per_patient, String createdBy, Date scheduleCreationDate) {
+    public Schedule(){}
+    public Schedule(String scheduleId, String description, String workPlace, LocalDate scheduleDate, LocalTime startTime, LocalTime endTime, long timePerPatient, String createdBy) {
         this.scheduleId = scheduleId;
         this.description = description;
         this.workPlace = workPlace;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.time_Per_patient=time_per_patient;
-        this.createdBy=createdBy;
-        this.scheduleCreationDate = scheduleCreationDate;
+        this.scheduleDate = scheduleDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.timePerPatient = timePerPatient;
+        this.createdBy = createdBy;
     }
 
-
-
-    public Schedule(){}
-
-
-
-    public LocalDateTime getEndDate() {
-        return endDate;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
-
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getWorkPlace() {
-        return workPlace;
-    }
-
-    public void setWorkPlace(String workPlace) {
-        this.workPlace = workPlace;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     public String getScheduleId() {
@@ -71,25 +49,6 @@ public class Schedule {
         this.scheduleId = scheduleId;
     }
 
-
-
-
-    public Date getScheduleCreationDate() {
-        return scheduleCreationDate;
-    }
-
-    public void setScheduleCreationDate(Date scheduleCreationDate) {
-        this.scheduleCreationDate = scheduleCreationDate;
-    }
-
-    public long getTime_per_patient() {
-        return time_Per_patient;
-    }
-
-    public void setTime_per_patient(long time_per_patient) {
-        this.time_Per_patient = time_per_patient;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -97,6 +56,47 @@ public class Schedule {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getWorkPlace() {
+        return workPlace;
+    }
+
+    public void setWorkPlace(String workPlace) {
+        this.workPlace = workPlace;
+    }
+
+    public LocalDate getScheduleDate() {
+        return scheduleDate;
+    }
+
+    public void setScheduleDate(LocalDate scheduleDate) {
+        this.scheduleDate = scheduleDate;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public long getTimePerPatient() {
+        return timePerPatient;
+    }
+
+    public void setTimePerPatient(long timePerPatient) {
+        this.timePerPatient = timePerPatient;
+    }
+
 
     public List<Slot> getSlots() {
         return slots;
@@ -106,11 +106,12 @@ public class Schedule {
         this.slots = slots;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
+    public Date getScheduleCreationDate() {
+        return scheduleCreationDate;
     }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    public void setScheduleCreationDate(Date scheduleCreationDate) {
+        this.scheduleCreationDate = scheduleCreationDate;
     }
 }
+
