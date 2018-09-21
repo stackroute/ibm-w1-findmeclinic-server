@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
@@ -65,17 +66,21 @@ public class BookingAppointmentController {
 
 	}
 
-	@GetMapping("/appointments")
-	public ResponseEntity<?> getAllAppointments() {
+	@GetMapping("/appointments/{id}")
+	public ResponseEntity<?> getAllAppointmentsByDoctorId(@PathVariable String id) {
 		ResponseEntity<?> responseEntity = null;
-		
-		List<Appointment> list=bookingService.getAllAppointment();
-		if(bookingService.getAllAppointment()!=null)
-
+		List<Appointment> list = bookingService.getAllAppointmentByDoctorId(id);
+		if(bookingService.getAllAppointmentByDoctorId(id)!=null)
+		{
 			responseEntity= new ResponseEntity<>(list,HttpStatus.OK);
+		}
+		else {
+			responseEntity= new ResponseEntity<>("No Appointments Available",HttpStatus.NOT_FOUND);
+		}
 		
 		return responseEntity;
 	}
+
 
 }
 

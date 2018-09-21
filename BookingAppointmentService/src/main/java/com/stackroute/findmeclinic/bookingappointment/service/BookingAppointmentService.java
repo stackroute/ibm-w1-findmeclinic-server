@@ -11,9 +11,12 @@ public interface BookingAppointmentService {
 	
   public boolean createBookingAppointment(Appointment appointment);
   
-  public List<Appointment> getAllAppointment();
+ 
 	
   public void post(Appointment appointment) ;
   
   public void listen(@Payload Schedule schedule);
+  
+ public  List<Appointment> getAllAppointmentByDoctorId(String doctorEmail);
+	
 }
