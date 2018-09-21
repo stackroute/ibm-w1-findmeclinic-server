@@ -23,19 +23,6 @@ import com.stackroute.findmeclinic.bookingappointment.service.BookingAppointment
 @RequestMapping("api/v1/appointment")
 public class BookingAppointmentController {
 
-	@Autowired
-	private KafkaTemplate<String, Doctor> kafkaTemplate;
-	private static final String TOPIC = "Calender_Topic";
-
-	@PostMapping("/publish")
-	public String post(@RequestBody Doctor doctor) {
-
-		kafkaTemplate.send(TOPIC, doctor);
-		
-		return "Publish successfully";
-
-	}
-	
 	
 
 	private BookingAppointmentService bookingService;
@@ -45,8 +32,21 @@ public class BookingAppointmentController {
 		this.bookingService = bookingService;
 	}
 
+
+	@PostMapping("/publish")
+	public ResponseEntity<?>  produceToTopic(@RequestBody Appointment appointment) {
+
+		ResponseEntity<?> responseEntity = null;
+		
+		bookingService.post(appointment);
+		
+		responseEntity= new ResponseEntity<Appointment>(appointment, HttpStatus.CREATED);
+
+		return responseEntity;
+
+	}
 	
-	
+
 	@PostMapping("/add")
 	public ResponseEntity<?> createBooking(@RequestBody Appointment appointment) {
 		ResponseEntity<?> responseEntity = null;

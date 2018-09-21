@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("*")
 public class ScheduleController {
@@ -43,5 +45,23 @@ public class ScheduleController {
         return responseEntity;
     }
 
+    @GetMapping("/api/calendar/get")
+    ResponseEntity<?> getSchedule(){
+        ResponseEntity<?> responseEntity = null;
+        List<Schedule> schedules = scheduleService.getAllSchedule();
+        responseEntity=new ResponseEntity<>(schedules, HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @GetMapping("/api/calendar/get/{docId}")
+    ResponseEntity<?> getScheduleByDoc(@PathVariable  String docId){
+        ResponseEntity<?> responseEntity = null;
+        List<Schedule> schedulesDoc = scheduleService.getAllScheduleCreatedBy(docId);
+        responseEntity = new ResponseEntity<>(schedulesDoc, HttpStatus.OK);
+        return responseEntity;
+    }
+
+
 
 }
+

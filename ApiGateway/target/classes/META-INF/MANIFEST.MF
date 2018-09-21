@@ -1,17 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: ApiGateway
 Implementation-Version: 0.0.1-SNAPSHOT
-<<<<<<< HEAD
-Built-By: amit
-=======
-<<<<<<< HEAD
-Built-By: sanjana
-=======
-Built-By: diwakar
->>>>>>> 65a1c67716439a4fde0275b63bd9bea09beaf5b9
->>>>>>> dd9f996f95631a95051e7630ae3f676b4ba05083
+Built-By: tanmaya
 Implementation-Vendor-Id: com.stackroute.findMeClinic
-Build-Jdk: 1.8.0_181
+Build-Jdk: 1.8.0_171
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/ApiGateway
 Created-By: Maven Integration for Eclipse

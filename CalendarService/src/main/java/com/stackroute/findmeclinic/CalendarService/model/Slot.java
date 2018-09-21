@@ -1,33 +1,54 @@
 package com.stackroute.findmeclinic.CalendarService.model;
-
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Slot {
-    private LocalDateTime startDate;
-    private Duration time;
-
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public Slot() {
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
+    private long slotId;
+    private LocalTime slotStart;
+    private long timePerPatient;
+    private String status;
+
+    public Slot(long slotId, LocalTime slotStart, long timePerPatient, String status) {
+        this.slotId = slotId;
+        this.slotStart = slotStart;
+        this.timePerPatient = timePerPatient;
+        this.status = status;
     }
 
-    public Duration getTime() {
-        return time;
+
+    public long getSlotId() {
+        return slotId;
     }
 
-    @Override
-    public String toString() {
-        return "Slot{" +
-                "startDate=" + startDate +
-                ", time=" + time +
-                '}';
+    public void setSlotId(long slotId) {
+        this.slotId = slotId;
     }
 
-    public void setTime(Duration time) {
-        this.time = time;
+    public LocalTime getSlotStart() {
+        return slotStart;
+    }
+
+    public void setSlotStart(LocalTime slotStart) {
+        this.slotStart = slotStart;
+    }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public long getTimePerPatient() {
+        return timePerPatient;
+    }
+
+    public void setTimePerPatient(long timePerPatient) {
+        this.timePerPatient = timePerPatient;
     }
 }
+
