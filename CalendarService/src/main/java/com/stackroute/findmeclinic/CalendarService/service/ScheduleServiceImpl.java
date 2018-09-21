@@ -3,7 +3,11 @@ package com.stackroute.findmeclinic.CalendarService.service;
 import com.stackroute.findmeclinic.CalendarService.model.Schedule;
 import com.stackroute.findmeclinic.CalendarService.model.Slot;
 import com.stackroute.findmeclinic.CalendarService.repository.ScheduleRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -16,6 +20,7 @@ import java.util.NoSuchElementException;
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
 
+	private KafkaTemplate<String, Schedule> kafkaTemplate;
     private ScheduleRepository scheduleRepository;
 
     @Autowired
@@ -23,6 +28,23 @@ public class ScheduleServiceImpl implements ScheduleService {
         this.scheduleRepository = scheduleRepository;
     }
 
+    
+    @Override
+	public void post(Schedule schedule) {
+
+		kafkaTemplate.send("notificationTopic", schedule);
+	
+	}
+	
+	@Override
+	@KafkaListener(topics="calenderTopic")
+	public void listen(@Payload Schedule schedule) {
+		System.out.println("Schedule object:"+ schedule);
+		
+		
+		
+	}
+	
     /*
      *Method to add to slot
      */

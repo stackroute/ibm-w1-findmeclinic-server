@@ -41,6 +41,8 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	public void listen(@Payload Schedule schedule) {
 		System.out.println("Schedule object:"+ schedule);
 		
+		
+		
 	}
 	
 	@Override
