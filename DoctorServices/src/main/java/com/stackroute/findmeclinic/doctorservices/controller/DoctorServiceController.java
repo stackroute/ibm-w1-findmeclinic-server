@@ -93,9 +93,7 @@ public class DoctorServiceController {
 		return responseEntity;
 
 	}
-<<<<<<< HEAD
 
-=======
 	@GetMapping("/get/{doctorName}")
 	public ResponseEntity<?> getAllDoctors(@PathVariable("doctorName") String doctorName){
 		ResponseEntity<?> responseEntity = null;
@@ -119,9 +117,7 @@ public class DoctorServiceController {
 		responseEntity = new ResponseEntity<String>(badge, HttpStatus.OK);
 		return responseEntity;
 	}
-<<<<<<< HEAD
->>>>>>> bd4a18dc54ec2c584f739e2f8397a50a90093322
-=======
+
 	
 	
 	@GetMapping("/email/{doctorName}")
@@ -133,5 +129,5 @@ public class DoctorServiceController {
 		return responseEntity;
 	}
 	
->>>>>>> 5e6e9511d7546a406307a1554d8dd6339aec2d5f
+
 }
