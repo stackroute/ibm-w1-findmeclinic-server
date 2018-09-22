@@ -1,11 +1,22 @@
 package com.stackroute.findmeclinic.bookingappointment.service;
 
-import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
+import java.util.List;
+
+import org.springframework.messaging.handler.annotation.Payload;
+
+import com.stackroute.findmeclinic.bookingappointment.model.Appointment;
+import com.stackroute.findmeclinic.bookingappointment.model.Schedule;
 
 public interface BookingAppointmentService {
 	
-  BookingAppointment createBookingAppointment(BookingAppointment bookingDetails);
-  BookingAppointment getAllAppointment();
+  public boolean createBookingAppointment(Appointment appointment);
+  
+ 
 	
-
+  public void post(Appointment appointment) ;
+  
+  public void listen(@Payload Schedule schedule);
+  
+ public  List<Appointment> getAllAppointmentByDoctorId(String doctorEmail);
+	
 }

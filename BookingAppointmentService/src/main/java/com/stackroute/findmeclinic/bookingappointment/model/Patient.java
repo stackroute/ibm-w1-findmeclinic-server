@@ -1,44 +1,46 @@
 package com.stackroute.findmeclinic.bookingappointment.model;
 
 import java.util.Date;
-import org.springframework.data.annotation.Id;
 
 
 public class Patient {
-	
-	
-	@Id
-	private String patientEmailId;
+		
+	private String patientEmail;
 	private String patientFirstName;
 	private String patientLastName;
 	private String patientPhoneNumber;
 	private String patientAddress;
 	private String patientGender;
 	private Date patientDOB;
+	private int patientAge;
 	private String patientBloodGroup;
 	
+	public Patient()
+	{
+		
+	}
 	
-	
-	public Patient(String patientEmailId, String patientFirstName, String patientLastName, String patientPhoneNumber,
-			String patientAddress, String patientGender, Date patientDOB, String patientBloodGroup) {
+	public Patient(String patientEmail, String patientFirstName, String patientLastName, String patientPhoneNumber,
+			String patientAddress, String patientGender, Date patientDOB,int patientAge, String patientBloodGroup) {
 		super();
-		this.patientEmailId = patientEmailId;
+		this.patientEmail = patientEmail;
 		this.patientFirstName = patientFirstName;
 		this.patientLastName = patientLastName;
 		this.patientPhoneNumber = patientPhoneNumber;
 		this.patientAddress = patientAddress;
 		this.patientGender = patientGender;
 		this.patientDOB = patientDOB;
+		this.patientAge = patientAge;
 		this.patientBloodGroup = patientBloodGroup;
 	}
 	
 	
 	
-	public String getPatientEmailId() {
-		return patientEmailId;
+	public String getPatientEmail() {
+		return patientEmail;
 	}
-	public void setPatientEmailId(String patientEmailId) {
-		this.patientEmailId = patientEmailId;
+	public void setPatientEmailId(String patientEmail) {
+		this.patientEmail = patientEmail;
 	}
 	public String getPatientFirstName() {
 		return patientFirstName;
@@ -87,13 +89,14 @@ public class Patient {
 
 	@Override
 	public String toString() {
-		return "Patient [patientEmailId=" + patientEmailId + ", patientFirstName=" + patientFirstName
+		return "Patient [patientEmailId=" + patientEmail + ", patientFirstName=" + patientFirstName
 				+ ", patientLastName=" + patientLastName + ", patientPhoneNumber=" + patientPhoneNumber
 				+ ", patientAddress=" + patientAddress + ", patientGender=" + patientGender + ", patientDOB="
-				+ patientDOB + ", patientBloodGroup=" + patientBloodGroup + "]";
+				+ patientDOB +  ", patientAge=" + patientAge+", patientBloodGroup=" + patientBloodGroup + "]";
 	}
 
 	
 	
 
 }
+

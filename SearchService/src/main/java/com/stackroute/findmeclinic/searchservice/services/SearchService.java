@@ -6,6 +6,6 @@ import com.stackroute.findmeclinic.searchservice.model.Doctor;
 
 public interface SearchService {
 	
-	public List<Doctor> getDoctorByName(String name);
+	public void getDoctorByName(String name);
 
 }

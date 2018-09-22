@@ -3,6 +3,8 @@ package com.stackroute.findmeclinic.doctorservices.service;
 
 
 
+import java.util.List;
+
 import com.stackroute.findmeclinic.doctorservices.exception.DoctorAlreadyExistException;
 import com.stackroute.findmeclinic.doctorservices.exception.DoctorNotFoundException;
 import com.stackroute.findmeclinic.doctorservices.model.Doctor;
@@ -18,6 +20,10 @@ public interface DoctorService {
 	public Doctor updateDoctorDetails(Doctor doctor) throws DoctorNotFoundException;
 	
 	public Doctor getDoctorDetail(String doctorEmail) throws DoctorNotFoundException;
+	List<Doctor> getAllDoctorsByDoctorName(String doctorName);
+
 	
-	
+	 
+
+	public String getBadge(String doctorEmail);
 }

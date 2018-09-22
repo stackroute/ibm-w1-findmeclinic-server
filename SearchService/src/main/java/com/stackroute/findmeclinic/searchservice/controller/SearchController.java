@@ -43,9 +43,9 @@ public class SearchController {
 		ResponseEntity responseEntity = null;
 		System.out.println(11);
 
-		List<Doctor> allDoctor = searchService.getDoctorByName(name);
+		 searchService.getDoctorByName(name);
 
-		responseEntity = new ResponseEntity<>(allDoctor, HttpStatus.OK);
+		responseEntity = new ResponseEntity<>( HttpStatus.OK);
 
 		return responseEntity;
 

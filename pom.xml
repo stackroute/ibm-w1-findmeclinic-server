@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -15,7 +16,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -46,11 +47,10 @@
 		</plugins>
 	</build>
 	<modules>
-		
-		<module>ConfigService</module>
-		
-		
 
+		<module>ConfigService</module>
+
+<<<<<<< HEAD
 	         	<module>ApiGateway</module>
 	            <module>SpringBootAdminService</module>
                 <module>PatientAuth</module>
@@ -60,8 +60,25 @@
 		        <module>PatientService</module>	
                 <module>RecordService</module>
                 <module>SearchService</module>
+=======
+
+
+		<module>SpringBootAdminService</module>
+		<module>PatientAuth</module>
+		<module>DoctorAuth</module>
+		<module>DoctorServices</module>
+		<module>BookingAppointmentService</module>
+		<module>PatientService</module>
+		<module>RecordService</module>
+		<module>UpstreamProducer</module>
+		<module>NotificationService</module>
+		<module>ApiGateway</module>
+        <module>CalendarService</module>
+
+
+>>>>>>> bd4a18dc54ec2c584f739e2f8397a50a90093322
 	</modules>
-	
+
 
 
 </project>

@@ -49,7 +49,7 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public List<Doctor> getDoctorByName(String name) {
+	public void getDoctorByName(String name) {
 
 		System.out.println("inside the method");
 		List<Doctor> doctors = new ArrayList<>();
@@ -68,7 +68,6 @@ public class SearchServiceImpl implements SearchService {
 
 		 template.convertAndSend("/topic/getList", doctors);
 
-		return doctors;
 	}
 
 }

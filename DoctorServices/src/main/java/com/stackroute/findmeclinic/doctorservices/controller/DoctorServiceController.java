@@ -93,5 +93,31 @@ public class DoctorServiceController {
 		return responseEntity;
 
 	}
+<<<<<<< HEAD
 
+=======
+	@GetMapping("/get/{doctorName}")
+	public ResponseEntity<?> getAllDoctors(@PathVariable("doctorName") String doctorName){
+		ResponseEntity<?> responseEntity = null;
+		if(doctorService.getAllDoctorsByDoctorName(doctorName)!=null) {
+			responseEntity=new ResponseEntity<>(doctorService.getAllDoctorsByDoctorName(doctorName),HttpStatus.OK);
+			
+		}
+		else {
+			responseEntity = new ResponseEntity<>("Not Found!", HttpStatus.NOT_FOUND);
+
+		}
+		return responseEntity;
+
+	}
+	
+	@GetMapping("/badge/{id}")
+	public ResponseEntity<String> getBadge(@PathVariable String id){
+		ResponseEntity<String> responseEntity;
+		
+		String badge = doctorService.getBadge(id);
+		responseEntity = new ResponseEntity<String>(badge, HttpStatus.OK);
+		return responseEntity;
+	}
+>>>>>>> bd4a18dc54ec2c584f739e2f8397a50a90093322
 }
