@@ -4,7 +4,7 @@ server:
 spring:
    data:
        mongodb:
-           database: DoctorServiceDbMongo
+           database: BookingService
            host: localhost
            password: root
            port: 27017

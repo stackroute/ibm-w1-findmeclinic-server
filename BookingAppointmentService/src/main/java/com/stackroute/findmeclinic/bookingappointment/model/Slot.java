@@ -51,5 +51,15 @@ public class Slot {
     public void setTimePerPatient(long timePerPatient) {
         this.timePerPatient = timePerPatient;
     }
+
+
+	@Override
+	public String toString() {
+		return "Slot [slotId=" + slotId + ", slotStart=" + slotStart + ", timePerPatient=" + timePerPatient
+				+ ", status=" + status + "]";
+	}
+    
+    
+    
 }
 

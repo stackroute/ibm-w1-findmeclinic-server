@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 public class Appointment {
 
 	@Id
-	private String appointmentId;
+	private int appointmentId;
 	private boolean appointmentStatus;
 	private String bookedFor;
 	private String bookingBy;
@@ -19,7 +19,7 @@ public class Appointment {
 	}
 
 
-	public Appointment(String appointmentId, boolean appointmentStatus, String bookedFor, String bookingBy, Slot slot) {
+	public Appointment(int appointmentId, boolean appointmentStatus, String bookedFor, String bookingBy, Slot slot) {
 		super();
 		this.appointmentId = appointmentId;
 		this.appointmentStatus = appointmentStatus;
@@ -29,12 +29,12 @@ public class Appointment {
 	}
 
 
-	public String getAppointmentId() {
+	public int getAppointmentId() {
 		return appointmentId;
 	}
 
 
-	public void setAppointmentId(String appointmentId) {
+	public void setAppointmentId(int appointmentId) {
 		this.appointmentId = appointmentId;
 	}
 
