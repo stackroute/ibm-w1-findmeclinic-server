@@ -119,5 +119,19 @@ public class DoctorServiceController {
 		responseEntity = new ResponseEntity<String>(badge, HttpStatus.OK);
 		return responseEntity;
 	}
+<<<<<<< HEAD
 >>>>>>> bd4a18dc54ec2c584f739e2f8397a50a90093322
+=======
+	
+	
+	@GetMapping("/email/{doctorName}")
+	public ResponseEntity<String> getDocEmailByName(@PathVariable String doctorName){
+		ResponseEntity<String> responseEntity;
+		
+		String doctorEmail=doctorService.getDocIdByDocName(doctorName);
+		responseEntity = new ResponseEntity<String>(doctorEmail, HttpStatus.OK);
+		return responseEntity;
+	}
+	
+>>>>>>> 5e6e9511d7546a406307a1554d8dd6339aec2d5f
 }

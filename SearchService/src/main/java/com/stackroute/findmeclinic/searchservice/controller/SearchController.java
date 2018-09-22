@@ -46,6 +46,9 @@ public class SearchController {
 		 searchService.getDoctorByName(name);
 
 		responseEntity = new ResponseEntity<>( HttpStatus.OK);
+		searchService.getDoctorByName(name);
+
+		responseEntity = new ResponseEntity<>(HttpStatus.OK);
 
 		return responseEntity;
 

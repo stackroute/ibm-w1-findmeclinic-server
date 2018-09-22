@@ -68,6 +68,8 @@ public class SearchServiceImpl implements SearchService {
 
 		 template.convertAndSend("/topic/getList", doctors);
 
+
+
 	}
 
 }
