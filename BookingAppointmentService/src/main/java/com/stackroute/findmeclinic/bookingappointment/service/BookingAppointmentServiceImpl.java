@@ -2,6 +2,7 @@ package com.stackroute.findmeclinic.bookingappointment.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.stackroute.findmeclinic.bookingappointment.model.Appointment;
 import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.DoctorAppointment;
+import com.stackroute.findmeclinic.bookingappointment.model.PatientAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.Schedule;
 import com.stackroute.findmeclinic.bookingappointment.repository.BookingAppointmentRepository;
 import com.stackroute.findmeclinic.bookingappointment.repository.DoctorAppointmentRepository;
+import com.stackroute.findmeclinic.bookingappointment.repository.PatientAppointmentRepository;
 
 
 @Service
@@ -25,11 +28,13 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	private KafkaTemplate<String, Appointment> kafkaTemplate;
 	private BookingAppointmentRepository bookingRepository;
 	private DoctorAppointmentRepository doctorRepository;
+	private PatientAppointmentRepository patientRepository;
 	
 	@Autowired
-	public BookingAppointmentServiceImpl(BookingAppointmentRepository bookingRepository,DoctorAppointmentRepository doctorRepository, KafkaTemplate<String, Appointment> kafkaTemplate) {
+	public BookingAppointmentServiceImpl(BookingAppointmentRepository bookingRepository,DoctorAppointmentRepository doctorRepository, PatientAppointmentRepository patientRepository,KafkaTemplate<String, Appointment> kafkaTemplate) {
 		this.bookingRepository = bookingRepository;
 		this.doctorRepository=doctorRepository;
+		this.patientRepository=patientRepository;
 		this.kafkaTemplate=kafkaTemplate;
 	}
 	
@@ -50,24 +55,163 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		
 	}
 
+	
+	DoctorAppointment doctorAppointment;
+
+	List<Appointment> list;
+	
+	PatientAppointment patientAppointment;
+	
+	List<Appointment> list1;
+	
+	
+  
 	@Override
 	public boolean createBookingAppointment(Appointment appointment) {
-		boolean flag=false;
-		List<Appointment> listOfAppointment = new ArrayList<>();
-		System.out.println("appoo"+appointment);
-		DoctorAppointment doctorAppointmentObject = new DoctorAppointment();
-		doctorAppointmentObject.setDoctorEmail(appointment.getBookedFor());
-		System.out.println("sssssss"+doctorAppointmentObject.getDoctorEmail());
-		listOfAppointment.add(appointment);
-		System.out.println(listOfAppointment);
-		doctorAppointmentObject.getAppointments();
-		if(doctorRepository.insert(doctorAppointmentObject)!=null)
-			flag=true;
-	
-		return flag;
-		
-	}
 
+		boolean flag = false;
+		int count = 1;
+
+		if (doctorRepository.existsById(appointment.getBookedFor())) {
+
+			list = doctorRepository.findById(appointment.getBookedFor()).get().getAppointments();
+
+			ListIterator<Appointment> iterator = list.listIterator();
+
+			Appointment appointment1=new Appointment();
+			
+			while (iterator.hasNext()) {
+				appointment1=iterator.next();
+			}
+
+			appointment.setAppointmentId(appointment1.getAppointmentId() + 1);
+
+			doctorAppointment=new DoctorAppointment();
+			list.add(appointment);
+			doctorAppointment.setDoctorEmail(appointment.getBookedFor());
+
+			doctorAppointment.setAppointments(list);
+
+			doctorAppointment = doctorRepository.save(doctorAppointment);
+
+		}
+
+		else {
+
+			list = new ArrayList<Appointment>();
+
+			doctorAppointment = new DoctorAppointment();
+
+			doctorAppointment.setDoctorEmail(appointment.getBookedFor());
+			
+			appointment.setAppointmentId(count);
+
+			list.add(appointment);
+
+			doctorAppointment.setAppointments(list);
+
+			doctorAppointment = doctorRepository.insert(doctorAppointment);
+
+		}
+
+		if (patientRepository.existsById(appointment.getBookingBy())) {
+
+			list1 = patientRepository.findById(appointment.getBookingBy()).get().getAppointments();
+
+			ListIterator<Appointment> iterator = list1.listIterator();
+
+			Appointment appointment1=new Appointment();
+			
+			while (iterator.hasNext()) {
+				appointment1=iterator.next();
+			}
+
+			appointment.setAppointmentId(appointment1.getAppointmentId() + 1);
+
+			patientAppointment=new PatientAppointment();
+			list1.add(appointment);
+			patientAppointment.setPatientEmail(appointment.getBookingBy());
+
+			patientAppointment.setAppointments(list1);
+
+			patientAppointment = patientRepository.save(patientAppointment);
+
+		}
+
+		else {
+
+			list1 = new ArrayList<Appointment>();
+
+			patientAppointment = new PatientAppointment();
+
+			patientAppointment.setPatientEmail(appointment.getBookingBy());
+			
+			appointment.setAppointmentId(count);
+
+			list1.add(appointment);
+
+			patientAppointment.setAppointments(list);
+
+			patientAppointment = patientRepository.insert(patientAppointment);
+
+		}
+		
+		
+		if (doctorAppointment != null && patientAppointment != null)
+			flag = true;
+
+		return flag;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	@Override

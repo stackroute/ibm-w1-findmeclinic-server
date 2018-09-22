@@ -3,6 +3,7 @@ package com.stackroute.findmeclinic.upstreamproducer.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.stackroute.findmeclinic.upstreamproducer.model.Prescription;
 import com.stackroute.findmeclinic.upstreamproducer.service.UpStreamProducerServiceImpl;
 @RestController
 @RequestMapping("/api/v1/send")
+@CrossOrigin("*")
 public class UpstreamProducerController {
 	
 	

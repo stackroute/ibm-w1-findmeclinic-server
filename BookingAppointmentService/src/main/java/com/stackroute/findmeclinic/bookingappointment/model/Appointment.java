@@ -7,11 +7,11 @@ import org.springframework.data.annotation.Id;
 public class Appointment {
 
 	@Id
-	private String appointmentId;
+	private int appointmentId;
 	private boolean appointmentStatus;
 	private String bookedFor;
 	private String bookingBy;
-
+    private Slot slot;
 
 	
 	public Appointment() {
@@ -19,28 +19,24 @@ public class Appointment {
 	}
 
 
-
-	public Appointment(String appointmentId, boolean appointmentStatus, String bookedFor, String bookingBy) {
+	public Appointment(int appointmentId, boolean appointmentStatus, String bookedFor, String bookingBy, Slot slot) {
 		super();
 		this.appointmentId = appointmentId;
 		this.appointmentStatus = appointmentStatus;
 		this.bookedFor = bookedFor;
 		this.bookingBy = bookingBy;
+		this.slot = slot;
 	}
 
-	
 
-
-	public String getAppointmentId() {
+	public int getAppointmentId() {
 		return appointmentId;
 	}
 
 
-
-	public void setAppointmentId(String appointmentId) {
+	public void setAppointmentId(int appointmentId) {
 		this.appointmentId = appointmentId;
 	}
-
 
 
 	public boolean isAppointmentStatus() {
@@ -48,11 +44,9 @@ public class Appointment {
 	}
 
 
-
 	public void setAppointmentStatus(boolean appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
 	}
-
 
 
 	public String getBookedFor() {
@@ -60,11 +54,9 @@ public class Appointment {
 	}
 
 
-
 	public void setBookedFor(String bookedFor) {
 		this.bookedFor = bookedFor;
 	}
-
 
 
 	public String getBookingBy() {
@@ -72,17 +64,28 @@ public class Appointment {
 	}
 
 
-
 	public void setBookingBy(String bookingBy) {
 		this.bookingBy = bookingBy;
 	}
 
 
+	public Slot getSlot() {
+		return slot;
+	}
+
+
+	public void setSlot(Slot slot) {
+		this.slot = slot;
+	}
+
 
 	@Override
 	public String toString() {
 		return "Appointment [appointmentId=" + appointmentId + ", appointmentStatus=" + appointmentStatus
-				+ ", bookedFor=" + bookedFor + ", bookingBy=" + bookingBy + "]";
+				+ ", bookedFor=" + bookedFor + ", bookingBy=" + bookingBy + ", slot=" + slot + "]";
 	}
+
+
+
 	
 }
