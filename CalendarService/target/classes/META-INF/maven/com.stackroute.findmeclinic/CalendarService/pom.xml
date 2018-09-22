@@ -4,18 +4,16 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute.findmeclinic</groupId>
-	<artifactId>DoctorServices</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>CalendarService</artifactId>
 	<packaging>jar</packaging>
 
-	<name>DoctorServices</name>
-	<description>DoctorService</description>
+	<name>CalendarService</name>
+	<description>Calendar project for FindMeClinic</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.5.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<artifactId>FindMeClinic</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<groupId>com.stackroute</groupId>
 	</parent>
 
 	<properties>
@@ -29,22 +27,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
+		
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-            <version>2.1.10.RELEASE</version>
-        </dependency>
+		
 	</dependencies>
+	
+	
 
 	<build>
 		<plugins>
