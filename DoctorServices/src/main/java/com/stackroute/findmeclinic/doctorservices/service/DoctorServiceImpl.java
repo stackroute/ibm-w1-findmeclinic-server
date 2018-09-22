@@ -129,7 +129,13 @@ public class DoctorServiceImpl implements DoctorService {
 		return badge;
 	}
 
-	
-
+	@Override
+     public String getDocIdByDocName(String doctorName) {
+		
+		Doctor doctor=doctorRepository.findDoctorByDoctorName(doctorName);
+		String doctorEmail=doctor.getDoctorEmail();
+		return doctorEmail;
+    	 
+     }
 
 }

@@ -26,4 +26,6 @@ public interface DoctorService {
 	 
 
 	public String getBadge(String doctorEmail);
+	
+	public String getDocIdByDocName(String doctorName);
 }
