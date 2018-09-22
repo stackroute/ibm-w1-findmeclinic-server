@@ -171,25 +171,13 @@ public class DoctorServiceController {
 		return responseEntity;
 	}
 	
+	@GetMapping("/email/{doctorName}")
+    public ResponseEntity<String> getDocEmailByName(@PathVariable String doctorName){
+        ResponseEntity<String> responseEntity;
+        
+        String doctorEmail=doctorService.getDocIdByDocName(doctorName);
+        responseEntity = new ResponseEntity<String>(doctorEmail, HttpStatus.OK);
+        return responseEntity;
+    }
 	
-	@GetMapping("/docserv/name/{name}")
-	public ResponseEntity<?> getDoctorNameDetails(@PathVariable String name){
-		ResponseEntity<?> responseEntity;
-		try {
-			
-			if(doctorService.getDoctorByDoctorName(name) != null) {
-				responseEntity = new ResponseEntity<>(doctorService.getDoctorByDoctorName(name),HttpStatus.OK);
-			}
-			else
-			{
-				responseEntity = new ResponseEntity<>("the doctor isn't exist", HttpStatus.NOT_FOUND);
-			}
-		}
-		catch(Exception e){
-			responseEntity = new ResponseEntity<>("the doctor is not found",HttpStatus.NOT_FOUND);
-		}
-		
-		
-		return responseEntity;
-	}
 }
