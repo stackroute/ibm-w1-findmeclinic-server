@@ -58,7 +58,11 @@ public class ScheduleController {
     ResponseEntity<?> getScheduleByDoc(@PathVariable  String docId){
         ResponseEntity<?> responseEntity = null;
         List<Schedule> schedulesDoc = scheduleService.getAllScheduleCreatedBy(docId);
-        responseEntity = new ResponseEntity<>(schedulesDoc, HttpStatus.OK);
+        if(schedulesDoc!=null) {
+            responseEntity = new ResponseEntity<>(schedulesDoc, HttpStatus.OK);
+        }else{
+            responseEntity= new ResponseEntity<>("Doctor Not Found", HttpStatus.NOT_FOUND);
+        }
         return responseEntity;
     }
     
