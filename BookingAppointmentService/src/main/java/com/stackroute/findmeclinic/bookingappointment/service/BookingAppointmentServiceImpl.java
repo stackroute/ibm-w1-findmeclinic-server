@@ -1,5 +1,6 @@
 package com.stackroute.findmeclinic.bookingappointment.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,16 +49,26 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		
 		
 	}
-	
+
 	@Override
 	public boolean createBookingAppointment(Appointment appointment) {
 		boolean flag=false;
-		
-		if(bookingRepository.insert(appointment)!=null)
+		List<Appointment> listOfAppointment = new ArrayList<>();
+		System.out.println("appoo"+appointment);
+		DoctorAppointment doctorAppointmentObject = new DoctorAppointment();
+		doctorAppointmentObject.setDoctorEmail(appointment.getBookedFor());
+		System.out.println("sssssss"+doctorAppointmentObject.getDoctorEmail());
+		listOfAppointment.add(appointment);
+		System.out.println(listOfAppointment);
+		doctorAppointmentObject.getAppointments();
+		if(doctorRepository.insert(doctorAppointmentObject)!=null)
 			flag=true;
+	
 		return flag;
 		
 	}
+
+	
 
 	@Override
 	public List<Appointment> getAllAppointmentByDoctorId(String doctorEmail) {

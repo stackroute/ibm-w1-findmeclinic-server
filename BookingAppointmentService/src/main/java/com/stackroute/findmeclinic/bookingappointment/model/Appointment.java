@@ -3,53 +3,86 @@ package com.stackroute.findmeclinic.bookingappointment.model;
 import org.springframework.data.annotation.Id;
 
 
+
 public class Appointment {
 
 	@Id
 	private String appointmentId;
 	private boolean appointmentStatus;
-	private Doctor doctor;
-	private BookingAppointment booking;
+	private String bookedFor;
+	private String bookingBy;
+
+
+	
 	public Appointment() {
 		super();
 	}
-	public Appointment(String appointmentId, boolean appointmentStatus, Doctor doctor, BookingAppointment booking) {
+
+
+
+	public Appointment(String appointmentId, boolean appointmentStatus, String bookedFor, String bookingBy) {
 		super();
 		this.appointmentId = appointmentId;
 		this.appointmentStatus = appointmentStatus;
-		this.doctor = doctor;
-		this.booking = booking;
+		this.bookedFor = bookedFor;
+		this.bookingBy = bookingBy;
 	}
+
+	
+
+
 	public String getAppointmentId() {
 		return appointmentId;
 	}
+
+
+
 	public void setAppointmentId(String appointmentId) {
 		this.appointmentId = appointmentId;
 	}
+
+
+
 	public boolean isAppointmentStatus() {
 		return appointmentStatus;
 	}
+
+
+
 	public void setAppointmentStatus(boolean appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
 	}
-	public Doctor getDoctor() {
-		return doctor;
+
+
+
+	public String getBookedFor() {
+		return bookedFor;
 	}
-	public void setDoctor(Doctor doctor) {
-		this.doctor = doctor;
+
+
+
+	public void setBookedFor(String bookedFor) {
+		this.bookedFor = bookedFor;
 	}
-	public BookingAppointment getBooking() {
-		return booking;
+
+
+
+	public String getBookingBy() {
+		return bookingBy;
 	}
-	public void setBooking(BookingAppointment booking) {
-		this.booking = booking;
+
+
+
+	public void setBookingBy(String bookingBy) {
+		this.bookingBy = bookingBy;
 	}
+
+
+
 	@Override
 	public String toString() {
-		return "Appointment [appointmentId=" + appointmentId + ", appointmentStatus=" + appointmentStatus + ", doctor="
-				+ doctor + ", booking=" + booking + "]";
+		return "Appointment [appointmentId=" + appointmentId + ", appointmentStatus=" + appointmentStatus
+				+ ", bookedFor=" + bookedFor + ", bookingBy=" + bookingBy + "]";
 	}
-	
-	
 	
 }
