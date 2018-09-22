@@ -50,6 +50,17 @@
 
 		<module>ConfigService</module>
 
+<<<<<<< HEAD
+	         	<module>ApiGateway</module>
+	            <module>SpringBootAdminService</module>
+                <module>PatientAuth</module>
+                <module>DoctorAuth</module>
+                <module>DoctorServices</module>
+                <module>BookingAppointmentService</module>
+		        <module>PatientService</module>	
+                <module>RecordService</module>
+                <module>SearchService</module>
+=======
 
 
 		<module>SpringBootAdminService</module>
@@ -62,9 +73,11 @@
 		<module>UpstreamProducer</module>
 		<module>NotificationService</module>
 		<module>ApiGateway</module>
+                <module>SearchService</module> 
         <module>CalendarService</module>
 
 
+>>>>>>> bd4a18dc54ec2c584f739e2f8397a50a90093322
 	</modules>
 
 

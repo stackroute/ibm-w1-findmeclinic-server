@@ -18,96 +18,84 @@ import com.stackroute.findmeclinic.doctorservices.model.Doctor;
 import com.stackroute.findmeclinic.doctorservices.model.DoctorAddress;
 import com.stackroute.findmeclinic.doctorservices.service.DoctorService;
 
-
-
 @RestController
 @RequestMapping("/api/v2/doctor")
 @CrossOrigin("*")
 public class DoctorServiceController {
 
-	
-	
 	private DoctorService doctorService;
-	
+
 	@Autowired
-	public DoctorServiceController( DoctorService doctorService) {
-		this.doctorService=doctorService;
+	public DoctorServiceController(DoctorService doctorService) {
+		this.doctorService = doctorService;
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<?> addDoctorInfo(@RequestBody Doctor doctor){
+	public ResponseEntity<?> addDoctorInfo(@RequestBody Doctor doctor) {
 		ResponseEntity<?> responseEntity;
 		try {
 			doctorService.createDoctorDetails(doctor);
-			responseEntity = new ResponseEntity<>(doctor,HttpStatus.CREATED);
+			responseEntity = new ResponseEntity<>(doctor, HttpStatus.CREATED);
 
-			
-		}
-		catch(DoctorAlreadyExistException exception) {
+		} catch (DoctorAlreadyExistException exception) {
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.CONFLICT);
 
 		}
-		
+
 		return responseEntity;
-		
+
 	}
-	
+
 	@PostMapping("/{id}")
-	public ResponseEntity<?> addDoctorBasicDetails(@RequestBody DoctorAddress doctorAddress,@PathVariable String id){
-		
-		
+	public ResponseEntity<?> addDoctorBasicDetails(@RequestBody DoctorAddress doctorAddress, @PathVariable String id) {
+
 		ResponseEntity<?> responseEntity;
-		
-	try {
-		doctorService.addDoctorDetails(id,doctorAddress);
-			responseEntity = new ResponseEntity<>(doctorAddress,HttpStatus.OK);
-			
-			
-	}
-	
-		catch(Exception e){
+
+		try {
+			doctorService.addDoctorDetails(id, doctorAddress);
+			responseEntity = new ResponseEntity<>(doctorAddress, HttpStatus.OK);
+
+		}
+
+		catch (Exception e) {
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.CONFLICT);
-		
-		
+
+		}
+		return responseEntity;
 	}
-			return responseEntity;
-	}
-	
-	
-	
+
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateDoctorDetails(@PathVariable String id, @RequestBody Doctor doctor){
+	public ResponseEntity<?> updateDoctorDetails(@PathVariable String id, @RequestBody Doctor doctor) {
 		ResponseEntity<?> responseEntity;
 		try {
 			doctorService.updateDoctorDetails(doctor);
-			responseEntity = new ResponseEntity<>(doctor,HttpStatus.CREATED);		
-			}
-		catch(Exception ex) {
+			responseEntity = new ResponseEntity<>(doctor, HttpStatus.CREATED);
+		} catch (Exception ex) {
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
 		}
 		return responseEntity;
-		
+
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getDoctorBasicDetails(@PathVariable String id){
+	public ResponseEntity<?> getDoctorBasicDetails(@PathVariable String id) {
 		ResponseEntity<?> responseEntity;
 		try {
-			if(doctorService.getDoctorDetail(id) != null) {
-				responseEntity = new ResponseEntity<>(doctorService.getDoctorDetail(id),HttpStatus.OK);
+			if (doctorService.getDoctorDetail(id) != null) {
+				responseEntity = new ResponseEntity<>(doctorService.getDoctorDetail(id), HttpStatus.OK);
+			} else {
+				responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
+
 			}
-			else
-		 {
-			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
-			
-		}
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
 		}
-			return responseEntity;
-		
+		return responseEntity;
+
 	}
+<<<<<<< HEAD
+
+=======
 	@GetMapping("/get/{doctorName}")
 	public ResponseEntity<?> getAllDoctors(@PathVariable("doctorName") String doctorName){
 		ResponseEntity<?> responseEntity = null;
@@ -131,4 +119,19 @@ public class DoctorServiceController {
 		responseEntity = new ResponseEntity<String>(badge, HttpStatus.OK);
 		return responseEntity;
 	}
+<<<<<<< HEAD
+>>>>>>> bd4a18dc54ec2c584f739e2f8397a50a90093322
+=======
+	
+	
+	@GetMapping("/email/{doctorName}")
+	public ResponseEntity<String> getDocEmailByName(@PathVariable String doctorName){
+		ResponseEntity<String> responseEntity;
+		
+		String doctorEmail=doctorService.getDocIdByDocName(doctorName);
+		responseEntity = new ResponseEntity<String>(doctorEmail, HttpStatus.OK);
+		return responseEntity;
+	}
+	
+>>>>>>> 5e6e9511d7546a406307a1554d8dd6339aec2d5f
 }
