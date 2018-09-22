@@ -1,11 +1,10 @@
-
 server:
   port: 8081
   
 spring:
    data:
        mongodb:
-           database: DoctorService
+           database: DoctorServiceDbMongo
            host: localhost
            password: root
            port: 27017

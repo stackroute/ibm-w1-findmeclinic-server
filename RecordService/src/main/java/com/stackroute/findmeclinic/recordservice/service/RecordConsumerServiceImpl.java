@@ -10,9 +10,9 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import com.stackroute.findmeclinic.recordservice.exception.PrescriptionNotAddedException;
-import com.stackroute.findmeclinic.recordservice.model.Patient;
-import com.stackroute.findmeclinic.recordservice.model.Prescription;
 import com.stackroute.findmeclinic.recordservice.repository.RecordRepository;
+import com.stackroute.findmeclinic.upstreamproducer.model.Patient;
+import com.stackroute.findmeclinic.upstreamproducer.model.Prescription;
 
 @Service
 public class RecordConsumerServiceImpl implements RecordConsumerService {

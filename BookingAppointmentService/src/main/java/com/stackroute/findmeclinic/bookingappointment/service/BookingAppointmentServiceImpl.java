@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.stackroute.findmeclinic.bookingappointment.model.Appointment;
 import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
+import com.stackroute.findmeclinic.bookingappointment.model.DoctorAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.Schedule;
 import com.stackroute.findmeclinic.bookingappointment.repository.BookingAppointmentRepository;
+import com.stackroute.findmeclinic.bookingappointment.repository.DoctorAppointmentRepository;
 
 
 @Service
@@ -21,10 +23,12 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	
 	private KafkaTemplate<String, Appointment> kafkaTemplate;
 	private BookingAppointmentRepository bookingRepository;
+	private DoctorAppointmentRepository doctorRepository;
 	
 	@Autowired
-	public BookingAppointmentServiceImpl(BookingAppointmentRepository bookingRepository, KafkaTemplate<String, Appointment> kafkaTemplate) {
+	public BookingAppointmentServiceImpl(BookingAppointmentRepository bookingRepository,DoctorAppointmentRepository doctorRepository, KafkaTemplate<String, Appointment> kafkaTemplate) {
 		this.bookingRepository = bookingRepository;
+		this.doctorRepository=doctorRepository;
 		this.kafkaTemplate=kafkaTemplate;
 	}
 	
@@ -55,16 +59,23 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		
 	}
 
-	
 	@Override
-	public List<Appointment> getAllAppointment() {
-	
-			List<Appointment> list=null;
+	public List<Appointment> getAllAppointmentByDoctorId(String doctorEmail) {
+		List<Appointment> list=null;
+		System.out.println("hi");
+		if(doctorRepository.existsById(doctorEmail))
+		{
+			DoctorAppointment doctorAppointment  = doctorRepository.findById(doctorEmail).get();
+			System.out.println(doctorAppointment.getDoctorEmail());
+			System.out.println(doctorAppointment.getAppointments());
+
+
 			
-			  list=bookingRepository.findAll();
+		 list = doctorAppointment.getAppointments();
+		}
 			
 			return list;
 	}
 
-	
+
 }
