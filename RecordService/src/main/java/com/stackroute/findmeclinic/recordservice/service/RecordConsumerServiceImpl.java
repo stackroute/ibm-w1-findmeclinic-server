@@ -32,15 +32,21 @@ public class RecordConsumerServiceImpl implements RecordConsumerService {
 
 	@Override
 	public List<Prescription> getPatientPrescription(String patientEmail) throws PrescriptionNotAddedException {
-		String Id = patientEmail;
+		String id = patientEmail;
 		List<Prescription> requiredPrescription = new ArrayList<>();
 		List<Prescription> prescription = repository.findAll();
 		Iterator<Prescription> iterator = prescription.iterator();
 		while (iterator.hasNext()) {
 			Prescription myPrescription = iterator.next();
+			System.out.println("fffff"+myPrescription);
 			Patient requiredPatient = myPrescription.getPatient();
-			if (requiredPatient.getPatientEmail().equals(Id)) {
+			System.out.println("id"+requiredPatient.getPatientEmail());
+			System.out.println();
+			if (id.equals(requiredPatient.getPatientEmail())) {
+				System.out.println("hi");
 				requiredPrescription.add(myPrescription);
+				System.out.println("gGGG"+requiredPrescription);
+
 
 			} else {
 				throw new PrescriptionNotAddedException("Not prescriptions available yet");
