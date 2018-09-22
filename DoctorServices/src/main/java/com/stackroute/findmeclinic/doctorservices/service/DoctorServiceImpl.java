@@ -129,11 +129,7 @@ public class DoctorServiceImpl implements DoctorService {
 		return doctorLName;
 	}
 
-	@Override
-	public List<Doctor> getDoctorByDoctorName(String doctorName) {
-		List<Doctor> doctorNames = doctorRepository.findDoctorByDoctorName(doctorName);
-		return doctorNames;
-	}
+	
 
 	@Override
 	public List<Doctor> getAllDoctor() {
@@ -143,5 +139,15 @@ public class DoctorServiceImpl implements DoctorService {
 		return allDoctor;
 
 	}
+
+	@Override
+	public String getDocIdByDocName(String doctorName) {
+		 Doctor doctor=doctorRepository.findDoctorByDoctorName(doctorName);
+	        String doctorEmail=doctor.getDoctorEmail();
+	        return doctorEmail;
+	}
+
+	
+	
 
 }
