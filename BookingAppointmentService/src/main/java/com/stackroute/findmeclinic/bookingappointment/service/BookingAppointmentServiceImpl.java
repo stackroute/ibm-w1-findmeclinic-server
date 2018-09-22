@@ -56,7 +56,7 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		List<Appointment> listOfAppointment = new ArrayList<>();
 		System.out.println("appoo"+appointment);
 		DoctorAppointment doctorAppointmentObject = new DoctorAppointment();
-		doctorAppointmentObject.setDoctorEmail(appointment.getBookedFor().getDoctorEmail());
+		doctorAppointmentObject.setDoctorEmail(appointment.getBookedFor());
 		System.out.println("sssssss"+doctorAppointmentObject.getDoctorEmail());
 		listOfAppointment.add(appointment);
 		System.out.println(listOfAppointment);
