@@ -30,12 +30,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+<<<<<<< HEAD
+<dependency>
+=======
 
 		<dependency>
+>>>>>>> 5c3cf8b5037bdee5dfafa752e604b7361fb1be98
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
+		
+=======
+>>>>>>> 5c3cf8b5037bdee5dfafa752e604b7361fb1be98
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
