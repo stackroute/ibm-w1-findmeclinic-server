@@ -17,7 +17,7 @@ import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.DoctorAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.PatientAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.Schedule;
-import com.stackroute.findmeclinic.bookingappointment.repository.BookingAppointmentRepository;
+
 import com.stackroute.findmeclinic.bookingappointment.repository.DoctorAppointmentRepository;
 import com.stackroute.findmeclinic.bookingappointment.repository.PatientAppointmentRepository;
 
@@ -26,13 +26,12 @@ import com.stackroute.findmeclinic.bookingappointment.repository.PatientAppointm
 public class BookingAppointmentServiceImpl implements BookingAppointmentService {
 	
 	private KafkaTemplate<String, Appointment> kafkaTemplate;
-	private BookingAppointmentRepository bookingRepository;
 	private DoctorAppointmentRepository doctorRepository;
 	private PatientAppointmentRepository patientRepository;
 	
 	@Autowired
-	public BookingAppointmentServiceImpl(BookingAppointmentRepository bookingRepository,DoctorAppointmentRepository doctorRepository, PatientAppointmentRepository patientRepository,KafkaTemplate<String, Appointment> kafkaTemplate) {
-		this.bookingRepository = bookingRepository;
+	public BookingAppointmentServiceImpl(DoctorAppointmentRepository doctorRepository, PatientAppointmentRepository patientRepository,KafkaTemplate<String, Appointment> kafkaTemplate) {
+
 		this.doctorRepository=doctorRepository;
 		this.patientRepository=patientRepository;
 		this.kafkaTemplate=kafkaTemplate;
@@ -165,71 +164,34 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 
 	@Override
 	public List<Appointment> getAllAppointmentByDoctorId(String doctorEmail) {
 		List<Appointment> list=null;
-		System.out.println("hi");
 		if(doctorRepository.existsById(doctorEmail))
 		{
 			DoctorAppointment doctorAppointment  = doctorRepository.findById(doctorEmail).get();
-			System.out.println(doctorAppointment.getDoctorEmail());
-			System.out.println(doctorAppointment.getAppointments());
-
-
-			
 		 list = doctorAppointment.getAppointments();
 		}
 			
 			return list;
+	}
+
+
+	@Override
+	public List<Appointment> getAllAppointmentByPatientId(String patientEmail) {
+		List<Appointment> list=null;
+		if(patientRepository.existsById(patientEmail))
+		{
+			PatientAppointment patientAppointment  = patientRepository.findById(patientEmail).get();
+			
+		 list = patientAppointment.getAppointments();
+		}
+			
+			return list;
+		
 	}
 
 

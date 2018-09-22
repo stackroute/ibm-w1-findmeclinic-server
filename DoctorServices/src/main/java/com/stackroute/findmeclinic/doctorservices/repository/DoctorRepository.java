@@ -13,8 +13,10 @@ import com.stackroute.findmeclinic.doctorservices.model.Doctor;
 
 @Repository
 public interface  DoctorRepository  extends MongoRepository<Doctor,String> {
-	List<Doctor> findAllByDoctorName(String doctorName);
+	
+	List<Doctor> findDoctorByDoctorFirstName(String doctorFirstName);
+	List<Doctor> findDoctorByDoctorLastName(String doctorLastName);
+	
 	
 	Doctor findDoctorByDoctorName(String doctorName);
-
 }
