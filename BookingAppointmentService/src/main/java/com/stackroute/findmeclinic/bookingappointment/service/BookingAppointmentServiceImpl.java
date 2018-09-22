@@ -170,19 +170,28 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	@Override
 	public List<Appointment> getAllAppointmentByDoctorId(String doctorEmail) {
 		List<Appointment> list=null;
-		System.out.println("hi");
 		if(doctorRepository.existsById(doctorEmail))
 		{
 			DoctorAppointment doctorAppointment  = doctorRepository.findById(doctorEmail).get();
-			System.out.println(doctorAppointment.getDoctorEmail());
-			System.out.println(doctorAppointment.getAppointments());
-
-
-			
 		 list = doctorAppointment.getAppointments();
 		}
 			
 			return list;
+	}
+
+
+	@Override
+	public List<Appointment> getAllAppointmentByPatientId(String patientEmail) {
+		List<Appointment> list=null;
+		if(patientRepository.existsById(patientEmail))
+		{
+			PatientAppointment patientAppointment  = patientRepository.findById(patientEmail).get();
+			
+		 list = patientAppointment.getAppointments();
+		}
+			
+			return list;
+		
 	}
 
 
