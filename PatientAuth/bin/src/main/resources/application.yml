@@ -1,22 +1,35 @@
-spring:
- jpa:
-   show-sql: true
-   hibernate:
-     ddl-auto: update
- 
-  
- 
- boot:
-   admin:
-     client:
-       url:
-       - http://172.23.239.225:9000
- application:
-   name: PatientAuth
+#spring:
+#
+ #h2:
+  # console:
+   #  enabled: true
+    # path: /console
 
 
 
- datasource:
-   url: jdbc:mysql://localhost:3306/PatientAuthDBMySQL
-   username: root
-   password: root123
+
+
+#spring:
+# boot:
+#   admin:
+#     client:
+#       url:
+#       - http://172.23.239.225:8000
+#               
+# cloud:
+#    config:
+#      uri:
+#      -  http://172.23.239.225:8060   
+# application:
+#   name: patient-auth
+#  
+#info:
+# app:
+#   description: Patient service is up and has no problem
+#   name: Patient-Auth
+#   version: 1.0.0
+#
+#   
+#   
+#   
+#   

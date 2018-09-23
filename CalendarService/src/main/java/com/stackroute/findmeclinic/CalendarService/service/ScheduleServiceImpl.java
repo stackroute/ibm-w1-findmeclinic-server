@@ -1,5 +1,6 @@
 package com.stackroute.findmeclinic.CalendarService.service;
 
+import com.stackroute.findmeclinic.CalendarService.exception.ScheduleDoesNotExistException;
 import com.stackroute.findmeclinic.CalendarService.model.Schedule;
 import com.stackroute.findmeclinic.CalendarService.model.Slot;
 import com.stackroute.findmeclinic.CalendarService.repository.ScheduleRepository;
@@ -87,7 +88,7 @@ public class ScheduleServiceImpl implements ScheduleService {
      *Method to delete a Schedule
      */
     @Override
-    public boolean deleteSchedule(String scheduleId) {
+    public boolean deleteSchedule(String scheduleId) throws ScheduleDoesNotExistException {
         boolean flag = false;
         try {
             Schedule schedule = scheduleRepository.findById(scheduleId).get();
@@ -98,16 +99,20 @@ public class ScheduleServiceImpl implements ScheduleService {
                 flag = true;
             }
         } catch (NoSuchElementException e) {
-            e.printStackTrace();
+            throw new ScheduleDoesNotExistException("Schedule soes not exist");
         }
 
         return flag;
     }
 
     @Override
-    public List<Schedule> getAllScheduleCreatedBy(String createdBy) {
+    public List<Schedule> getAllScheduleCreatedBy(String createdBy) throws ScheduleDoesNotExistException {
         List<Schedule> schedules= scheduleRepository.getAllcheduleByCreatedBy(createdBy);
-        return schedules;
+        if(schedules==null){
+            throw new ScheduleDoesNotExistException("No Schedules available for the Doctor");
+        }else {
+            return schedules;
+        }
     }
 
 
