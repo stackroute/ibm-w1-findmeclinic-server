@@ -34,4 +34,5 @@ public interface DoctorService {
 	public List<Doctor> getAllDoctor();
 	
 	public String getDocIdByDocName(String doctorName);
+	public List<Doctor> getDoctorByLocality(String loaclity);
 }

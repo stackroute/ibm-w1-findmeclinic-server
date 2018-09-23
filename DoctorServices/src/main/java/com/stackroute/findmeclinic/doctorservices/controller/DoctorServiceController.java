@@ -1,5 +1,7 @@
 package com.stackroute.findmeclinic.doctorservices.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -198,5 +200,18 @@ public class DoctorServiceController {
         responseEntity = new ResponseEntity<String>(doctorEmail, HttpStatus.OK);
         return responseEntity;
     }
+	@GetMapping("/doc/{locality}")
+	public ResponseEntity<?> getDocLocation(@PathVariable String locality){
+		ResponseEntity<?> responseEntity=null;
+		List<Doctor> d=doctorService.getDoctorByLocality(locality);
+		if(d!=null) {
+			responseEntity=new ResponseEntity<>(d,HttpStatus.OK);
+		}
+		else {
+			responseEntity=new ResponseEntity<>("Doctor not found",HttpStatus.BAD_REQUEST);
+		}
+		return responseEntity;
+		
+	}
 	
 }
