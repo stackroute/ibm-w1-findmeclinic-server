@@ -25,7 +25,7 @@ public class Doctor {
 	private String doctorGender;
 	private String doctorQualification;
 	private String doctorSpeciality;
-	private int doctorExperience;
+	private String doctorExperience;
 	private List<DoctorAddress> doctorAddress;
 
 	public Doctor() {
@@ -36,7 +36,7 @@ public class Doctor {
 
 	
 	public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber,
-			String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience,
+			String doctorGender, String doctorQualification, String doctorSpeciality, String doctorExperience,
 			List<DoctorAddress> doctorAddress) {
 		super();
 		this.doctorEmail = doctorEmail;
@@ -138,11 +138,11 @@ public class Doctor {
 		this.doctorSpeciality = doctorSpeciality;
 	}
 
-	public int getDoctorExperience() {
+	public String getDoctorExperience() {
 		return doctorExperience;
 	}
 
-	public void setDoctorExperience(int doctorExperience) {
+	public void setDoctorExperience(String doctorExperience) {
 		this.doctorExperience = doctorExperience;
 	}
 
