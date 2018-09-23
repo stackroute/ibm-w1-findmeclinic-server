@@ -129,11 +129,7 @@ public class DoctorServiceImpl implements DoctorService {
 		return doctorLName;
 	}
 
-	@Override
-	public List<Doctor> getDoctorByDoctorName(String doctorName) {
-		List<Doctor> doctorNames = doctorRepository.findDoctorByDoctorName(doctorName);
-		return doctorNames;
-	}
+	
 
 	@Override
 	public List<Doctor> getAllDoctor() {
@@ -143,5 +139,49 @@ public class DoctorServiceImpl implements DoctorService {
 		return allDoctor;
 
 	}
+
+	@Override
+	public String getDocIdByDocName(String doctorName) {
+		 Doctor doctor=doctorRepository.findDoctorByDoctorName(doctorName);
+	        String doctorEmail=doctor.getDoctorEmail();
+	        return doctorEmail;
+	}
+
+	@Override
+	public List<Doctor> getDoctorByLocality(String loaclity) {
+		// TODO Auto-generated method stub
+		List <Doctor> dl= new ArrayList<>();
+		
+		List<Doctor> obj= doctorRepository.findAll();
+		System.out.println("doc"+obj);
+		Iterator<Doctor> i = obj.iterator();
+		while(i.hasNext()) {
+			Doctor doc=i.next();
+			List<DoctorAddress> add=doc.getDoctorAddress();
+			System.out.println("add"+add);
+			Iterator<DoctorAddress> ai = add.iterator();
+			while(ai.hasNext()) {
+			String	loaclity1=ai.next().getLocality();
+			System.out.println("loc"+loaclity);
+			if(loaclity.equals(loaclity1)) {
+				
+				dl.add(doc);
+			}
+				
+						
+			}
+			
+		}
+		return  dl;
+
+	}
+
+	
+	
+
+	
+
+	
+	
 
 }
