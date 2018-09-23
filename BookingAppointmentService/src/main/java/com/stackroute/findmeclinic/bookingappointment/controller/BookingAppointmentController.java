@@ -66,7 +66,7 @@ public class BookingAppointmentController {
 
 	}
 
-	@GetMapping("doctor/{id}")
+	@GetMapping("/doctor/{id}")
 	public ResponseEntity<?> getAllAppointmentsByDoctorId(@PathVariable String id) {
 		ResponseEntity<?> responseEntity = null;
 		List<Appointment> list = bookingService.getAllAppointmentByDoctorId(id);

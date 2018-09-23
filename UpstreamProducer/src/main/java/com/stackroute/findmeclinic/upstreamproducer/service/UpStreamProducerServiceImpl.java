@@ -14,7 +14,6 @@ public class UpStreamProducerServiceImpl implements UpStreamProducerService {
 
 	@Autowired
 	public UpStreamProducerServiceImpl(KafkaTemplate<String, Prescription> kafkaTemplate) {
-
 		this.kafkaTemplate = kafkaTemplate;
 	}
 
@@ -22,7 +21,6 @@ public class UpStreamProducerServiceImpl implements UpStreamProducerService {
 	@Override
 	public void sendPrescription(Prescription prescription) {
 		System.out.println("inside service");
-
 		boolean status = false;
 		kafkaTemplate.send("prescription", prescription) ;
 			status=true;
