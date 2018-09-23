@@ -73,8 +73,9 @@
 		<module>UpstreamProducer</module>
 		<module>NotificationService</module>
 		<module>ApiGateway</module>
-                <module>SearchService</module> 
+        <module>SearchService</module> 
         <module>CalendarService</module>
+        <module>FileUploadService</module>
 
 
 	</modules>
