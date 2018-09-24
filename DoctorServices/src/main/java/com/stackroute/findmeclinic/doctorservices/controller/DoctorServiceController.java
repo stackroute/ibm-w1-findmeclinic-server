@@ -37,8 +37,7 @@ public class DoctorServiceController {
 	public DoctorServiceController( DoctorService doctorService) {
 		this.doctorService=doctorService;
 	}
-	
-<<<<<<< HEAD
+
 //	@PostMapping()
 //    public ResponseEntity<?> sendToTopic(@RequestBody Doctor doctor){
 //        ResponseEntity<?> response = new ResponseEntity<>(doctor,HttpStatus.OK);
@@ -46,7 +45,7 @@ public class DoctorServiceController {
 //        return response;
 //        
 //    }
-=======
+
 	/*@PostMapping()
     public ResponseEntity<?> sendToTopic(@RequestBody Doctor doctor){
         ResponseEntity<?> response = new ResponseEntity<>(doctor,HttpStatus.OK);
@@ -54,7 +53,7 @@ public class DoctorServiceController {
         return response;
         
    }*/
->>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
+
 	
 	@PostMapping("/docserv")
 	public ResponseEntity<?> addDoctorInfo(@RequestBody Doctor doctor){
@@ -62,10 +61,9 @@ public class DoctorServiceController {
 		try {
 			doctorService.createDoctorDetails(doctor);
 			responseEntity = new ResponseEntity<>(doctor,HttpStatus.OK);
-<<<<<<< HEAD
-=======
+
 			doctorService.getAllDoctor();
->>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
+
 
 			doctorService.getAllDoctor();
 		}

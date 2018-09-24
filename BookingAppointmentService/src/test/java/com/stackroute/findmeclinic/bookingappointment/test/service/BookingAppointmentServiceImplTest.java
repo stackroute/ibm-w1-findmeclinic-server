@@ -87,8 +87,9 @@ public class BookingAppointmentServiceImplTest {
 	@Test
 	public void getAllAppointmentByDoctorId() {
 		when(doctorAppointment.findById(appointment.getBookedFor())).thenReturn(options1);
+		System.out.println(options1);
 		List<Appointment> apps = bookImpl.getAllAppointmentByDoctorId("kala@gmail.com");
-		Assert.assertEquals(docApp, apps);
+		Assert.assertEquals(docApp,options1);
 		}
 
 	@Test

@@ -20,41 +20,29 @@ public class Doctor {
 	  private String doctorLastName;
 	  private String doctorName;
 	  private String doctorPhoneNumber;
-<<<<<<< HEAD
+
 	
 	  private String doctorGender;
 	  private String doctorQualification;
 	  private String doctorSpeciality;
-	
-=======
-	  
-	  private String doctorGender;
-	  private String doctorQualification;
-	  private String doctorSpeciality;
+
 	  
 	 
->>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
+
 	  private int doctorExperience;
 	  private List<DoctorAddress> doctorAddress;
 
 	  public Doctor() {
 	  }
 
-<<<<<<< HEAD
+
 	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress){
-=======
-	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, Date doctorDob, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress){
->>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
 	  	this.doctorEmail = doctorEmail;
 		  this.doctorFirstName = doctorFirstName;
 		  this.doctorLastName = doctorLastName;
 		  this.doctorName = doctorName;
 		  this.doctorPhoneNumber = doctorPhoneNumber;
-<<<<<<< HEAD
-		  
-=======
-		
->>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
+
 		  this.doctorGender = doctorGender;
 		  this.doctorQualification = doctorQualification;
 		  this.doctorSpeciality = doctorSpeciality;
@@ -118,11 +106,6 @@ public class Doctor {
 		  this.doctorPhoneNumber = doctorPhoneNumber;
 	  }
 
-<<<<<<< HEAD
-=======
-	  
->>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
-
 	  public String getDoctorGender() {
 		  return doctorGender;
 	  }
@@ -147,15 +130,6 @@ public class Doctor {
 		  this.doctorSpeciality = doctorSpeciality;
 	  }
 
-<<<<<<< HEAD
-	 
-
-	
-
-=======
-	  
-
->>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
 	  public int getDoctorExperience() {
 		  return doctorExperience;
 	  }
@@ -180,15 +154,11 @@ public class Doctor {
 				+ doctorQualification + ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience="
 				+ doctorExperience + ", doctorAddress=" + doctorAddress + "]";
 	}
-<<<<<<< HEAD
-	
-=======
-
 	
 
 
 
->>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
+
 
 
 	
