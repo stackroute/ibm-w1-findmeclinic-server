@@ -5,6 +5,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.client.RestTemplate;
 
+import com.stackroute.findmeclinic.notificationservice.model.Notification;
+
 public class Notificationservice {
 	RestTemplate restTemplate;
 
@@ -14,9 +16,14 @@ public class Notificationservice {
 		this.messageTemplate=messageTemplate;
 		this.restTemplate=restTemplate;
 	}
-	public void  getNotification() {
+	public void  sendNotification(Notification notifcation) {
+		
 	HttpHeaders headers = new HttpHeaders();
-	 String result = restTemplate.getForObject("http://localhost/api/v1/appointment", String.class);
+	
+//	 Notification notif = restTemplate.getForObject("http://localhost/api/v1/appointment", Notification.class);
+	
+	 messageTemplate.convertAndSend("/topic/greetings", notifcation);
+	 
 	
 	}
 }

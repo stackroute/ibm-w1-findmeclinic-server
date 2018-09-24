@@ -2,39 +2,19 @@ package com.stackroute.findmeclinic.notificationservice.model;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document
 public class Notification {
-	
-	
-	public String getNotification_id() {
-		return notification_id;
-	}
-	public void setNotification_id(String notification_id) {
-		this.notification_id = notification_id;
-	}
-	public String getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public Date getNotifgenDate() {
-		return notifgenDate;
-	}
-	public void setNotifgenDate(Date notifgenDate) {
-		this.notifgenDate = notifgenDate;
-	}
-	private  String notification_id;
-	private String user_id;
+	@Id
+	private String notification_id;
+	private String doctor;
+	private String patient;
 	private String content;
 	private Date notifgenDate;
-	
+
 	
 	
 
+	
 }
