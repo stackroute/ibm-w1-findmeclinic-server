@@ -3,7 +3,6 @@ server:
   port: 8091
   
 spring:
-<<<<<<< HEAD
  boot:
    admin:
      client:
@@ -13,7 +12,6 @@ spring:
       uri:  http://172.23.239.225:8060   
  application:
    name: doctor-services
-=======
    data:
        mongodb:
            database: DoctorServiceDbMongo
@@ -21,4 +19,4 @@ spring:
            password: root123
            port: 27017
            username: json
->>>>>>> efad7ded8c32abff426a103cb43029dec8f350b9
+
