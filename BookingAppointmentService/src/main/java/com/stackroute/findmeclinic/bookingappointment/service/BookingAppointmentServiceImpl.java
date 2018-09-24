@@ -11,10 +11,12 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.client.RestTemplate;
 
 import com.stackroute.findmeclinic.bookingappointment.model.Appointment;
 import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.DoctorAppointment;
+import com.stackroute.findmeclinic.bookingappointment.model.Notification;
 import com.stackroute.findmeclinic.bookingappointment.model.PatientAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.Schedule;
 
@@ -28,28 +30,36 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	private DoctorAppointmentRepository doctorRepository;
 	private PatientAppointmentRepository patientRepository;
 
+	private RestTemplate restTemplate;
+	
 	@Autowired
-	public BookingAppointmentServiceImpl(DoctorAppointmentRepository doctorRepository,
-			PatientAppointmentRepository patientRepository, KafkaTemplate<String, Appointment> kafkaTemplate) {
+	public BookingAppointmentServiceImpl(DoctorAppointmentRepository doctorRepository, PatientAppointmentRepository patientRepository,KafkaTemplate<String, Appointment> kafkaTemplate,RestTemplate restTemplate) {
 
-		this.doctorRepository = doctorRepository;
-		this.patientRepository = patientRepository;
-		this.kafkaTemplate = kafkaTemplate;
+		this.doctorRepository=doctorRepository;
+		this.patientRepository=patientRepository;
+		this.kafkaTemplate=kafkaTemplate;
+		this.restTemplate =restTemplate;
 	}
+	
+	
+//	@Override
+//	public void post(Appointment appointment) {
+//
+//		kafkaTemplate.send("notificationTopic", appointment);
+//	
+//	}
+//	
+//	@Override
+//	@KafkaListener(topics="calenderTopic")
+//	public void listen(@Payload Schedule schedule) {
+//		System.out.println("Schedule object:"+ schedule);
+//		
+//		
+//		
+//	}
 
-	@Override
-	public void post(Appointment appointment) {
 
-		kafkaTemplate.send("notificationTopic", appointment);
-
-	}
-
-	@Override
-	@KafkaListener(topics = "calenderTopic")
-	public void listen(@Payload Schedule schedule) {
-		System.out.println("Schedule object:" + schedule);
-
-	}
+	
 
 	String patientName;
 	DoctorAppointment doctorAppointment;
@@ -117,9 +127,23 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 			patientAppointment = patientRepository.insert(patientAppointment);
 		}
 
-		if (doctorAppointment != null && patientAppointment != null)
-			flag = true;
+		
+		
+		if (doctorAppointment != null && patientAppointment != null) {
+		
+		flag = true;
+		
+		
 
+
+		Notification notification =new Notification();
+		
+		notification.setDoctor(appointment.getBookedFor());
+		notification.setPatient(appointment.getBookingBy());
+
+        restTemplate.postForObject("http://172.23.239.225:8009/api/v1/notify/", notification , Notification.class);
+		
+		}
 		return flag;
 
 	}

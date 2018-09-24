@@ -2,6 +2,7 @@ package com.stackroute.findmeclinic.recordservice.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.stackroute.findmeclinic.recordservice.service.RecordConsumerService;
 
 @RestController
 @RequestMapping("/api/v1/record")
+@CrossOrigin("*")
 public class RecordController {
 
 	private RecordConsumerService recordService;
@@ -28,7 +30,7 @@ public class RecordController {
 				response = new ResponseEntity<>(recordService.getPatientPrescription(patientEmail), HttpStatus.OK);
 			}
 		} catch (PrescriptionNotAddedException exception) {
-			response = new ResponseEntity<>("No prescriptions added yet", HttpStatus.CONFLICT);
+			response = new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
 		}
 		return response;
 	}

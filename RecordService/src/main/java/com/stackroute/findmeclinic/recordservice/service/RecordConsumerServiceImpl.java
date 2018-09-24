@@ -38,21 +38,22 @@ public class RecordConsumerServiceImpl implements RecordConsumerService {
 		Iterator<Prescription> iterator = prescription.iterator();
 		while (iterator.hasNext()) {
 			Prescription myPrescription = iterator.next();
-			System.out.println("fffff"+myPrescription);
 			Patient requiredPatient = myPrescription.getPatient();
-			System.out.println("id"+requiredPatient.getPatientEmail());
-			System.out.println();
 			if (id.equals(requiredPatient.getPatientEmail())) {
-				System.out.println("hi");
 				requiredPrescription.add(myPrescription);
-				System.out.println("gGGG"+requiredPrescription);
 
-
-			} else {
-				throw new PrescriptionNotAddedException("Not prescriptions available yet");
-			}
+			} 
+			
 		}
-		return requiredPrescription;
+		if(requiredPrescription!=null)
+		{
+			return requiredPrescription;
+
+		}		
+		else {
+			throw new PrescriptionNotAddedException("Not prescriptions available yet");
+		}
+
 	}
 
 }

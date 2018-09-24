@@ -12,9 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
   @Document
 public class Doctor {
 
-
-
-
 	  @Id
 
 	  @Email
@@ -23,30 +20,45 @@ public class Doctor {
 	  private String doctorLastName;
 	  private String doctorName;
 	  private String doctorPhoneNumber;
-	  private Date doctorDob;
+<<<<<<< HEAD
+	
 	  private String doctorGender;
 	  private String doctorQualification;
 	  private String doctorSpeciality;
-	  private String doctorLocality;
-	  private String address;
-	  private String doctorExperience;
+	
+=======
+	  
+	  private String doctorGender;
+	  private String doctorQualification;
+	  private String doctorSpeciality;
+	  
+	 
+>>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
+	  private int doctorExperience;
 	  private List<DoctorAddress> doctorAddress;
 
 	  public Doctor() {
 	  }
 
-	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, Date doctorDob, String doctorGender, String doctorQualification, String doctorSpeciality, String doctorLocality, String address, String doctorExperience, List<DoctorAddress> doctorAddress){
+<<<<<<< HEAD
+	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress){
+=======
+	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, Date doctorDob, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress){
+>>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
 	  	this.doctorEmail = doctorEmail;
 		  this.doctorFirstName = doctorFirstName;
 		  this.doctorLastName = doctorLastName;
 		  this.doctorName = doctorName;
 		  this.doctorPhoneNumber = doctorPhoneNumber;
-		  this.doctorDob = doctorDob;
+<<<<<<< HEAD
+		  
+=======
+		
+>>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
 		  this.doctorGender = doctorGender;
 		  this.doctorQualification = doctorQualification;
 		  this.doctorSpeciality = doctorSpeciality;
-		  this.doctorLocality = doctorLocality;
-		  this.address = address;
+		 
 		  this.doctorExperience = doctorExperience;
 		  this.doctorAddress = doctorAddress;
 	  }
@@ -79,6 +91,21 @@ public class Doctor {
 		  return doctorName;
 	  }
 
+/*
+	public String getLocality() {
+		return locality;
+	}
+
+
+
+
+	public void setLocality(String locality) {
+		this.locality = locality;
+	}*/
+
+
+
+
 	  public void setDoctorName(String doctorName) {
 		  this.doctorName = doctorName;
 	  }
@@ -91,13 +118,10 @@ public class Doctor {
 		  this.doctorPhoneNumber = doctorPhoneNumber;
 	  }
 
-	  public Date getDoctorDob() {
-		  return doctorDob;
-	  }
-
-	  public void setDoctorDob(Date doctorDob) {
-		  this.doctorDob = doctorDob;
-	  }
+<<<<<<< HEAD
+=======
+	  
+>>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
 
 	  public String getDoctorGender() {
 		  return doctorGender;
@@ -123,27 +147,20 @@ public class Doctor {
 		  this.doctorSpeciality = doctorSpeciality;
 	  }
 
-	  public String getDoctorLocality() {
-		  return doctorLocality;
-	  }
+<<<<<<< HEAD
+	 
 
-	  public void setDoctorLocality(String doctorLocality) {
-		  this.doctorLocality = doctorLocality;
-	  }
+	
 
-	  public String getAddress() {
-		  return address;
-	  }
+=======
+	  
 
-	  public void setAddress(String address) {
-		  this.address = address;
-	  }
-
-	  public String getDoctorExperience() {
+>>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
+	  public int getDoctorExperience() {
 		  return doctorExperience;
 	  }
 
-	  public void setDoctorExperience(String doctorExperience) {
+	  public void setDoctorExperience(int doctorExperience) {
 		  this.doctorExperience = doctorExperience;
 	  }
 
@@ -154,15 +171,24 @@ public class Doctor {
 	  public void setDoctorAddress(List<DoctorAddress> doctorAddress) {
 		  this.doctorAddress = doctorAddress;
 	  }
-	  @Override
+
+	@Override
 	public String toString() {
 		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
 				+ doctorLastName + ", doctorName=" + doctorName + ", doctorPhoneNumber=" + doctorPhoneNumber
-				+ ", doctorGender=" + doctorGender + ", doctorQualification=" + doctorQualification
-				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience=" + doctorExperience
-				+ ", doctorAddress=" + doctorAddress + "]";
+				+ ", doctorDob="  + ", doctorGender=" + doctorGender + ", doctorQualification="
+				+ doctorQualification + ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience="
+				+ doctorExperience + ", doctorAddress=" + doctorAddress + "]";
 	}
+<<<<<<< HEAD
+	
+=======
 
+	
+
+
+
+>>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
 
 
 	
