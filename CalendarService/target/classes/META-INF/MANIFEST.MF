@@ -1,7 +1,19 @@
 Manifest-Version: 1.0
 Implementation-Title: CalendarService
 Implementation-Version: 0.0.1-SNAPSHOT
+<<<<<<< HEAD
 Built-By: vadhana
+=======
+<<<<<<< HEAD
+Built-By: jason
+=======
+<<<<<<< HEAD
+Built-By: sanjana
+=======
+Built-By: amit
+>>>>>>> 784f1166bdf4955913e4fd48950181c4bed9ec35
+>>>>>>> 51b4c3b1ab7e5dff7ac8ad99c7163aad71f7a8a9
+>>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
 Implementation-Vendor-Id: com.stackroute.findmeclinic
 Build-Jdk: 1.8.0_181
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
