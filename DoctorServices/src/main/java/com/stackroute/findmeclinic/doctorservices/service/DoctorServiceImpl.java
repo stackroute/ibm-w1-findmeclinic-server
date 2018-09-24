@@ -36,9 +36,9 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
-	public Doctor createDoctorDetails(Doctor doctor) throws DoctorAlreadyExistException {
+	public Doctor createDoctorDetails(Doctor doctor) {
 		if (doctorRepository.existsById(doctor.getDoctorEmail())) {
-			throw new DoctorAlreadyExistException("Doctor already exist");
+		
 		} else {
 			String name = doctor.getDoctorFirstName() + doctor.getDoctorLastName();
 			doctor.setDoctorName(name);

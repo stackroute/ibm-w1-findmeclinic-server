@@ -38,22 +38,22 @@ public class DoctorServiceController {
 		this.doctorService=doctorService;
 	}
 	
-	@PostMapping()
-    public ResponseEntity<?> sendToTopic(@RequestBody Doctor doctor){
-        ResponseEntity<?> response = new ResponseEntity<>(doctor,HttpStatus.OK);
-        doctorService.getAllDoctor();
-        return response;
-        
-    }
+//	@PostMapping()
+//    public ResponseEntity<?> sendToTopic(@RequestBody Doctor doctor){
+//        ResponseEntity<?> response = new ResponseEntity<>(doctor,HttpStatus.OK);
+//        doctorService.getAllDoctor();
+//        return response;
+//        
+//    }
 	
 	@PostMapping("/docserv")
 	public ResponseEntity<?> addDoctorInfo(@RequestBody Doctor doctor){
 		ResponseEntity<?> responseEntity;
 		try {
 			doctorService.createDoctorDetails(doctor);
-			responseEntity = new ResponseEntity<>(doctor,HttpStatus.CREATED);
+			responseEntity = new ResponseEntity<>(doctor,HttpStatus.OK);
 
-			
+			doctorService.getAllDoctor();
 		}
 		catch(DoctorAlreadyExistException exception) {
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.CONFLICT);
