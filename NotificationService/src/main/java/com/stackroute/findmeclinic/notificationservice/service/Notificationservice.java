@@ -14,8 +14,9 @@ public class Notificationservice {
 		this.messageTemplate=messageTemplate;
 		this.restTemplate=restTemplate;
 	}
+	public void  getNotification() {
 	HttpHeaders headers = new HttpHeaders();
 	 String result = restTemplate.getForObject("http://localhost/api/v1/appointment", String.class);
 	
-	
+	}
 }

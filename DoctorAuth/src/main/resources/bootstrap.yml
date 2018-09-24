@@ -5,7 +5,7 @@ spring:
        url: http://172.23.239.225:8000
  cloud:
     config:
-      uri:  http://172.23.239.225:8060   
+      uri:  http://localhost:8080  
  application:
    name: doctor-auth
 
