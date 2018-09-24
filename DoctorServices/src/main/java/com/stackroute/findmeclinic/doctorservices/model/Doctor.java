@@ -25,6 +25,8 @@ public class Doctor {
 	private String doctorGender;
 	private String doctorQualification;
 	private String doctorSpeciality;
+	private String doctorLocality;
+	private String address;
 	private String doctorExperience;
 	private List<DoctorAddress> doctorAddress;
 
@@ -36,8 +38,8 @@ public class Doctor {
 
 	
 	public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber,
-			String doctorGender, String doctorQualification, String doctorSpeciality, String doctorExperience,
-			List<DoctorAddress> doctorAddress) {
+			String doctorGender, String locality,String doctorQualification, String doctorSpeciality, String doctorExperience,
+			List<DoctorAddress> doctorAddress,String doctorLocality, String address ) {
 		super();
 		this.doctorEmail = doctorEmail;
 		this.doctorFirstName = doctorFirstName;
@@ -49,7 +51,50 @@ public class Doctor {
 		this.doctorSpeciality = doctorSpeciality;
 		this.doctorExperience = doctorExperience;
 		this.doctorAddress = doctorAddress;
-	
+	this.address=address;
+	this.doctorLocality=doctorLocality;
+	}
+
+
+
+
+	public Date getDoctorDob() {
+		return doctorDob;
+	}
+
+
+
+
+	public void setDoctorDob(Date doctorDob) {
+		this.doctorDob = doctorDob;
+	}
+
+
+
+
+	public String getDoctorLocality() {
+		return doctorLocality;
+	}
+
+
+
+
+	public void setDoctorLocality(String doctorLocality) {
+		this.doctorLocality = doctorLocality;
+	}
+
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 
@@ -86,6 +131,20 @@ public class Doctor {
 	public void setDoctorPhoneNumber(String doctorPhoneNumber) {
 		this.doctorPhoneNumber = doctorPhoneNumber;
 	}
+
+
+
+/*
+	public String getLocality() {
+		return locality;
+	}
+
+
+
+
+	public void setLocality(String locality) {
+		this.locality = locality;
+	}*/
 
 
 
@@ -161,10 +220,13 @@ public class Doctor {
 	public String toString() {
 		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
 				+ doctorLastName + ", doctorName=" + doctorName + ", doctorPhoneNumber=" + doctorPhoneNumber
-				+ ", doctorGender=" + doctorGender + ", doctorQualification=" + doctorQualification
-				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience=" + doctorExperience
-				+ ", doctorAddress=" + doctorAddress + "]";
+				+ ", doctorDob=" + doctorDob + ",doctorGender=" + doctorGender
+				+ ", doctorQualification=" + doctorQualification + ", doctorSpeciality=" + doctorSpeciality
+				+ ", doctorLocality=" + doctorLocality + ", address=" + address + ", doctorExperience="
+				+ doctorExperience + ", doctorAddress=" + doctorAddress + "]";
 	}
+
+
 
 
 

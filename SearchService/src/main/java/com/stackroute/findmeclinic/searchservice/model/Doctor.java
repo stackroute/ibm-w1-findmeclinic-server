@@ -14,10 +14,10 @@ public class Doctor {
 	private String doctorLastName;
 	private String doctorName;
 	private String doctorPhoneNumber;
-
 	private String doctorGender;
 	private String doctorQualification;
 	private String doctorSpeciality;
+
 	private int doctorExperience;
 	private List<DoctorAddress> doctorAddress;
 
@@ -100,15 +100,16 @@ public class Doctor {
 	public void setDoctorAddress(List<DoctorAddress> doctorAddress) {
 		this.doctorAddress = doctorAddress;
 	}
+	
+	
 
 	public Doctor() {
 
 	}
 
 	public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName,
-			String doctorPhoneNumber, String doctorGender, String doctorQualification, String doctorSpeciality,
-			int doctorExperience, List<DoctorAddress> doctorAddress) {
-
+			String doctorPhoneNumber, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress) {
+		super();
 		this.doctorEmail = doctorEmail;
 		this.doctorFirstName = doctorFirstName;
 		this.doctorLastName = doctorLastName;
@@ -117,6 +118,7 @@ public class Doctor {
 		this.doctorGender = doctorGender;
 		this.doctorQualification = doctorQualification;
 		this.doctorSpeciality = doctorSpeciality;
+		
 		this.doctorExperience = doctorExperience;
 		this.doctorAddress = doctorAddress;
 	}
@@ -126,8 +128,9 @@ public class Doctor {
 		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
 				+ doctorLastName + ", doctorName=" + doctorName + ", doctorPhoneNumber=" + doctorPhoneNumber
 				+ ", doctorGender=" + doctorGender + ", doctorQualification=" + doctorQualification
-				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience=" + doctorExperience
-				+ ", doctorAddress=" + doctorAddress + "]";
+				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorLocality=" 
+				+ ", doctorExperience=" + doctorExperience + ", doctorAddress=" + doctorAddress + "]";
 	}
 
+	
 }

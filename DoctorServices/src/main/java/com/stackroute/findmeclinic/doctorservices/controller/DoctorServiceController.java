@@ -25,7 +25,7 @@ import com.stackroute.findmeclinic.doctorservices.service.DoctorService;
 
 
 @RestController
-@RequestMapping("/api/v2/doctor/docserv")
+@RequestMapping("/api/v2/doctor")
 @CrossOrigin(origins="*")
 public class DoctorServiceController {
 
@@ -200,7 +200,7 @@ public class DoctorServiceController {
         responseEntity = new ResponseEntity<String>(doctorEmail, HttpStatus.OK);
         return responseEntity;
     }
-	@GetMapping("/doc/{locality}")
+	@GetMapping("/docserv/place/{locality}")
 	public ResponseEntity<?> getDocLocation(@PathVariable String locality){
 		ResponseEntity<?> responseEntity=null;
 		List<Doctor> d=doctorService.getDoctorByLocality(locality);

@@ -53,5 +53,20 @@ public class SearchController {
 		return responseEntity;
 
 	}
+	
+//	@GetMapping("/place/{locality}")
+//	public ResponseEntity<?> getDocLocation(@PathVariable String locality){
+//		ResponseEntity<?> responseEntity=null;
+//		List<Doctor> d=searchService.getDoctorByLocality(locality);
+//		if(d!=null) {
+//			responseEntity=new ResponseEntity<>(d,HttpStatus.OK);
+//		}
+//		else {
+//			responseEntity=new ResponseEntity<>("Doctor not found",HttpStatus.BAD_REQUEST);
+//		}
+//		return responseEntity;
+//		
+//	}
+//	
 
 }
