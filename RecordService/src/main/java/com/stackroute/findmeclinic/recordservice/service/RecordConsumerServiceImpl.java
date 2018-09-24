@@ -41,7 +41,7 @@ public class RecordConsumerServiceImpl implements RecordConsumerService {
 			System.out.println("fffff"+myPrescription);
 			Patient requiredPatient = myPrescription.getPatient();
 			System.out.println("id"+requiredPatient.getPatientEmail());
-			System.out.println();
+			System.out.println("coming id"+id);
 			if (id.equals(requiredPatient.getPatientEmail())) {
 				System.out.println("hi");
 				requiredPrescription.add(myPrescription);
