@@ -66,7 +66,7 @@ public class BookingAppointmentController {
 
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/doctor/{id}")
 	public ResponseEntity<?> getAllAppointmentsByDoctorId(@PathVariable String id) {
 		ResponseEntity<?> responseEntity = null;
 		List<Appointment> list = bookingService.getAllAppointmentByDoctorId(id);
@@ -76,6 +76,21 @@ public class BookingAppointmentController {
 		}
 		else {
 			responseEntity= new ResponseEntity<>("No Appointments Available",HttpStatus.NOT_FOUND);
+		}
+		
+		return responseEntity;
+	}
+	
+	@GetMapping("/patient/{id}")
+	public ResponseEntity<?> getAllAppointmentsByPatientId(@PathVariable String id) {
+		ResponseEntity<?> responseEntity = null;
+		List<Appointment> list = bookingService.getAllAppointmentByPatientId(id);
+		if(bookingService.getAllAppointmentByPatientId(id)!=null)
+		{
+			responseEntity= new ResponseEntity<>(list,HttpStatus.OK);
+		}
+		else {
+			responseEntity= new ResponseEntity<>("No Appointments yet",HttpStatus.NOT_FOUND);
 		}
 		
 		return responseEntity;

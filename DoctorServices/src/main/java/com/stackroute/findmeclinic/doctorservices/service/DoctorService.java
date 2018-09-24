@@ -30,8 +30,10 @@ public interface DoctorService {
 	public List<Doctor> getDoctorByDoctorLastName(String doctorLastName);
 	
 	
-	
+	public List<Doctor> getDoctorByLocality(String loaclity);
+
 	public List<Doctor> getAllDoctor();
 	
 	public String getDocIdByDocName(String doctorName);
+	
 }

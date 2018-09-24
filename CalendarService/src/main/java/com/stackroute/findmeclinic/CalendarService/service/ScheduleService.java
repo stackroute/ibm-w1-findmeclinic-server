@@ -1,5 +1,6 @@
 package com.stackroute.findmeclinic.CalendarService.service;
 
+import com.stackroute.findmeclinic.CalendarService.exception.ScheduleDoesNotExistException;
 import com.stackroute.findmeclinic.CalendarService.model.Schedule;
 import com.stackroute.findmeclinic.CalendarService.model.Slot;
 
@@ -9,8 +10,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 
 public interface ScheduleService {
    Schedule createSchedule(Schedule schedule);
-    boolean deleteSchedule(String scheduleId);
-    List<Schedule> getAllScheduleCreatedBy(String createdBy);
+    boolean deleteSchedule(String scheduleId) throws ScheduleDoesNotExistException;
+    List<Schedule> getAllScheduleCreatedBy(String createdBy) throws ScheduleDoesNotExistException;
 
     
     public void post(Schedule schedule) ;
@@ -19,5 +20,5 @@ public interface ScheduleService {
 
     List<Schedule> getAllSchedule();
     
-    List<Slot> getAllSlotsCreatedBy(String createdBy);
+    List<Slot> getAllSlotsCreatedBy(String createdBy) ;
 }

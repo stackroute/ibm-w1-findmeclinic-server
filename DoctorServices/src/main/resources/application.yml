@@ -1,12 +1,26 @@
 
 server:
-  port: 8081
+  port: 8091
   
 spring:
+ boot:
+   admin:
+     client:
+       url: http://172.23.239.225:8000
+ cloud:
+    config:
+      uri:  http://172.23.239.225:8060   
+ application:
+   name: doctor-services
    data:
        mongodb:
            database: DoctorServiceDbMongo
            host: localhost
-           password: root123
+           password: root1234
            port: 27017
-           username: jason
+<<<<<<< HEAD
+           username: jason123
+=======
+           username: json
+
+>>>>>>> f7bb6bbc06679fb0d435c692a8e0a19bec22c185

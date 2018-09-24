@@ -5,7 +5,6 @@ public class DoctorAddress {
 	private int addressNo;
 	private String hospitalName;
 	private String streetName;
-	private String locality;
 	private String state;
 	
 	public DoctorAddress() {
@@ -21,7 +20,6 @@ public class DoctorAddress {
 		this.addressNo = addressNo;
 		this.hospitalName=hospitalName;
 		this.streetName = streetName;
-		this.locality = locality;
 		this.state = state;
 		
 	}
@@ -49,13 +47,7 @@ public class DoctorAddress {
 		this.streetName = streetName;
 	}
 
-	public String getLocality() {
-		return locality;
-	}
-
-	public void setLocality(String locality) {
-		this.locality = locality;
-	}
+	
 
 	public String getState() {
 		return state;
@@ -93,7 +85,7 @@ public class DoctorAddress {
 	@Override
 	public String toString() {
 		return "DoctorAddress [addressNo=" + addressNo + ", hospitalName=" + hospitalName + ", streetName=" + streetName
-				+ ", locality=" + locality + ", state=" + state + "]";
+				+ ", locality="  + ", state=" + state + "]";
 	}
 
 

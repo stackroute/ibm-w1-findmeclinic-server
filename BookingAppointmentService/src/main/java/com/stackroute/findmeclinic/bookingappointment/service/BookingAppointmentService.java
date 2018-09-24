@@ -18,5 +18,6 @@ public interface BookingAppointmentService {
 //  public void listen(@Payload Schedule schedule);
 //  
  public  List<Appointment> getAllAppointmentByDoctorId(String doctorEmail);
+ public List<Appointment> getAllAppointmentByPatientId(String patientEmail);
 	
 }

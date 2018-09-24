@@ -11,5 +11,9 @@ public interface SearchService {
 
 //	public List<Doctor> getDoctorByName(String name);
 
+//	public List<Doctor> getDoctorByLocality(String loaclity);
+
+	
+
 
 }
