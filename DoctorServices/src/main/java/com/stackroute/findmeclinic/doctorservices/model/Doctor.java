@@ -12,116 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
   @Document
 public class Doctor {
 
-<<<<<<< HEAD
-	
-   @Id
-
-   @Email
-	private String doctorEmail;
-	private String doctorFirstName;
-	private String doctorLastName;
-	private String doctorName;
-    private String doctorPhoneNumber;
-	private Date doctorDob;
-	private String doctorGender;
-	private String doctorQualification;
-	private String doctorSpeciality;
-	private String doctorLocality;
-	private String address;
-	private String doctorExperience;
-	private List<DoctorAddress> doctorAddress;
-
-	public Doctor() {
-		
-	}
-
-	
-
-	
-	public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber,
-			String doctorGender, String locality,String doctorQualification, String doctorSpeciality, String doctorExperience,
-			List<DoctorAddress> doctorAddress,String doctorLocality, String address ) {
-		super();
-		this.doctorEmail = doctorEmail;
-		this.doctorFirstName = doctorFirstName;
-		this.doctorLastName = doctorLastName;
-		this.doctorName = doctorName;
-		this.doctorPhoneNumber=doctorPhoneNumber;
-		this.doctorGender = doctorGender;
-		this.doctorQualification = doctorQualification;
-		this.doctorSpeciality = doctorSpeciality;
-		this.doctorExperience = doctorExperience;
-		this.doctorAddress = doctorAddress;
-	this.address=address;
-	this.doctorLocality=doctorLocality;
-	}
-
-
-
-
-	public Date getDoctorDob() {
-		return doctorDob;
-	}
-
-
-
-
-	public void setDoctorDob(Date doctorDob) {
-		this.doctorDob = doctorDob;
-	}
-
-
-
-
-	public String getDoctorLocality() {
-		return doctorLocality;
-	}
-
-
-
-
-	public void setDoctorLocality(String doctorLocality) {
-		this.doctorLocality = doctorLocality;
-	}
-
-
-
-
-	public String getAddress() {
-		return address;
-	}
-
-
-
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-
-
-
-	public String getDoctorName() {
-		return doctorName;
-	}
-
-
-
-
-	public void setDoctorName(String doctorName) {
-		this.doctorName = doctorName;
-	}
-
-
-
-
-	
-
-=======
->>>>>>> f7bb6bbc06679fb0d435c692a8e0a19bec22c185
-
-
-
 	  @Id
 
 	  @Email
@@ -185,7 +75,6 @@ public class Doctor {
 		  return doctorName;
 	  }
 
-<<<<<<< HEAD
 /*
 	public String getLocality() {
 		return locality;
@@ -200,11 +89,10 @@ public class Doctor {
 
 
 
-=======
+
 	  public void setDoctorName(String doctorName) {
 		  this.doctorName = doctorName;
 	  }
->>>>>>> f7bb6bbc06679fb0d435c692a8e0a19bec22c185
 
 	  public String getDoctorPhoneNumber() {
 		  return doctorPhoneNumber;
@@ -262,12 +150,12 @@ public class Doctor {
 	public String toString() {
 		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
 				+ doctorLastName + ", doctorName=" + doctorName + ", doctorPhoneNumber=" + doctorPhoneNumber
-				+ ", doctorDob=" + doctorDob + ",doctorGender=" + doctorGender
-				+ ", doctorQualification=" + doctorQualification + ", doctorSpeciality=" + doctorSpeciality
-				+ ", doctorLocality=" + doctorLocality + ", address=" + address + ", doctorExperience="
-				+ doctorExperience + ", doctorAddress=" + doctorAddress + "]";
+				+ ", doctorGender=" + doctorGender + ", doctorQualification=" + doctorQualification
+				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience=" + doctorExperience
+				+ ", doctorAddress=" + doctorAddress + "]";
 	}
-	 
+
+	
 
 
 

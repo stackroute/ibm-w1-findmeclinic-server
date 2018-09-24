@@ -38,20 +38,21 @@ public class DoctorServiceController {
 		this.doctorService=doctorService;
 	}
 	
-	@PostMapping()
+	/*@PostMapping()
     public ResponseEntity<?> sendToTopic(@RequestBody Doctor doctor){
         ResponseEntity<?> response = new ResponseEntity<>(doctor,HttpStatus.OK);
-        doctorService.getAllDoctor();
+	        doctorService.getAllDoctor();
         return response;
         
-    }
+   }*/
 	
 	@PostMapping("/docserv")
 	public ResponseEntity<?> addDoctorInfo(@RequestBody Doctor doctor){
 		ResponseEntity<?> responseEntity;
 		try {
 			doctorService.createDoctorDetails(doctor);
-			responseEntity = new ResponseEntity<>(doctor,HttpStatus.CREATED);
+			responseEntity = new ResponseEntity<>(doctor,HttpStatus.OK);
+			doctorService.getAllDoctor();
 
 			
 		}
@@ -200,7 +201,7 @@ public class DoctorServiceController {
         responseEntity = new ResponseEntity<String>(doctorEmail, HttpStatus.OK);
         return responseEntity;
     }
-	@GetMapping("/docserv/place/{locality}")
+	/*@GetMapping("/docserv/place/{locality}")
 	public ResponseEntity<?> getDocLocation(@PathVariable String locality){
 		ResponseEntity<?> responseEntity=null;
 		List<Doctor> d=doctorService.getDoctorByLocality(locality);
@@ -212,6 +213,6 @@ public class DoctorServiceController {
 		}
 		return responseEntity;
 		
-	}
+	}*/
 	
 }
