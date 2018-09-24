@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.NotificationService.config;
+package com.stackroute.findmeclinic.notificationservice.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

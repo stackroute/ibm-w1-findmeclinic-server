@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.NotificationService;
+package com.stackroute.findmeclinic.notificationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

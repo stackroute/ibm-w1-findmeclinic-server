@@ -102,24 +102,40 @@ public class DoctorServiceController {
 	}
 	
 	@GetMapping("/docserv/{id}")
-	public ResponseEntity<?> getDoctorBasicDetails(@PathVariable String id){
-		ResponseEntity<?> responseEntity;
-		try {
-			if(doctorService.getDoctorDetail(id) != null) {
-				responseEntity = new ResponseEntity<>(doctorService.getDoctorDetail(id),HttpStatus.OK);
-			}
-			else
-		 {
-			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
-			
-		}
-		}
-		catch(Exception e) {
-			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
-		}
-			return responseEntity;
-		
-	}
+    public ResponseEntity<?> getDoctorBasicDetails(@PathVariable String id){
+        ResponseEntity<?> responseEntity;
+        try {
+            if(doctorService.getDoctorDetail(id) != null) {
+                responseEntity = new ResponseEntity<>(doctorService.getDoctorDetail(id),HttpStatus.OK);
+            }
+            else
+         {
+            responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
+            
+        }
+        }
+        catch(Exception e) {
+            responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
+        }
+            return responseEntity;
+        
+    }
+	
+
+//	@GetMapping("/get/{doctorName}")
+//	public ResponseEntity<?> getAllDoctors(@PathVariable("doctorName") String doctorName){
+//		ResponseEntity<?> responseEntity = null;
+//		if(doctorService.getAllDoctorsByDoctorName(doctorName)!=null) {
+//			responseEntity=new ResponseEntity<>(doctorService.getAllDoctorsByDoctorName(doctorName),HttpStatus.OK);
+//			
+//		}
+//		}
+//		catch(Exception e) {
+//			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
+//		}
+//			return responseEntity;
+//		
+//	}
 	
 	@GetMapping("/docserv/badge/{id}")
 	public ResponseEntity<String> getBadge(@PathVariable String id){
@@ -151,6 +167,8 @@ public class DoctorServiceController {
 		
 		return responseEntity;
 	}
+
+	
 	
 	@GetMapping("/docserv/lname/{name}")
 	public ResponseEntity<?> getDoctorLastNameDetails(@PathVariable String name){
@@ -173,6 +191,7 @@ public class DoctorServiceController {
 		return responseEntity;
 	}
 	
+
 	@GetMapping("/email/{doctorName}")
     public ResponseEntity<String> getDocEmailByName(@PathVariable String doctorName){
         ResponseEntity<String> responseEntity;
@@ -181,7 +200,7 @@ public class DoctorServiceController {
         responseEntity = new ResponseEntity<String>(doctorEmail, HttpStatus.OK);
         return responseEntity;
     }
-	@GetMapping("/doc/{locality}")
+	@GetMapping("/docserv/place/{locality}")
 	public ResponseEntity<?> getDocLocation(@PathVariable String locality){
 		ResponseEntity<?> responseEntity=null;
 		List<Doctor> d=doctorService.getDoctorByLocality(locality);
