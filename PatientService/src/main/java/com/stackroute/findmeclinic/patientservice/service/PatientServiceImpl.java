@@ -48,6 +48,7 @@ public class PatientServiceImpl implements PatientService{
 	@Override
 	public Patient getPatientByEmail(String emailId) {
 		Patient fetchedPatient = new Patient();
+		System.out.println("id"+emailId);
 		
 		if(patientRepository.existsById(emailId))
 		{
