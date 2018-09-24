@@ -13,10 +13,10 @@ public interface BookingAppointmentService {
   
  
 	
-  public void post(Appointment appointment) ;
-  
-  public void listen(@Payload Schedule schedule);
-  
+//  public void post(Appointment appointment) ;
+//  
+//  public void listen(@Payload Schedule schedule);
+//  
  public  List<Appointment> getAllAppointmentByDoctorId(String doctorEmail);
 	
 }
