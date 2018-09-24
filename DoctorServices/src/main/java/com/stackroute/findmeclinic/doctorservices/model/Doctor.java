@@ -23,30 +23,29 @@ public class Doctor {
 	  private String doctorLastName;
 	  private String doctorName;
 	  private String doctorPhoneNumber;
-	  private Date doctorDob;
+	  
 	  private String doctorGender;
 	  private String doctorQualification;
 	  private String doctorSpeciality;
-	  private String doctorLocality;
-	  private String address;
-	  private String doctorExperience;
+	  
+	 
+	  private int doctorExperience;
 	  private List<DoctorAddress> doctorAddress;
 
 	  public Doctor() {
 	  }
 
-	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, Date doctorDob, String doctorGender, String doctorQualification, String doctorSpeciality, String doctorLocality, String address, String doctorExperience, List<DoctorAddress> doctorAddress){
+	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, Date doctorDob, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress){
 	  	this.doctorEmail = doctorEmail;
 		  this.doctorFirstName = doctorFirstName;
 		  this.doctorLastName = doctorLastName;
 		  this.doctorName = doctorName;
 		  this.doctorPhoneNumber = doctorPhoneNumber;
-		  this.doctorDob = doctorDob;
+		
 		  this.doctorGender = doctorGender;
 		  this.doctorQualification = doctorQualification;
 		  this.doctorSpeciality = doctorSpeciality;
-		  this.doctorLocality = doctorLocality;
-		  this.address = address;
+		 
 		  this.doctorExperience = doctorExperience;
 		  this.doctorAddress = doctorAddress;
 	  }
@@ -91,13 +90,7 @@ public class Doctor {
 		  this.doctorPhoneNumber = doctorPhoneNumber;
 	  }
 
-	  public Date getDoctorDob() {
-		  return doctorDob;
-	  }
-
-	  public void setDoctorDob(Date doctorDob) {
-		  this.doctorDob = doctorDob;
-	  }
+	  
 
 	  public String getDoctorGender() {
 		  return doctorGender;
@@ -123,27 +116,13 @@ public class Doctor {
 		  this.doctorSpeciality = doctorSpeciality;
 	  }
 
-	  public String getDoctorLocality() {
-		  return doctorLocality;
-	  }
+	  
 
-	  public void setDoctorLocality(String doctorLocality) {
-		  this.doctorLocality = doctorLocality;
-	  }
-
-	  public String getAddress() {
-		  return address;
-	  }
-
-	  public void setAddress(String address) {
-		  this.address = address;
-	  }
-
-	  public String getDoctorExperience() {
+	  public int getDoctorExperience() {
 		  return doctorExperience;
 	  }
 
-	  public void setDoctorExperience(String doctorExperience) {
+	  public void setDoctorExperience(int doctorExperience) {
 		  this.doctorExperience = doctorExperience;
 	  }
 
@@ -154,7 +133,8 @@ public class Doctor {
 	  public void setDoctorAddress(List<DoctorAddress> doctorAddress) {
 		  this.doctorAddress = doctorAddress;
 	  }
-	  @Override
+
+	@Override
 	public String toString() {
 		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
 				+ doctorLastName + ", doctorName=" + doctorName + ", doctorPhoneNumber=" + doctorPhoneNumber
@@ -162,6 +142,7 @@ public class Doctor {
 				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience=" + doctorExperience
 				+ ", doctorAddress=" + doctorAddress + "]";
 	}
+	 
 
 
 
