@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.NotificationService.controller;
+package com.stackroute.findmeclinic.notificationservice.controller;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
