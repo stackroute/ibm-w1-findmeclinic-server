@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -29,8 +30,12 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	private KafkaTemplate<String, Appointment> kafkaTemplate;
 	private DoctorAppointmentRepository doctorRepository;
 	private PatientAppointmentRepository patientRepository;
-
+	@Autowired
 	private RestTemplate restTemplate;
+	@Bean
+	public RestTemplate restTemplate() {
+	    return new RestTemplate();
+	}
 	
 	@Autowired
 	public BookingAppointmentServiceImpl(DoctorAppointmentRepository doctorRepository, PatientAppointmentRepository patientRepository,KafkaTemplate<String, Appointment> kafkaTemplate,RestTemplate restTemplate) {
@@ -138,8 +143,8 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 
 		Notification notification =new Notification();
 		
-		notification.setDoctor(appointment.getBookedFor());
-		notification.setPatient(appointment.getBookingBy());
+		notification.setDoctorId(appointment.getBookedFor());
+		notification.setPatientId(appointment.getBookingBy());
 
         restTemplate.postForObject("http://172.23.239.225:8009/api/v1/notify/", notification , Notification.class);
 		

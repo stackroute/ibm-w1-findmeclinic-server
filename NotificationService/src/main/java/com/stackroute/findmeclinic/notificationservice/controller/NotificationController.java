@@ -1,10 +1,14 @@
 package com.stackroute.findmeclinic.notificationservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,9 +44,35 @@ public class NotificationController {
 	public ResponseEntity<?> getNotication( @RequestBody Notification notification){
 		System.out.println("notification object"+ notification);
 		ResponseEntity<?> responseEntity = null;
-		notificationService.sendNotification(notification);
+		
+		if(notificationService.sendNotification(notification))
+		{
+		 responseEntity = new ResponseEntity<>(notification,HttpStatus.OK);
+		}
+		else {
+			responseEntity = new ResponseEntity<>("cannot add", HttpStatus.CONFLICT);
+		}
 		return responseEntity;
 	}
 	
+	@GetMapping("/{mail}")
 	
+	public ResponseEntity<?> getPatientNotication( @PathVariable String mail){
+		ResponseEntity<?> responseEntity = null;
+		List<Notification> patientNotification = notificationService.getPatientNotification(mail);
+		if(patientNotification!=null)
+		{
+			 responseEntity = new ResponseEntity<>(patientNotification,HttpStatus.OK);
+
+		}
+		else
+		{
+			responseEntity = new ResponseEntity<>("no prescription", HttpStatus.CONFLICT);
+
+		}
+		
+		return responseEntity;
+
+	}
+
 }

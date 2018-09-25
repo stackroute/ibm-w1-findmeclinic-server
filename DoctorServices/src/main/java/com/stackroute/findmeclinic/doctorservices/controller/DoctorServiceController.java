@@ -200,7 +200,7 @@ public class DoctorServiceController {
         responseEntity = new ResponseEntity<String>(doctorEmail, HttpStatus.OK);
         return responseEntity;
     }
-	@GetMapping("/docserv/place/{locality}")
+	/*@GetMapping("/docserv/place/{locality}")
 	public ResponseEntity<?> getDocLocation(@PathVariable String locality){
 		ResponseEntity<?> responseEntity=null;
 		List<Doctor> d=doctorService.getDoctorByLocality(locality);
@@ -212,6 +212,6 @@ public class DoctorServiceController {
 		}
 		return responseEntity;
 		
-	}
+	}*/
 	
 }
