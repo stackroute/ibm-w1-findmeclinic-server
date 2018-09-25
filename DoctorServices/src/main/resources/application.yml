@@ -16,10 +16,14 @@ spring:
        mongodb:
            database: DoctorServiceDbMongo
            host: localhost
-           password: root1234
+           password: root
            port: 27017
+<<<<<<< HEAD
 
            username: jason123
+=======
+           username: root
+>>>>>>> 2ab74806d2806b06bccadbab2d8580be42e62ec3
 
 
 

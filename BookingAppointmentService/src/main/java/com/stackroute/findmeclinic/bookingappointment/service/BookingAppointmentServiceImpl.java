@@ -26,18 +26,23 @@ import com.stackroute.findmeclinic.bookingappointment.repository.PatientAppointm
 @Service
 public class BookingAppointmentServiceImpl implements BookingAppointmentService {
 
-	private KafkaTemplate<String, Appointment> kafkaTemplate;
+//	private KafkaTemplate<String, Appointment> kafkaTemplate;
 	private DoctorAppointmentRepository doctorRepository;
 	private PatientAppointmentRepository patientRepository;
 
-	private RestTemplate restTemplate;
+//	private RestTemplate restTemplate;
 	
 	@Autowired
 	public BookingAppointmentServiceImpl(DoctorAppointmentRepository doctorRepository, PatientAppointmentRepository patientRepository) {
 
 		this.doctorRepository=doctorRepository;
 		this.patientRepository=patientRepository;
+<<<<<<< HEAD
 		
+=======
+//		this.kafkaTemplate=kafkaTemplate;
+//		this.restTemplate =restTemplate;
+>>>>>>> 2ab74806d2806b06bccadbab2d8580be42e62ec3
 	}
 	
 	
@@ -135,7 +140,16 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		
 
 
+<<<<<<< HEAD
 		
+=======
+//		Notification notification =new Notification();
+//		
+//		notification.setDoctor(appointment.getBookedFor());
+//		notification.setPatient(appointment.getBookingBy());
+//
+//        restTemplate.postForObject("http://172.23.239.225:8009/api/v1/notify/", notification , Notification.class);
+>>>>>>> 2ab74806d2806b06bccadbab2d8580be42e62ec3
 		
 		}
 		return flag;
