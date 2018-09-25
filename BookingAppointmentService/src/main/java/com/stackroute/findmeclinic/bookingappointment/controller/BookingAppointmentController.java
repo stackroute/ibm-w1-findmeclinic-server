@@ -56,9 +56,9 @@ public class BookingAppointmentController {
 			if(bookingService.createBookingAppointment(appointment))	
 			 responseEntity= new ResponseEntity<Appointment>(appointment, HttpStatus.CREATED);
 			else
-				responseEntity= new ResponseEntity<Appointment>(HttpStatus.CONFLICT);
+				responseEntity= new ResponseEntity<Appointment>(HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
-		
+		System.out.println(e);
 			responseEntity= new ResponseEntity<Appointment>(HttpStatus.CONFLICT);
 		}
 		

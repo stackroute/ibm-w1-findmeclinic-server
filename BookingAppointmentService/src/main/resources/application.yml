@@ -10,16 +10,7 @@ spring:
            password: root
            port: 27017
            username: root
-<<<<<<< HEAD
-           
-#data:
-#    mongodb:
-#          database: BookingService
-#          host: localhost
-#          password: root
-#          port: 27017
-#          username: root1
-=======
 
->>>>>>> 4c250e78c1926d31f573b8acf25816e6af77542f
+           
+
 

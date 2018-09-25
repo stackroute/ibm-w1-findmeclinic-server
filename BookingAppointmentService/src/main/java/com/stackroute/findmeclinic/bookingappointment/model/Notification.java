@@ -40,4 +40,10 @@ public class Notification {
     public void setNotifgenDate(Date notifgenDate) {
         this.notifgenDate = notifgenDate;
     }
+	@Override
+	public String toString() {
+		return "Notification [notification_id=" + notification_id + ", doctor=" + doctor + ", patient=" + patient
+				+ ", content=" + content + ", notifgenDate=" + notifgenDate + "]";
+	}
+    
 }

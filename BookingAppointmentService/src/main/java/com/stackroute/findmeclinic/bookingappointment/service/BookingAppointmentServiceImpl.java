@@ -30,15 +30,15 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	private DoctorAppointmentRepository doctorRepository;
 	private PatientAppointmentRepository patientRepository;
 
-//	private RestTemplate restTemplate;
+	private RestTemplate restTemplate;
 	
 	@Autowired
-	public BookingAppointmentServiceImpl(DoctorAppointmentRepository doctorRepository, PatientAppointmentRepository patientRepository) {
+	public BookingAppointmentServiceImpl(DoctorAppointmentRepository doctorRepository, PatientAppointmentRepository patientRepository, RestTemplate restTemplate) {
 
 		this.doctorRepository=doctorRepository;
 		this.patientRepository=patientRepository;
 //		this.kafkaTemplate=kafkaTemplate;
-//		this.restTemplate =restTemplate;
+		this.restTemplate =restTemplate;
 	}
 	
 	
@@ -123,7 +123,7 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 			patientAppointment.setPatientEmail(appointment.getBookingBy());
 			appointment.setAppointmentId(count);
 			list1.add(appointment);
-			patientAppointment.setAppointments(list);
+			patientAppointment.setAppointments(list1);
 			patientAppointment = patientRepository.insert(patientAppointment);
 		}
 
@@ -132,16 +132,13 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		if (doctorAppointment != null && patientAppointment != null) {
 		
 		flag = true;
-		
-		
 
+		Notification notification =new Notification();
+		
+		notification.setDoctor(appointment.getBookedFor());
+		notification.setPatient(appointment.getBookingBy());
 
-//		Notification notification =new Notification();
-//		
-//		notification.setDoctor(appointment.getBookedFor());
-//		notification.setPatient(appointment.getBookingBy());
-//
-//        restTemplate.postForObject("http://172.23.239.225:8009/api/v1/notify/", notification , Notification.class);
+        restTemplate.postForObject("http://172.23.239.225:8081/api/v1/notify", notification , Notification.class);
 		
 		}
 		return flag;
