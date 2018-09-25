@@ -27,7 +27,7 @@ import com.stackroute.findmeclinic.bookingappointment.repository.PatientAppointm
 @Service
 public class BookingAppointmentServiceImpl implements BookingAppointmentService {
 
-//	private KafkaTemplate<String, Appointment> kafkaTemplate;
+
 	private DoctorAppointmentRepository doctorRepository;
 	private PatientAppointmentRepository patientRepository;
 	@Autowired
@@ -37,33 +37,25 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	}
 
 
+
 	private RestTemplate restTemplate;
 	
+
+
+
+
 	@Autowired
 	public BookingAppointmentServiceImpl(DoctorAppointmentRepository doctorRepository, PatientAppointmentRepository patientRepository, RestTemplate restTemplate) {
 
 		this.doctorRepository=doctorRepository;
 		this.patientRepository=patientRepository;
-//		this.kafkaTemplate=kafkaTemplate;
+
+
 		this.restTemplate =restTemplate;
 	}
 	
-	
-//	@Override
-//	public void post(Appointment appointment) {
-//
-//		kafkaTemplate.send("notificationTopic", appointment);
-//	
-//	}
-//	
-//	@Override
-//	@KafkaListener(topics="calenderTopic")
-//	public void listen(@Payload Schedule schedule) {
-//		System.out.println("Schedule object:"+ schedule);
-//		
-//		
-//		
-//	}
+
+
 
 
 	
@@ -141,16 +133,11 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		flag = true;
 
 		Notification notification =new Notification();
-
-		
-		notification.setDoctorId(appointment.getBookedFor());
-		notification.setPatientId(appointment.getBookingBy());
-
-        restTemplate.postForObject("http://172.23.239.225:8081/api/v1/notify", notification , Notification.class);
 		notification.setDoctorId(appointment.getBookedFor());
 		notification.setPatientId(appointment.getBookingBy());
 
         restTemplate.postForObject("http://172.23.239.225:8009/api/v1/notify/", notification , Notification.class);
+
 
 		
 		}

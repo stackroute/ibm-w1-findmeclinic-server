@@ -129,6 +129,7 @@ public class Doctor {
 		  this.doctorAddress = doctorAddress;
 	  }
 
+
 	@Override
 	public String toString() {
 		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
@@ -137,6 +138,7 @@ public class Doctor {
 				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience=" + doctorExperience
 				+ ", doctorAddress=" + doctorAddress + "]";
 	}
+
 
 
 

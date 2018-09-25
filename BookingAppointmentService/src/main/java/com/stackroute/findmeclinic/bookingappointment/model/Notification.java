@@ -46,6 +46,7 @@ public class Notification {
 	public String toString() {
 		return "Notification [notification_id=" + notification_id + ", doctorId=" + doctorId + ", patientId="
 				+ patientId + ", content=" + content + ", notifgenDate=" + notifgenDate + "]";
+		
 	}
 	
     

@@ -1,14 +1,12 @@
 package com.stackroute.findmeclinic.CalendarService.service;
 
+import com.stackroute.findmeclinic.CalendarService.exception.ScheduleAlreadyExistsException;
 import com.stackroute.findmeclinic.CalendarService.exception.ScheduleDoesNotExistException;
 import com.stackroute.findmeclinic.CalendarService.model.Schedule;
 import com.stackroute.findmeclinic.CalendarService.model.Slot;
 import com.stackroute.findmeclinic.CalendarService.repository.ScheduleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -21,7 +19,6 @@ import java.util.NoSuchElementException;
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
 
-	private KafkaTemplate<String, Schedule> kafkaTemplate;
     private ScheduleRepository scheduleRepository;
 
     @Autowired
@@ -29,23 +26,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         this.scheduleRepository = scheduleRepository;
     }
 
-    
-    @Override
-	public void post(Schedule schedule) {
 
-		kafkaTemplate.send("notificationTopic", schedule);
-	
-	}
-	
-	@Override
-	@KafkaListener(topics="calenderTopic")
-	public void listen(@Payload Schedule schedule) {
-		System.out.println("Schedule object:"+ schedule);
-		
-		
-		
-	}
-	
     /*
      *Method to add to slot
      */
@@ -59,9 +40,8 @@ public class ScheduleServiceImpl implements ScheduleService {
         slots = new ArrayList<>();
         long i = 0;
         while (i != slotCount) {
-
             Slot slot = new Slot();
-            slot.setSlotId(i+1);
+            slot.setSlotId(i + 1);
             slot.setSlotStart(startTime);
             slot.setTimePerPatient(timePerPatient);
             slot.setStatus("unblocked");
@@ -76,14 +56,33 @@ public class ScheduleServiceImpl implements ScheduleService {
     /*
      *Method to create a Schedule
      */
+    Schedule scheduleNew;
+    List<Schedule> existingSchedules;
     @Override
-    public Schedule createSchedule(Schedule schedule) {
-        schedule.setScheduleCreationDate(new Date());
+    public Schedule createSchedule(Schedule schedule) throws ScheduleAlreadyExistsException {
         schedule.setSlots(addSlots(schedule.getStartTime(), schedule.getEndTime(), schedule.getTimePerPatient()));
-        Schedule scheduleNew = scheduleRepository.insert(schedule);
+        schedule.setScheduleCreationDate(new Date());
+        try{
+            existingSchedules = getAllScheduleCreatedBy(schedule.getCreatedBy());
+            if(existingSchedules.size()==0){
+                scheduleNew = scheduleRepository.insert(schedule);
+            }else{
+                for (Schedule existingSchedule : existingSchedules) {
+                    if(existingSchedule.getScheduleDate().equals(schedule.getScheduleDate()) && existingSchedule.getStartTime().equals(schedule.getStartTime()) && existingSchedule.getEndTime().equals(schedule.getEndTime())){
+                        throw new ScheduleAlreadyExistsException("Schedule Already Exists with same time");
+                    }else if((schedule.getStartTime().isAfter(existingSchedule.getStartTime()) && schedule.getStartTime().isBefore(existingSchedule.getEndTime())) || (schedule.getEndTime().isAfter(existingSchedule.getStartTime()) && schedule.getEndTime().isBefore(existingSchedule.getEndTime())) || schedule.getEndTime().equals(existingSchedule.getEndTime()) || schedule.getStartTime().equals(existingSchedule.getStartTime())){
+                        throw new ScheduleAlreadyExistsException("A Schedule Already Exists between time frames");
+                    }
+                    else{
+                        scheduleNew=scheduleRepository.insert(schedule);
+                    }
+                }
+            }
+        }catch (ScheduleDoesNotExistException e) {
+            e.getMessage();
+        }
         return scheduleNew;
     }
-
     /*
      *Method to delete a Schedule
      */
@@ -107,10 +106,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public List<Schedule> getAllScheduleCreatedBy(String createdBy) throws ScheduleDoesNotExistException {
-        List<Schedule> schedules= scheduleRepository.getAllcheduleByCreatedBy(createdBy);
-        if(schedules==null){
+        List<Schedule> schedules = scheduleRepository.getAllcheduleByCreatedBy(createdBy);
+        if (schedules == null) {
             throw new ScheduleDoesNotExistException("No Schedules available for the Doctor");
-        }else {
+        } else {
             return schedules;
         }
     }
@@ -123,25 +122,25 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
 
-	@Override
-	public List<Slot> getAllSlotsCreatedBy(String createdBy) {
-		
-		List<Schedule> schedules= scheduleRepository.getAllcheduleByCreatedBy(createdBy);
-		List<Slot> allSlots = new ArrayList<Slot>();
-		
-		for(int i=0;i< schedules.size();i++) {
-			
-			Schedule schedule=schedules.get(i);
-			
-			List<Slot> slots=schedule.getSlots();
-			
-			for(int j=0;j< slots.size(); j++) {
-				
-				allSlots.add(slots.get(j));
-			}
-		}
-		return allSlots;
-	}
+    @Override
+    public List<Slot> getAllSlotsCreatedBy(String createdBy) {
+
+        List<Schedule> schedules = scheduleRepository.getAllcheduleByCreatedBy(createdBy);
+        List<Slot> allSlots = new ArrayList<Slot>();
+
+        for (int i = 0; i < schedules.size(); i++) {
+
+            Schedule schedule = schedules.get(i);
+
+            List<Slot> slots = schedule.getSlots();
+
+            for (int j = 0; j < slots.size(); j++) {
+
+                allSlots.add(slots.get(j));
+            }
+        }
+        return allSlots;
+    }
 
 
 }
