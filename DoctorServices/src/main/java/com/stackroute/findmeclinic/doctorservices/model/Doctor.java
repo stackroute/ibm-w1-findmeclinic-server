@@ -11,10 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
   @Document
 public class Doctor {
-<<<<<<< HEAD
 
-=======
->>>>>>> 99f7dbcf83f6bb248e271027f69ddc2632dcdb7b
 	  @Id
 	  @Email
 	  private String doctorEmail;
@@ -78,12 +75,7 @@ public class Doctor {
 	  public String getDoctorName() {
 		  return doctorName;
 	  }
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 99f7dbcf83f6bb248e271027f69ddc2632dcdb7b
 	  public void setDoctorName(String doctorName) {
 		  this.doctorName = doctorName;
 	  }
@@ -137,7 +129,6 @@ public class Doctor {
 		  this.doctorAddress = doctorAddress;
 	  }
 
-<<<<<<< HEAD
 	@Override
 	public String toString() {
 		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
@@ -146,10 +137,6 @@ public class Doctor {
 				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience=" + doctorExperience
 				+ ", doctorAddress=" + doctorAddress + "]";
 	}
-=======
-	
-
->>>>>>> 99f7dbcf83f6bb248e271027f69ddc2632dcdb7b
 
 
 

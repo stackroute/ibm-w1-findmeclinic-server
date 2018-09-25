@@ -1,0 +1,9 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: fileupload
+  servlet:
+    multipart:
+      max-file-size: 11000KB
+      max-request-size: 11000KB

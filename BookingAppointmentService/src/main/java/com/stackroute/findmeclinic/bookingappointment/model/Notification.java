@@ -44,8 +44,11 @@ public class Notification {
     }
 	@Override
 	public String toString() {
-		return "Notification [notification_id=" + notification_id + ", doctor=" + doctor + ", patient=" + patient
-				+ ", content=" + content + ", notifgenDate=" + notifgenDate + "]";
+		return "Notification [notification_id=" + notification_id + ", doctorId=" + doctorId + ", patientId="
+				+ patientId + ", content=" + content + ", notifgenDate=" + notifgenDate + "]";
 	}
+	
+    
+    
     
 }
