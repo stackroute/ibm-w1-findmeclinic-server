@@ -48,6 +48,7 @@ public class PatientServiceImpl implements PatientService{
 	@Override
 	public Patient getPatientByEmail(String emailId) {
 		Patient fetchedPatient = new Patient();
+		System.out.println("id"+emailId);
 		
 		if(patientRepository.existsById(emailId))
 		{
@@ -70,10 +71,7 @@ public class PatientServiceImpl implements PatientService{
 
 	@Override
 	public Patient updatePatient(Patient patient) {
-		 int currentYear= Calendar.getInstance().get(Calendar.YEAR);
-		int birthYear = patient.getPatientDobYear();
-		int age = currentYear-birthYear;
-		patient.setPatientAge(age);
+		
 		patientRepository.save(patient);
 		return patient;
 	}

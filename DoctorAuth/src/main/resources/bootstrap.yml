@@ -1,18 +1,18 @@
-spring:
- boot:
-   admin:
-     client:
-       url: http://172.23.239.225:8000
- cloud:
-    config:
-      uri:  http://localhost:8080  
- application:
-   name: doctor-auth
-
-info:
- app:
-   description: Doctor service is up and has no problem
-   name: Doctor-Auth
-   version: 1.0.0
-
-  
+#spring:
+# boot:
+#   admin:
+#     client:
+#       url: http://172.23.239.225:8000
+# cloud:
+#    config:
+#      uri:  http://localhost:8080  
+# application:
+#   name: doctor-auth
+#
+#info:
+# app:
+#   description: Doctor service is up and has no problem
+#   name: Doctor-Auth
+#   version: 1.0.0
+#
+#  

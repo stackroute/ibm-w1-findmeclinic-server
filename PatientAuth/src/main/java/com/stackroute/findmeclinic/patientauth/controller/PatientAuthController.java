@@ -77,8 +77,6 @@ public class PatientAuthController {
 						.signWith(SignatureAlgorithm.HS256, "secretkey").compact();
 				Map<String, String> map1 = new HashMap<>();
 				map1.put("token", jwtToken);
-				map1.put("userId", patient.getPatientEmail());
-				map1.put("message", "User successfully logged in");
 				return map1;
 			};
 			Map<String, String> map = securityTokenGenrator.generateToken(patient);

@@ -22,7 +22,7 @@ public class RecordKafkaConfiguration {
 	 @Bean
 	    public ConsumerFactory<String, Prescription> consumerFactory() {
 	        Map<String, Object> map = new HashMap<>();
-	        map.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+	        map.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.228:9092");
 	        map.put(ConsumerConfig.GROUP_ID_CONFIG, "groupjson");
 	        map.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 	        map.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
