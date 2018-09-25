@@ -57,7 +57,6 @@ public class ScheduleServiceImpl implements ScheduleService {
      *Method to create a Schedule
      */
     Schedule scheduleNew;
-<<<<<<< HEAD
     List<Schedule> existingSchedules;
     @Override
     public Schedule createSchedule(Schedule schedule) throws ScheduleAlreadyExistsException {
@@ -79,34 +78,11 @@ public class ScheduleServiceImpl implements ScheduleService {
                     }
                 }
             }
-        }catch (ScheduleDoesNotExistException e){
+        }catch (ScheduleDoesNotExistException e) {
             e.getMessage();
-=======
-    @Override
-    public Schedule createSchedule(Schedule schedule) throws ScheduleAlreadyExistsException {
-        boolean flag = false;
-        try {
-            List<Schedule> existingSchedules = getAllScheduleCreatedBy(schedule.getCreatedBy());
-            for(Schedule existingSchedule: existingSchedules){
-                if(existingSchedule.getScheduleDate().compareTo(schedule.getScheduleDate())!=0 && schedule.getStartTime().isAfter(existingSchedule.getStartTime()) && schedule.getStartTime().isBefore(existingSchedule.getEndTime()) && schedule.getEndTime().isAfter(existingSchedule.getStartTime()) && schedule.getEndTime().isBefore(existingSchedule.getEndTime())){
-                    throw new ScheduleAlreadyExistsException("Schedule already present for this time period, Please delete the existing Schedule and add Again");
-                }else{
-                    flag = true;
-                }
-            }
-        } catch (ScheduleDoesNotExistException e) {
-            e.printStackTrace();
-        }
-        if(flag) {
-            schedule.setScheduleCreationDate(new Date());
-            schedule.setSlots(addSlots(schedule.getStartTime(), schedule.getEndTime(), schedule.getTimePerPatient()));
-            scheduleNew = scheduleRepository.insert(schedule);
->>>>>>> 86f8ab66bbcc6da3e6b93327852706996d958e97
         }
         return scheduleNew;
-
     }
-
     /*
      *Method to delete a Schedule
      */

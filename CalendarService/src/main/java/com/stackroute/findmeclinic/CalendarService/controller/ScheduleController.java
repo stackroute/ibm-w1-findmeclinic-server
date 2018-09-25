@@ -25,7 +25,6 @@ public class ScheduleController {
 
     @PostMapping("/api/calendar/add")
     ResponseEntity<?> addSchedule(@RequestBody Schedule schedule) {
-<<<<<<< HEAD
         ResponseEntity<?> responseEntity = null;
         Schedule newSchedule;
         try {
@@ -37,22 +36,8 @@ public class ScheduleController {
             }
         } catch (ScheduleAlreadyExistsException e) {
             responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-=======
-        ResponseEntity<?> responseEntity=null;
-        Schedule newSchedule;
-        try {
-            newSchedule = scheduleService.createSchedule(schedule);
-            if(newSchedule != null){
-                responseEntity = new ResponseEntity<>(newSchedule, HttpStatus.CREATED);
-            }else{
-                responseEntity = new ResponseEntity<>(newSchedule, HttpStatus.CONFLICT);
-            }
-        } catch (ScheduleAlreadyExistsException e) {
-            responseEntity = new ResponseEntity<>("Schedule Already Exists", HttpStatus.CONFLICT);
->>>>>>> 86f8ab66bbcc6da3e6b93327852706996d958e97
+
         }
-
-
         return responseEntity;
     }
 
@@ -61,7 +46,6 @@ public class ScheduleController {
     ResponseEntity<?> deleteSchedule(@PathVariable String scheduleId) {
         ResponseEntity<?> responseEntity = null;
         try {
-<<<<<<< HEAD
             if (scheduleService.deleteSchedule(scheduleId)) {
                 responseEntity = new ResponseEntity<>("Deleted", HttpStatus.OK);
             } else {
@@ -70,16 +54,6 @@ public class ScheduleController {
         } catch (ScheduleDoesNotExistException e) {
             responseEntity = new ResponseEntity<>("Not Found", HttpStatus.NOT_FOUND);
         }
-=======
-			if(scheduleService.deleteSchedule(scheduleId)){
-			    responseEntity = new ResponseEntity<>("Deleted", HttpStatus.OK);
-			}else {
-				responseEntity = new ResponseEntity<>("Not Found", HttpStatus.NOT_FOUND);
-			}
-		} catch (ScheduleDoesNotExistException e) {
-			responseEntity = new ResponseEntity<>("Not Found", HttpStatus.NOT_FOUND);
-		}
->>>>>>> 86f8ab66bbcc6da3e6b93327852706996d958e97
         return responseEntity;
     }
 
@@ -94,19 +68,6 @@ public class ScheduleController {
     @GetMapping("/api/calendar/get/{docId}")
     ResponseEntity<?> getScheduleByDoc(@PathVariable String docId) {
         ResponseEntity<?> responseEntity = null;
-<<<<<<< HEAD
-        List<Schedule> schedulesDoc = null;
-        try {
-            schedulesDoc = scheduleService.getAllScheduleCreatedBy(docId);
-        } catch (ScheduleDoesNotExistException e) {
-            responseEntity = new ResponseEntity<>("Not Found", HttpStatus.NOT_FOUND);
-        }
-        if (schedulesDoc != null) {
-            responseEntity = new ResponseEntity<>(schedulesDoc, HttpStatus.OK);
-        } else {
-            responseEntity = new ResponseEntity<>("Doctor Not Found", HttpStatus.NOT_FOUND);
-        }
-=======
         List<Schedule> schedulesDoc;
 		try {
 			schedulesDoc = scheduleService.getAllScheduleCreatedBy(docId);
@@ -118,8 +79,7 @@ public class ScheduleController {
 		} catch (ScheduleDoesNotExistException e) {
 			  responseEntity= new ResponseEntity<>("Doctor Not Found", HttpStatus.NOT_FOUND);
 		}
-        
->>>>>>> 86f8ab66bbcc6da3e6b93327852706996d958e97
+
         return responseEntity;
     }
 
