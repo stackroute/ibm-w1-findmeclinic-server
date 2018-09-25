@@ -1,7 +1,5 @@
 package com.stackroute.findmeclinic.doctorservices.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 

@@ -2,6 +2,7 @@ server:
  port: 8085
 
 spring:
+<<<<<<< HEAD
 
    data:
        mongodb:
@@ -11,4 +12,15 @@ spring:
            port: 27017
            username: root
 
+           
 
+
+=======
+ data:
+  mongodb:
+    database: BookingService
+    host: localhost
+    password: root
+    port: 27017
+    username: root
+>>>>>>> 99f7dbcf83f6bb248e271027f69ddc2632dcdb7b
