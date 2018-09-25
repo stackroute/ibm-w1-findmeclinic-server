@@ -71,10 +71,7 @@ public class PatientServiceImpl implements PatientService{
 
 	@Override
 	public Patient updatePatient(Patient patient) {
-		 int currentYear= Calendar.getInstance().get(Calendar.YEAR);
-		int birthYear = patient.getPatientDobYear();
-		int age = currentYear-birthYear;
-		patient.setPatientAge(age);
+		
 		patientRepository.save(patient);
 		return patient;
 	}

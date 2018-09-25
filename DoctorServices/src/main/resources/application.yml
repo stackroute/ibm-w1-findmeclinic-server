@@ -18,11 +18,8 @@ spring:
            host: localhost
            password: root1234
            port: 27017
-<<<<<<< HEAD
-           username: sanvi
-=======
+
            username: jason123
 
 
 
->>>>>>> ecb94b942a725379021b234edae8e8c2ef4c6e63
