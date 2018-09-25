@@ -1,5 +1,6 @@
 package com.stackroute.findmeclinic.CalendarService.controller;
 
+import com.stackroute.findmeclinic.CalendarService.exception.ScheduleAlreadyExistsException;
 import com.stackroute.findmeclinic.CalendarService.exception.ScheduleDoesNotExistException;
 import com.stackroute.findmeclinic.CalendarService.model.Schedule;
 import com.stackroute.findmeclinic.CalendarService.model.Slot;
@@ -25,13 +26,19 @@ public class ScheduleController {
     @PostMapping("/api/calendar/add")
     ResponseEntity<?> addSchedule(@RequestBody Schedule schedule) {
         ResponseEntity<?> responseEntity=null;
-        Schedule newSchedule = scheduleService.createSchedule(schedule);
-        if(newSchedule!=null){
-            responseEntity= new ResponseEntity<>(newSchedule, HttpStatus.CREATED);
+        Schedule newSchedule;
+        try {
+            newSchedule = scheduleService.createSchedule(schedule);
+            if(newSchedule != null){
+                responseEntity = new ResponseEntity<>(newSchedule, HttpStatus.CREATED);
+            }else{
+                responseEntity = new ResponseEntity<>(newSchedule, HttpStatus.CONFLICT);
+            }
+        } catch (ScheduleAlreadyExistsException e) {
+            responseEntity = new ResponseEntity<>("Schedule Already Exists", HttpStatus.CONFLICT);
         }
-        else{
-            responseEntity= new ResponseEntity<>(null, HttpStatus.CONFLICT);
-        }
+
+
         return responseEntity;
     }
 
