@@ -1,9 +1,13 @@
 Manifest-Version: 1.0
 Implementation-Title: FileUploadService
 Implementation-Version: 0.0.1-SNAPSHOT
+<<<<<<< HEAD
 Built-By: keerthana
+=======
+Built-By: priyanka
+>>>>>>> 99f7dbcf83f6bb248e271027f69ddc2632dcdb7b
 Implementation-Vendor-Id: com.stackroute.findmeclinic
-Build-Jdk: 1.8.0_181
+Build-Jdk: 1.8.0_171
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/FileUploadService
 Created-By: Maven Integration for Eclipse

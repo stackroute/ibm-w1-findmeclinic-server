@@ -5,10 +5,23 @@ import java.util.Date;
 public class Notification {
 
 	private String notification_id;
-    private String doctor;
-    private String patient;
+	private String doctorId;
+    private String patientId;
     private String content;
     private Date notifgenDate;
+    public String getDoctorId() {
+		return doctorId;
+	}
+	public void setDoctorId(String doctorId) {
+		this.doctorId = doctorId;
+	}
+	public String getPatientId() {
+		return patientId;
+	}
+	public void setPatientId(String patientId) {
+		this.patientId = patientId;
+	}
+	
 
     public String getNotification_id() {
         return notification_id;
@@ -16,18 +29,7 @@ public class Notification {
     public void setNotification_id(String notification_id) {
         this.notification_id = notification_id;
     }
-    public String getDoctor() {
-        return doctor;
-    }
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
-    }
-    public String getPatient() {
-        return patient;
-    }
-    public void setPatient(String patient) {
-        this.patient = patient;
-    }
+   
     public String getContent() {
         return content;
     }
