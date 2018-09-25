@@ -11,38 +11,36 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
   @Document
 public class Doctor {
-
-	
-
-
-
 	  @Id
-
 	  @Email
 	  private String doctorEmail;
 	  private String doctorFirstName;
 	  private String doctorLastName;
 	  private String doctorName;
 	  private String doctorPhoneNumber;
-	  
+
+	
 	  private String doctorGender;
 	  private String doctorQualification;
 	  private String doctorSpeciality;
+
 	  
 	 
+
 	  private int doctorExperience;
 	  private List<DoctorAddress> doctorAddress;
 
 	  public Doctor() {
 	  }
 
-	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, Date doctorDob, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress){
+
+	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress){
 	  	this.doctorEmail = doctorEmail;
 		  this.doctorFirstName = doctorFirstName;
 		  this.doctorLastName = doctorLastName;
 		  this.doctorName = doctorName;
 		  this.doctorPhoneNumber = doctorPhoneNumber;
-		
+
 		  this.doctorGender = doctorGender;
 		  this.doctorQualification = doctorQualification;
 		  this.doctorSpeciality = doctorSpeciality;
@@ -79,6 +77,8 @@ public class Doctor {
 		  return doctorName;
 	  }
 
+
+
 	  public void setDoctorName(String doctorName) {
 		  this.doctorName = doctorName;
 	  }
@@ -91,8 +91,6 @@ public class Doctor {
 	  public void setDoctorPhoneNumber(String doctorPhoneNumber) {
 		  this.doctorPhoneNumber = doctorPhoneNumber;
 	  }
-
-	  
 
 	  public String getDoctorGender() {
 		  return doctorGender;
@@ -118,8 +116,6 @@ public class Doctor {
 		  this.doctorSpeciality = doctorSpeciality;
 	  }
 
-	  
-
 	  public int getDoctorExperience() {
 		  return doctorExperience;
 	  }
@@ -136,16 +132,9 @@ public class Doctor {
 		  this.doctorAddress = doctorAddress;
 	  }
 
-	@Override
-	public String toString() {
-		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
-				+ doctorLastName + ", doctorName=" + doctorName + ", doctorPhoneNumber=" + doctorPhoneNumber
-				+ ",doctorGender=" + doctorGender
-				+ ", doctorQualification=" + doctorQualification + ", doctorSpeciality=" + doctorSpeciality
-				+ ", doctorExperience="
-				+ doctorExperience + ", doctorAddress=" + doctorAddress + "]";
-	}
-	 
+	
+
+
 
 
 

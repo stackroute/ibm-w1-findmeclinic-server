@@ -16,9 +16,9 @@ spring:
        mongodb:
            database: DoctorServiceDbMongo
            host: localhost
-           password: root1234
+           password: root
            port: 27017
-
            username: jason123
+
 
 

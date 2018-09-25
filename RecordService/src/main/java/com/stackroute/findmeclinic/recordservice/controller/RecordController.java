@@ -30,7 +30,7 @@ public class RecordController {
 				response = new ResponseEntity<>(recordService.getPatientPrescription(patientEmail), HttpStatus.OK);
 			}
 		} catch (PrescriptionNotAddedException exception) {
-			response = new ResponseEntity<>("No prescriptions added yet", HttpStatus.CONFLICT);
+			response = new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
 		}
 		return response;
 	}

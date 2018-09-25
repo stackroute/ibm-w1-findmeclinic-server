@@ -1,7 +1,5 @@
 package com.stackroute.findmeclinic.doctorservices.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -37,23 +35,35 @@ public class DoctorServiceController {
 	public DoctorServiceController( DoctorService doctorService) {
 		this.doctorService=doctorService;
 	}
-	
-	@PostMapping()
+
+//	@PostMapping()
+//    public ResponseEntity<?> sendToTopic(@RequestBody Doctor doctor){
+//        ResponseEntity<?> response = new ResponseEntity<>(doctor,HttpStatus.OK);
+//        doctorService.getAllDoctor();
+//        return response;
+//        
+//    }
+
+	/*@PostMapping()
     public ResponseEntity<?> sendToTopic(@RequestBody Doctor doctor){
         ResponseEntity<?> response = new ResponseEntity<>(doctor,HttpStatus.OK);
-        doctorService.getAllDoctor();
+	        doctorService.getAllDoctor();
         return response;
         
-    }
+   }*/
+
 	
 	@PostMapping("/docserv")
 	public ResponseEntity<?> addDoctorInfo(@RequestBody Doctor doctor){
 		ResponseEntity<?> responseEntity;
 		try {
 			doctorService.createDoctorDetails(doctor);
-			responseEntity = new ResponseEntity<>(doctor,HttpStatus.CREATED);
+			responseEntity = new ResponseEntity<>(doctor,HttpStatus.OK);
 
-			
+			doctorService.getAllDoctor();
+
+
+			doctorService.getAllDoctor();
 		}
 		catch(DoctorAlreadyExistException exception) {
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.CONFLICT);
