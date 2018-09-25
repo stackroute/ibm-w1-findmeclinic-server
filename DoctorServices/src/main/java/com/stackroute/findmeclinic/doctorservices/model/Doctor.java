@@ -11,6 +11,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
   @Document
 public class Doctor {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7c14f245580d936abb145e7714795579a8f842e0
 	  @Id
 	  @Email
 	  private String doctorEmail;
@@ -18,25 +22,29 @@ public class Doctor {
 	  private String doctorLastName;
 	  private String doctorName;
 	  private String doctorPhoneNumber;
-	  
+
+	
 	  private String doctorGender;
 	  private String doctorQualification;
 	  private String doctorSpeciality;
+
 	  
 	 
+
 	  private int doctorExperience;
 	  private List<DoctorAddress> doctorAddress;
 
 	  public Doctor() {
 	  }
 
-	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, Date doctorDob, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress){
+
+	  public Doctor(String doctorEmail, String doctorFirstName, String doctorLastName, String doctorName, String doctorPhoneNumber, String doctorGender, String doctorQualification, String doctorSpeciality, int doctorExperience, List<DoctorAddress> doctorAddress){
 	  	this.doctorEmail = doctorEmail;
 		  this.doctorFirstName = doctorFirstName;
 		  this.doctorLastName = doctorLastName;
 		  this.doctorName = doctorName;
 		  this.doctorPhoneNumber = doctorPhoneNumber;
-		
+
 		  this.doctorGender = doctorGender;
 		  this.doctorQualification = doctorQualification;
 		  this.doctorSpeciality = doctorSpeciality;
@@ -73,11 +81,29 @@ public class Doctor {
 		  return doctorName;
 	  }
 
+<<<<<<< HEAD
 //	public void setLocality(String locality) {
 //		this.locality = locality;
 //	}
 
 
+=======
+/*
+	public String getLocality() {
+		return locality;
+	}
+
+
+
+
+	public void setLocality(String locality) {
+		this.locality = locality;
+	}*/
+
+
+
+
+>>>>>>> 7c14f245580d936abb145e7714795579a8f842e0
 	  public void setDoctorName(String doctorName) {
 		  this.doctorName = doctorName;
 	  }
@@ -89,8 +115,6 @@ public class Doctor {
 	  public void setDoctorPhoneNumber(String doctorPhoneNumber) {
 		  this.doctorPhoneNumber = doctorPhoneNumber;
 	  }
-
-	  
 
 	  public String getDoctorGender() {
 		  return doctorGender;
@@ -116,8 +140,6 @@ public class Doctor {
 		  this.doctorSpeciality = doctorSpeciality;
 	  }
 
-	  
-
 	  public int getDoctorExperience() {
 		  return doctorExperience;
 	  }
@@ -138,12 +160,21 @@ public class Doctor {
 	public String toString() {
 		return "Doctor [doctorEmail=" + doctorEmail + ", doctorFirstName=" + doctorFirstName + ", doctorLastName="
 				+ doctorLastName + ", doctorName=" + doctorName + ", doctorPhoneNumber=" + doctorPhoneNumber
+<<<<<<< HEAD
 				+ ", doctorGender=" + doctorGender + ", doctorQualification=" + doctorQualification
 				+ ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience=" + doctorExperience
 				+ ", doctorAddress=" + doctorAddress + "]";
 	}
 
 		
+=======
+				+ ", doctorDob="  + ", doctorGender=" + doctorGender + ", doctorQualification="
+				+ doctorQualification + ", doctorSpeciality=" + doctorSpeciality + ", doctorExperience="
+				+ doctorExperience + ", doctorAddress=" + doctorAddress + "]";
+	}
+	
+
+>>>>>>> 7c14f245580d936abb145e7714795579a8f842e0
 
 
 

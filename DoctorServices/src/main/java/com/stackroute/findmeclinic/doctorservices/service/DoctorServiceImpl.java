@@ -36,9 +36,9 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
-	public Doctor createDoctorDetails(Doctor doctor) throws DoctorAlreadyExistException {
+	public Doctor createDoctorDetails(Doctor doctor) {
 		if (doctorRepository.existsById(doctor.getDoctorEmail())) {
-			throw new DoctorAlreadyExistException("Doctor already exist");
+		
 		} else {
 			String name = doctor.getDoctorFirstName() + doctor.getDoctorLastName();
 			doctor.setDoctorName(name);
@@ -149,26 +149,26 @@ public class DoctorServiceImpl implements DoctorService {
 
 	
 
-	@Override
-	public List<Doctor> getDoctorByLocality(String locality) {
-		// TODO Auto-generated method stub
-		List <Doctor> dl= new ArrayList<>();
-		System.out.println("loc"+locality);
-		String doctorLocality;
-		List<Doctor> obj= doctorRepository.findAll();
-		System.out.println("doc"+obj);
-		Iterator<Doctor> i = obj.iterator();
-		while(i.hasNext()) {
-			Doctor doc=i.next();
-			doctorLocality = doc.getDoctorLocality();
-			if(doctorLocality.equals(locality))
-			{
-				dl.add(doc);
-			}		
-		}
-		return  dl;
-
-	}
+//	@Override
+//	public List<Doctor> getDoctorByLocality(String locality) {
+//		// TODO Auto-generated method stub
+//		List <Doctor> dl= new ArrayList<>();
+//		System.out.println("loc"+locality);
+//		String doctorLocality;
+//		List<Doctor> obj= doctorRepository.findAll();
+//		System.out.println("doc"+obj);
+//		Iterator<Doctor> i = obj.iterator();
+//		while(i.hasNext()) {
+//			Doctor doc=i.next();
+//			doctorLocality = doc.getDoctorLocality();
+//			if(doctorLocality.equals(locality))
+//			{
+//				dl.add(doc);
+//			}		
+//		}
+//		return  dl;
+//
+//	}
 
 	
 
