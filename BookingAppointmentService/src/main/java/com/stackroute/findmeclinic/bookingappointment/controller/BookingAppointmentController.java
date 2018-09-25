@@ -33,19 +33,6 @@ public class BookingAppointmentController {
 		this.bookingService = bookingService;
 	}
 
-
-//	@PostMapping("/publish")
-//	public ResponseEntity<?>  produceToTopic(@RequestBody Appointment appointment) {
-//
-//		ResponseEntity<?> responseEntity = null;
-//		
-//		bookingService.post(appointment);
-//		
-//		responseEntity= new ResponseEntity<Appointment>(appointment, HttpStatus.CREATED);
-//
-//		return responseEntity;
-//
-//	}
 	
 
 	@PostMapping("/add")
