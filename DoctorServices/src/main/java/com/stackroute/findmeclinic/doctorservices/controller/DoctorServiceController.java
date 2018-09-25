@@ -61,9 +61,6 @@ public class DoctorServiceController {
 			responseEntity = new ResponseEntity<>(doctor,HttpStatus.OK);
 
 			doctorService.getAllDoctor();
-
-
-			doctorService.getAllDoctor();
 		}
 		catch(DoctorAlreadyExistException exception) {
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.CONFLICT);
@@ -102,7 +99,8 @@ public class DoctorServiceController {
 		ResponseEntity<?> responseEntity;
 		try {
 			doctorService.updateDoctorDetails(doctor);
-			responseEntity = new ResponseEntity<>(doctor,HttpStatus.CREATED);		
+			responseEntity = new ResponseEntity<>(doctor,HttpStatus.OK);
+			doctorService.getAllDoctor();
 			}
 		catch(Exception ex) {
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
