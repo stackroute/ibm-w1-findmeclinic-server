@@ -60,13 +60,10 @@ public class NotificationController {
 		return responseEntity;
 	}
 	
-<<<<<<< HEAD
-	@GetMapping("/{mail}")
+
 	@ApiOperation(" ")
-=======
 	@GetMapping("/patient/{mail}")
 	
->>>>>>> 972be2465ac20fcf3e25dcd3c8ee184569e009a9
 	public ResponseEntity<?> getPatientNotication( @PathVariable String mail){
 		ResponseEntity<?> responseEntity = null;
 		List<Notification> patientNotification = notificationService.getPatientNotification(mail);
