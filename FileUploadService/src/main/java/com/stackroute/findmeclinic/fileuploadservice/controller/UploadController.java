@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +24,17 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 
 import com.stackroute.findmeclinic.fileuploadservice.storage.StorageService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @CrossOrigin("*")
+<<<<<<< HEAD:FileUploadService/src/main/java/com/stackroute/findmeclinic/fileuploadservice/controller/UploadController.java
 @RestController
+=======
+@Controller
+@RequestMapping("api/v1")
+@Api(value="Upload Resource")
+>>>>>>> 1d2efdc70022f895396e126476c08e9b4f6ec906:FileUploadService/src/main/java/com/stackroute/findmeclinic/recordservice/controller/UploadController.java
 public class UploadController {
 
 	@Autowired
@@ -33,6 +43,7 @@ public class UploadController {
 	List<String> files = new ArrayList<String>();
 
 	@PostMapping("/post")
+	@ApiOperation(" ")
 	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
 		String message = "";
 		try {
@@ -48,6 +59,7 @@ public class UploadController {
 	}
 
 	@GetMapping("/getallfiles")
+	@ApiOperation(" ")
 	public ResponseEntity<List<String>> getListFiles(Model model) {
 		List<String> fileNames = files
 				.stream().map(fileName -> MvcUriComponentsBuilder
@@ -59,6 +71,7 @@ public class UploadController {
 
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody
+	@ApiOperation(" ")
 	public ResponseEntity<Resource> getFile(@PathVariable String filename) {
 		Resource file = storageService.loadFile(filename);
 		return ResponseEntity.ok()

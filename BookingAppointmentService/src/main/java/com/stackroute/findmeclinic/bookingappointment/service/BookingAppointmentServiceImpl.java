@@ -31,11 +31,15 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 	private DoctorAppointmentRepository doctorRepository;
 	private PatientAppointmentRepository patientRepository;
 	@Autowired
-	private RestTemplate restTemplate;
 	@Bean
 	public RestTemplate restTemplate() {
 	    return new RestTemplate();
 	}
+
+
+
+	private RestTemplate restTemplate;
+	
 
 
 
@@ -45,8 +49,13 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 
 		this.doctorRepository=doctorRepository;
 		this.patientRepository=patientRepository;
+
+
 		this.restTemplate =restTemplate;
-}
+	}
+	
+
+
 
 
 	
@@ -124,7 +133,6 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		flag = true;
 
 		Notification notification =new Notification();
-
 		notification.setDoctorId(appointment.getBookedFor());
 		notification.setPatientId(appointment.getBookingBy());
 

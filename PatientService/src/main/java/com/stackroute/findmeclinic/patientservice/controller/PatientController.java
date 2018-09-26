@@ -16,9 +16,13 @@ import com.stackroute.findmeclinic.patientservice.exception.PatientAlreadyExists
 import com.stackroute.findmeclinic.patientservice.model.Patient;
 import com.stackroute.findmeclinic.patientservice.service.PatientService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api/v1/patient")
 @CrossOrigin("*")
+@Api(value="Patient Resource")
 public class PatientController {
 
 	
@@ -29,6 +33,7 @@ public class PatientController {
 		this.patientService = patientService;
 	}
 	@PostMapping
+	@ApiOperation(" ")
 	public ResponseEntity<?> registerPatientUser(@RequestBody Patient patient) {
 
 		ResponseEntity<?> responseEntity = null;
@@ -43,6 +48,7 @@ public class PatientController {
 	}
 	
 	@GetMapping("/{mailId}")
+	@ApiOperation(" ")
 	public ResponseEntity<?> getPatientByEmailId(@PathVariable String mailId)
 	{
 		ResponseEntity<?> responseEntity = null;
@@ -54,7 +60,7 @@ public class PatientController {
 	
 	
 	@GetMapping("/badge/{mailId}")
-	
+	@ApiOperation(" ")
 		public ResponseEntity<String> getPatientBadgeName(@PathVariable String mailId)
 		{
 			ResponseEntity<String> responseEntity = null;
@@ -65,6 +71,7 @@ public class PatientController {
 		}
 	
 	@PutMapping("/{mailId}")
+	@ApiOperation(" ")
 	public ResponseEntity<?> updatePatientDetail(@PathVariable String mailId,@RequestBody Patient patient)
 	{
 		ResponseEntity<?> responseEntity = null;

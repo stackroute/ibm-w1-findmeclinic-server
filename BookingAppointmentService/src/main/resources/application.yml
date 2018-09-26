@@ -1,17 +1,14 @@
 server:
- port: 8085
-
+  port: 8090
+  
 spring:
-
-
-   data:
-       mongodb:
-           database: BookingService
-           host: localhost
-           password: root
-           port: 27017
-           username: root
-
-           
-
-
+ boot:
+   admin:
+     client:
+       url: http://172.23.239.225:8000
+ cloud:
+    config:
+      uri:  http://172.23.239.225:8060   
+ application:
+   name: bookingappointment-service
+   

@@ -20,11 +20,15 @@ import com.stackroute.findmeclinic.doctorservices.model.Doctor;
 import com.stackroute.findmeclinic.doctorservices.model.DoctorAddress;
 import com.stackroute.findmeclinic.doctorservices.service.DoctorService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 
 
 @RestController
 @RequestMapping("/api/v2/doctor")
 @CrossOrigin(origins="*")
+@Api(value="Doctor Resource")
 public class DoctorServiceController {
 
 	
@@ -54,14 +58,12 @@ public class DoctorServiceController {
 
 	
 	@PostMapping("/docserv")
+	@ApiOperation("To add Doctor information")
 	public ResponseEntity<?> addDoctorInfo(@RequestBody Doctor doctor){
 		ResponseEntity<?> responseEntity;
 		try {
 			doctorService.createDoctorDetails(doctor);
 			responseEntity = new ResponseEntity<>(doctor,HttpStatus.OK);
-
-			doctorService.getAllDoctor();
-
 
 			doctorService.getAllDoctor();
 		}
@@ -75,6 +77,7 @@ public class DoctorServiceController {
 	}
 	
 	@PostMapping("/docserv/{id}")
+	@ApiOperation("To add basic information of Doctor ")
 	public ResponseEntity<?> addDoctorBasicDetails(@RequestBody DoctorAddress doctorAddress,@PathVariable String id){
 		
 		
@@ -98,11 +101,13 @@ public class DoctorServiceController {
 	
 	
 	@PutMapping("/docserv/{id}")
+	@ApiOperation("To update the information")
 	public ResponseEntity<?> updateDoctorDetails(@PathVariable String id, @RequestBody Doctor doctor){
 		ResponseEntity<?> responseEntity;
 		try {
 			doctorService.updateDoctorDetails(doctor);
-			responseEntity = new ResponseEntity<>(doctor,HttpStatus.CREATED);		
+			responseEntity = new ResponseEntity<>(doctor,HttpStatus.OK);
+			doctorService.getAllDoctor();
 			}
 		catch(Exception ex) {
 			responseEntity = new ResponseEntity<>("Doctor Already exist ", HttpStatus.NOT_FOUND);
@@ -112,6 +117,7 @@ public class DoctorServiceController {
 	}
 	
 	@GetMapping("/docserv/{id}")
+	@ApiOperation("To get the details of the Doctor")
     public ResponseEntity<?> getDoctorBasicDetails(@PathVariable String id){
         ResponseEntity<?> responseEntity;
         try {
@@ -148,6 +154,7 @@ public class DoctorServiceController {
 //	}
 	
 	@GetMapping("/docserv/badge/{id}")
+	@ApiOperation("To make the badge of the Doctor")
 	public ResponseEntity<String> getBadge(@PathVariable String id){
 		ResponseEntity<String> responseEntity;
 		
@@ -158,6 +165,7 @@ public class DoctorServiceController {
 		return responseEntity;
 	}
 	@GetMapping("/docserv/fname/{name}")
+	@ApiOperation("To get the doctor details")
 	public ResponseEntity<?> getDoctorFirstNameDetails(@PathVariable String name){
 		ResponseEntity<?> responseEntity;
 		try {
@@ -181,6 +189,7 @@ public class DoctorServiceController {
 	
 	
 	@GetMapping("/docserv/lname/{name}")
+	@ApiOperation(" To get the details of the Doctor ")
 	public ResponseEntity<?> getDoctorLastNameDetails(@PathVariable String name){
 		ResponseEntity<?> responseEntity;
 		try {
@@ -203,6 +212,7 @@ public class DoctorServiceController {
 	
 
 	@GetMapping("/email/{doctorName}")
+	@ApiOperation(" To get userId by Name  ")
     public ResponseEntity<String> getDocEmailByName(@PathVariable String doctorName){
         ResponseEntity<String> responseEntity;
         
