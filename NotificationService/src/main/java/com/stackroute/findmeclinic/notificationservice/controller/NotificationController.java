@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.stackroute.findmeclinic.notificationservice.model.Notification;
 import com.stackroute.findmeclinic.notificationservice.service.Notificationservice;
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin("*")
 @RequestMapping("/api/v1/notify")
 public class NotificationController {
 	/* @MessageMapping("/hello")
@@ -55,7 +55,7 @@ public class NotificationController {
 		return responseEntity;
 	}
 	
-	@GetMapping("/{mail}")
+	@GetMapping("/patient/{mail}")
 	
 	public ResponseEntity<?> getPatientNotication( @PathVariable String mail){
 		ResponseEntity<?> responseEntity = null;
@@ -74,5 +74,26 @@ public class NotificationController {
 		return responseEntity;
 
 	}
+	
+
+	@GetMapping("/doctor/{mail}")	
+	public ResponseEntity<?> getDoctorNotication( @PathVariable String mail){
+		ResponseEntity<?> responseEntity = null;
+		List<Notification> patientNotification = notificationService.getDoctorNotification(mail);
+		if(patientNotification!=null)
+		{
+			 responseEntity = new ResponseEntity<>(patientNotification,HttpStatus.OK);
+
+		}
+		else
+		{
+			responseEntity = new ResponseEntity<>("no prescription", HttpStatus.CONFLICT);
+
+		}
+		
+		return responseEntity;
+
+	}
+
 
 }
