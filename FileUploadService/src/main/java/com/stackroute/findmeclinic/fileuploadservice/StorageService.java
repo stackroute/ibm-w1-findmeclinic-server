@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.recordservice.storage;
+package com.stackroute.findmeclinic.fileuploadservice.storage;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
