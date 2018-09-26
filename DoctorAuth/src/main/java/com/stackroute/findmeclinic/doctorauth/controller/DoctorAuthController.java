@@ -20,10 +20,13 @@ import com.stackroute.findmeclinic.doctorauth.service.DoctorAuthService;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/doctor/auth")
 @CrossOrigin("*")
+@Api(value="DoctorAuth Resource")
 public class DoctorAuthController {
 
 	private DoctorAuthService docService;
@@ -33,6 +36,7 @@ public class DoctorAuthController {
 	}
 
 	@PostMapping
+	@ApiOperation("To Register as a Doctor")
 	public ResponseEntity<?> registerDoctor(@RequestBody Doctor doctor) {
 		ResponseEntity<?> responseEntity = null;
 
@@ -48,6 +52,7 @@ public class DoctorAuthController {
 	}
 
 	@PostMapping("/login")
+	@ApiOperation("To login as a Doctor")
 	public ResponseEntity<?> loginDoctor(@RequestBody Doctor loginDetails) {
 		try {
 			String userId = loginDetails.getDoctorEmail();

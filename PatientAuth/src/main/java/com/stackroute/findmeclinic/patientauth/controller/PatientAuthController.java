@@ -22,10 +22,13 @@ import com.stackroute.findmeclinic.patientauth.service.PatientService;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/v1/patientauth")
 @CrossOrigin("*")
+@Api(value="PatientAuth Resource")
 public class PatientAuthController {
 
 	private PatientService patientService;
@@ -36,6 +39,7 @@ public class PatientAuthController {
 	}
 
 	@PostMapping
+	@ApiOperation(" ")
 	public ResponseEntity<?> registerPatientUser(@RequestBody Patient patient) {
 
 		ResponseEntity<?> responseEntity = null;
@@ -50,6 +54,7 @@ public class PatientAuthController {
 	}
 
 	@PostMapping("/login")
+	@ApiOperation(" ")
 	public ResponseEntity<?> loginPatient(@RequestBody Patient loginDetails) {
 		try {
 			String userId = loginDetails.getPatientEmail();

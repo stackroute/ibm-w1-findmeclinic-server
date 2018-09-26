@@ -5,6 +5,10 @@ import com.stackroute.findmeclinic.CalendarService.exception.ScheduleDoesNotExis
 import com.stackroute.findmeclinic.CalendarService.model.Schedule;
 import com.stackroute.findmeclinic.CalendarService.model.Slot;
 import com.stackroute.findmeclinic.CalendarService.service.ScheduleService;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +18,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
+@RequestMapping("/api/calendar")
+@Api(value="Calendar Resource")
 public class ScheduleController {
     private ScheduleService scheduleService;
 
@@ -23,7 +29,8 @@ public class ScheduleController {
     }
 
 
-    @PostMapping("/api/calendar/add")
+    @PostMapping("/add")
+    @ApiOperation("Scheduling  for particular slot")
     ResponseEntity<?> addSchedule(@RequestBody Schedule schedule) {
         ResponseEntity<?> responseEntity = null;
         Schedule newSchedule;
@@ -42,7 +49,8 @@ public class ScheduleController {
     }
 
 
-    @DeleteMapping("/api/calendar/delete/{scheduleId}")
+    @DeleteMapping("/delete/{scheduleId}")
+    @ApiOperation("To delete the  particular slot")
     ResponseEntity<?> deleteSchedule(@PathVariable String scheduleId) {
         ResponseEntity<?> responseEntity = null;
         try {
@@ -57,7 +65,8 @@ public class ScheduleController {
         return responseEntity;
     }
 
-    @GetMapping("/api/calendar/get")
+    @GetMapping("/get")
+    @ApiOperation("To Get the schedule")
     ResponseEntity<?> getSchedule() {
         ResponseEntity<?> responseEntity = null;
         List<Schedule> schedules = scheduleService.getAllSchedule();
@@ -65,7 +74,8 @@ public class ScheduleController {
         return responseEntity;
     }
 
-    @GetMapping("/api/calendar/get/{docId}")
+    @GetMapping("/get/{docId}")
+    @ApiOperation("To get paticular schedule of a doctor")
     ResponseEntity<?> getScheduleByDoc(@PathVariable String docId) {
         ResponseEntity<?> responseEntity = null;
         List<Schedule> schedulesDoc;
@@ -83,7 +93,8 @@ public class ScheduleController {
         return responseEntity;
     }
 
-    @GetMapping("/api/calendar/getSlots/{docId}")
+    @GetMapping("/getSlots/{docId}")
+    @ApiOperation("To get the slots by the doctor name")
     ResponseEntity<?> getSlotsByDoc(@PathVariable String docId){
         ResponseEntity<?> responseEntity = null;
         List<Slot> schedulesDoc = scheduleService.getAllSlotsCreatedBy(docId);
