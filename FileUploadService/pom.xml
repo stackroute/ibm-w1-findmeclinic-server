@@ -4,11 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute.findmeclinic</groupId>
-	<artifactId>RecordService</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>FileUploadService</artifactId>
 	<packaging>jar</packaging>
 
-	<name>RecordService</name>
+	<name>FileUploadService</name>
 	<description>Service for file upload</description>
 
 	 <parent>

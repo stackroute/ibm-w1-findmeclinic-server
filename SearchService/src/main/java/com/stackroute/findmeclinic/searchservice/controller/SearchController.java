@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin(origins = "*")
 @RequestMapping("api/v1/search")
 @Api(value="Search Resource")
+
 public class SearchController {
 
 	private SearchService searchService;
@@ -35,7 +36,7 @@ public class SearchController {
 	}
 
 	@MessageMapping("/doc-name")
-	@ApiOperation(" ")
+	@ApiOperation(" Message Destination")
 	public String greeting(String name) throws Exception {
 		System.out.println("name" + name);
 		searchService.getDoctorByName(name);
@@ -43,7 +44,9 @@ public class SearchController {
 	}
 
 	@GetMapping("/{name}")
-	@ApiOperation(" ")
+
+	@ApiOperation("Getting the list of Doctors for a specific name")
+
 	public ResponseEntity getAllDoctor(@PathVariable() String name) {
 		ResponseEntity responseEntity = null;
 		System.out.println(11);
