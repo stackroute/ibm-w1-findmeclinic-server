@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.recordservice;
+package com.stackroute.findmeclinic.fileuploadservice;
 
 import javax.annotation.Resource;
 
@@ -6,16 +6,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.stackroute.findmeclinic.recordservice.storage.StorageService;
+import com.stackroute.findmeclinic.fileuploadservice.storage.StorageService;
 
 @SpringBootApplication
-public class RecordServiceApplication implements CommandLineRunner {
+public class FileUploadApplication implements CommandLineRunner {
 
 	@Resource
 	StorageService storageService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(RecordServiceApplication.class, args);
+		SpringApplication.run(FileUploadApplication.class, args);
 	}
 
 	@Override
