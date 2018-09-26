@@ -27,7 +27,7 @@ public class RecordController {
 	}
 
 	@GetMapping("/patient/{patientEmail}")
-	@ApiOperation(" ")
+	@ApiOperation("Fetches the list of prescription for particular emailId")
 	public ResponseEntity<?> getPatientPrescriptions(@PathVariable String patientEmail) {
 		ResponseEntity<?> response = null;
 		try {
