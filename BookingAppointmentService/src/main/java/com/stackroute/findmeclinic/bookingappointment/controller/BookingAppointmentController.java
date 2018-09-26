@@ -19,9 +19,13 @@ import com.stackroute.findmeclinic.bookingappointment.model.BookingAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.Doctor;
 import com.stackroute.findmeclinic.bookingappointment.service.BookingAppointmentService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("api/v1/appointment")
+@Api(value="BookingAppointment Resource")
 public class BookingAppointmentController {
 
 	
@@ -36,6 +40,7 @@ public class BookingAppointmentController {
 	
 
 	@PostMapping("/add")
+	@ApiOperation("Saving the Appointment for particular slot")
 	public ResponseEntity<?> createBooking(@RequestBody Appointment appointment) {
 		ResponseEntity<?> responseEntity = null;
 		
@@ -54,6 +59,7 @@ public class BookingAppointmentController {
 	}
 
 	@GetMapping("/doctor/{id}")
+	@ApiOperation("To get all the Appointments of the Doctor")
 	public ResponseEntity<?> getAllAppointmentsByDoctorId(@PathVariable String id) {
 		ResponseEntity<?> responseEntity = null;
 		List<Appointment> list = bookingService.getAllAppointmentByDoctorId(id);
@@ -69,6 +75,7 @@ public class BookingAppointmentController {
 	}
 	
 	@GetMapping("/patient/{id}")
+	@ApiOperation("To get the Past Appointments of the Patient")
 	public ResponseEntity<?> getAllAppointmentsByPatientId(@PathVariable String id) {
 		ResponseEntity<?> responseEntity = null;
 		List<Appointment> list = bookingService.getAllAppointmentByPatientId(id);

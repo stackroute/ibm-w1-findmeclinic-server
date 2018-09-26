@@ -17,9 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.findmeclinic.notificationservice.model.Notification;
 import com.stackroute.findmeclinic.notificationservice.service.Notificationservice;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin("*")
 @RequestMapping("/api/v1/notify")
+@Api(value="Notification Resource")
 public class NotificationController {
 	/* @MessageMapping("/hello")
 	    @SendTo("/topic/greetings")
@@ -41,6 +45,7 @@ public class NotificationController {
 	}
 	
 	@PostMapping()
+	@ApiOperation(" ")
 	public ResponseEntity<?> getNotication( @RequestBody Notification notification){
 		System.out.println("notification object"+ notification);
 		ResponseEntity<?> responseEntity = null;
@@ -55,8 +60,13 @@ public class NotificationController {
 		return responseEntity;
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/{mail}")
+	@ApiOperation(" ")
+=======
+	@GetMapping("/patient/{mail}")
 	
+>>>>>>> 972be2465ac20fcf3e25dcd3c8ee184569e009a9
 	public ResponseEntity<?> getPatientNotication( @PathVariable String mail){
 		ResponseEntity<?> responseEntity = null;
 		List<Notification> patientNotification = notificationService.getPatientNotification(mail);
@@ -74,5 +84,26 @@ public class NotificationController {
 		return responseEntity;
 
 	}
+	
+
+	@GetMapping("/doctor/{mail}")	
+	public ResponseEntity<?> getDoctorNotication( @PathVariable String mail){
+		ResponseEntity<?> responseEntity = null;
+		List<Notification> patientNotification = notificationService.getDoctorNotification(mail);
+		if(patientNotification!=null)
+		{
+			 responseEntity = new ResponseEntity<>(patientNotification,HttpStatus.OK);
+
+		}
+		else
+		{
+			responseEntity = new ResponseEntity<>("no prescription", HttpStatus.CONFLICT);
+
+		}
+		
+		return responseEntity;
+
+	}
+
 
 }

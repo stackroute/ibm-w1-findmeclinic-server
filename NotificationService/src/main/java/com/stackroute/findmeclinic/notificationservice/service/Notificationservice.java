@@ -36,17 +36,16 @@ public class Notificationservice {
 	count = notificationList.size();
 //	 Notification notif = restTemplate.getForObject("http://localhost/api/v1/appointment", Notification.class);
 	if(notification!=null) {
-		System.out.println("Hiiiii");
+	
 		System.out.println("id "+count+1);
 		notification.setNotifyId(count+1);
 		notification.setNotifgenDate(new Date());
 		notifyRepo.save(notification);
-//		 messageTemplate.convertAndSend("/topic/greetings", notification);
+		 messageTemplate.convertAndSend("/topic/greetings", notification);
 	}
 	else
 	{
-		flag=false;
-		 
+		flag=false;		 
 	}
 	
 	
@@ -77,6 +76,31 @@ public class Notificationservice {
 	
 	
 	return patientNotify;
+	}
+	
+	
+	public List<Notification> getDoctorNotification(String email)
+	{
+		
+		System.out.println("Hiiiii");
+
+		Notification notify = new Notification();
+		List<Notification> doctorNotify = new ArrayList<>();
+		List<Notification> notificationList = new ArrayList<>();
+		notificationList = notifyRepo.findAll();
+		Iterator<Notification> iterator = notificationList.iterator();
+		while(iterator.hasNext())
+
+	{
+			notify = iterator.next();
+			if(email.equals(notify.getDoctor()))
+					{
+				doctorNotify.add(notify);
+					}
+	}
+	
+	
+	return doctorNotify;
 	}
 
 	
