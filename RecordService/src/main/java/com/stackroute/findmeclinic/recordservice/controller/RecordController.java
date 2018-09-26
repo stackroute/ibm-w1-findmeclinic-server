@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.stackroute.findmeclinic.recordservice.exception.PrescriptionNotAddedException;
 import com.stackroute.findmeclinic.recordservice.service.RecordConsumerService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api/v1/record")
 @CrossOrigin("*")
+@Api(value="Record Resource")
 public class RecordController {
 
 	private RecordConsumerService recordService;
@@ -23,6 +27,7 @@ public class RecordController {
 	}
 
 	@GetMapping("/patient/{patientEmail}")
+	@ApiOperation(" ")
 	public ResponseEntity<?> getPatientPrescriptions(@PathVariable String patientEmail) {
 		ResponseEntity<?> response = null;
 		try {
