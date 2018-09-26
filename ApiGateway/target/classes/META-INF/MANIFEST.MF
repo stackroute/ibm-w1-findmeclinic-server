@@ -1,27 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: ApiGateway
 Implementation-Version: 0.0.1-SNAPSHOT
-<<<<<<< HEAD
 Built-By: diwakar
-=======
-<<<<<<< HEAD
-Built-By: sanjana
-=======
-<<<<<<< HEAD
-Built-By: jason
-=======
-<<<<<<< HEAD
-Built-By: diwakar
-=======
-<<<<<<< HEAD
-Built-By: sanjana
-=======
-Built-By: keerthana
->>>>>>> fc4268c8db7c17e5a4120f31fa906b2aa43ff330
->>>>>>> 1d2efdc70022f895396e126476c08e9b4f6ec906
->>>>>>> d04d10bb800d4c8a33c19260128e02eb77b3f3a3
->>>>>>> e3a349b76e64f5b80e77c22a69fd9a272fb9369d
->>>>>>> c35ef056e0d7d251eec01bfaf33b24697caae516
 Implementation-Vendor-Id: com.stackroute.findMeClinic
 Build-Jdk: 1.8.0_181
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
