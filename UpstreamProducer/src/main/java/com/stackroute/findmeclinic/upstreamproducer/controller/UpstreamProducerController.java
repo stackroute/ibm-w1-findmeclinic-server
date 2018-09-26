@@ -25,7 +25,7 @@ public class UpstreamProducerController {
 	}
 	
 	
-	@PostMapping()
+	@PostMapping
 	public ResponseEntity<?> sendToTopic(@RequestBody Prescription prescription){
 		System.out.println("inside controller");
 		service.sendPrescription(prescription);
