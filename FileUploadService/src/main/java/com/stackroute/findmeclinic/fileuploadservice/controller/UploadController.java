@@ -1,4 +1,4 @@
-package com.stackroute.findmeclinic.recordservice.controller;
+package com.stackroute.findmeclinic.fileuploadservice.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,15 +22,19 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
-import com.stackroute.findmeclinic.recordservice.storage.StorageService;
+import com.stackroute.findmeclinic.fileuploadservice.storage.StorageService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @CrossOrigin("*")
+<<<<<<< HEAD:FileUploadService/src/main/java/com/stackroute/findmeclinic/fileuploadservice/controller/UploadController.java
+@RestController
+=======
 @Controller
 @RequestMapping("api/v1")
 @Api(value="Upload Resource")
+>>>>>>> 1d2efdc70022f895396e126476c08e9b4f6ec906:FileUploadService/src/main/java/com/stackroute/findmeclinic/recordservice/controller/UploadController.java
 public class UploadController {
 
 	@Autowired

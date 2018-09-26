@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:com.stackroute.findmeclinic.recordservice.RecordServiceApplication</config>
+		<config>java:com.stackroute.findmeclinic.fileuploadservice.FileUploadApplication</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
