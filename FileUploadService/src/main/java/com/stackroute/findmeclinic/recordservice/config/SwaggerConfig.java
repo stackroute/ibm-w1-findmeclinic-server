@@ -1,5 +1,4 @@
-package com.stackroute.findmeclinic.apigateway.config;
-
+package com.stackroute.findmeclinic.recordservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +17,8 @@ public class SwaggerConfig {
 	@Bean
 	  public Docket productApi() {
 	      return new Docket(DocumentationType.SWAGGER_2)
-	              .select()                 .apis(RequestHandlerSelectors.basePackage("com.stackroute.findmeclinic.doctorservices.controller"))
-	              .paths(regex("/api/v2/doctor.*"))
+	              .select()                 .apis(RequestHandlerSelectors.basePackage("com.stackroute.findmeclinic.recordservice.controller"))
+	              .paths(regex("/api/v1.*"))
 	              .build()
 	              .apiInfo(metaInfo());
 	  }
@@ -28,8 +27,8 @@ public class SwaggerConfig {
 	  private ApiInfo metaInfo() {
 
 	      ApiInfo apiInfo = new ApiInfo(
-	              "Spring boot Doctor Service API",
-	              "Spring Boot Swagger for Doctor Service",
+	              "Spring boot Record Service API",
+	              "Spring Boot Swagger for Record Service",
 	              "1.0.0",
 	              "Terms of Service",
 	              new Contact("Keerthana", "https://www.youtube.com/TechPrimers",

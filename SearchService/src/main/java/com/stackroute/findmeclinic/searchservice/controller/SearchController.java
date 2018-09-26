@@ -18,9 +18,13 @@ import org.springframework.web.client.RestTemplate;
 import com.stackroute.findmeclinic.searchservice.model.Doctor;
 import com.stackroute.findmeclinic.searchservice.services.SearchService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("api/v1/search")
+@Api(value="Search Resource")
 public class SearchController {
 
 	private SearchService searchService;
@@ -31,7 +35,7 @@ public class SearchController {
 	}
 
 	@MessageMapping("/doc-name")
-
+	@ApiOperation(" ")
 	public String greeting(String name) throws Exception {
 		System.out.println("name" + name);
 		searchService.getDoctorByName(name);
@@ -39,6 +43,7 @@ public class SearchController {
 	}
 
 	@GetMapping("/{name}")
+	@ApiOperation(" ")
 	public ResponseEntity getAllDoctor(@PathVariable() String name) {
 		ResponseEntity responseEntity = null;
 		System.out.println(11);
