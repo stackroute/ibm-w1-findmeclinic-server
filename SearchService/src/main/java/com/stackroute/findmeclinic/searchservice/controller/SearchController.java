@@ -36,7 +36,7 @@ public class SearchController {
 	}
 
 	@MessageMapping("/doc-name")
-
+	@ApiOperation(" Message Destination")
 	public String greeting(String name) throws Exception {
 		System.out.println("name" + name);
 		searchService.getDoctorByName(name);
@@ -44,6 +44,7 @@ public class SearchController {
 	}
 
 	@GetMapping("/{name}")
+
 	@ApiOperation("Getting the list of Doctors for a specific name")
 
 	public ResponseEntity getAllDoctor(@PathVariable() String name) {

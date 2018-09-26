@@ -27,8 +27,8 @@ public class SwaggerConfig {
 	  private ApiInfo metaInfo() {
 
 	      ApiInfo apiInfo = new ApiInfo(
-	              "Spring boot FileUploadService Service API",
-	              "Spring Boot Swagger for FileUploadService Service",
+	              "Spring boot Record Service API",
+	              "Spring Boot Swagger for Record Service",
 	              "1.0.0",
 	              "Terms of Service",
 	              new Contact("Keerthana", "https://www.youtube.com/TechPrimers",
