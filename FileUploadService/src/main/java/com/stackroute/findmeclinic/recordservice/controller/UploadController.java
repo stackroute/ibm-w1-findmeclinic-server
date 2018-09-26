@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import com.stackroute.findmeclinic.recordservice.storage.StorageService;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @CrossOrigin("*")
 @Controller
@@ -38,6 +39,7 @@ public class UploadController {
 	List<String> files = new ArrayList<String>();
 
 	@PostMapping("/post")
+	@ApiOperation(" ")
 	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
 		String message = "";
 		try {
@@ -53,6 +55,7 @@ public class UploadController {
 	}
 
 	@GetMapping("/getallfiles")
+	@ApiOperation(" ")
 	public ResponseEntity<List<String>> getListFiles(Model model) {
 		List<String> fileNames = files
 				.stream().map(fileName -> MvcUriComponentsBuilder
@@ -64,6 +67,7 @@ public class UploadController {
 
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody
+	@ApiOperation(" ")
 	public ResponseEntity<Resource> getFile(@PathVariable String filename) {
 		Resource file = storageService.loadFile(filename);
 		return ResponseEntity.ok()

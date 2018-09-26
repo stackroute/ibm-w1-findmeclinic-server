@@ -39,7 +39,7 @@ public class PatientAuthController {
 	}
 
 	@PostMapping
-	@ApiOperation(" ")
+	@ApiOperation("To register a patient ")
 	public ResponseEntity<?> registerPatientUser(@RequestBody Patient patient) {
 
 		ResponseEntity<?> responseEntity = null;
@@ -54,7 +54,7 @@ public class PatientAuthController {
 	}
 
 	@PostMapping("/login")
-	@ApiOperation(" ")
+	@ApiOperation(" To login as patient")
 	public ResponseEntity<?> loginPatient(@RequestBody Patient loginDetails) {
 		try {
 			String userId = loginDetails.getPatientEmail();
