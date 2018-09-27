@@ -21,6 +21,7 @@ import com.stackroute.findmeclinic.bookingappointment.model.DoctorAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.PatientAppointment;
 import com.stackroute.findmeclinic.bookingappointment.model.Slot;
 import com.stackroute.findmeclinic.bookingappointment.repository.DoctorAppointmentRepository;
+import com.stackroute.findmeclinic.bookingappointment.repository.PatientAppointmentRepository;
 import com.stackroute.findmeclinic.bookingappointment.service.BookingAppointmentServiceImpl;
 
 import junit.framework.Assert;
@@ -39,6 +40,7 @@ public class BookingAppointmentServiceImplTest {
 	
 	@Mock
 	DoctorAppointmentRepository doctorAppointment;
+	PatientAppointmentRepository patientAppointment;
 
 	@InjectMocks
 	BookingAppointmentServiceImpl bookImpl;
@@ -60,8 +62,8 @@ public class BookingAppointmentServiceImplTest {
 		appointment = new Appointment();
 		appointment.setAppointmentId(1);
 		appointment.setAppointmentStatus(true);
-		appointment.setBookedFor("kala@gmail.com");
-		appointment.setBookingBy("keerthi@gmail.com");
+		appointment.setBookedFor("raina@gmail.com");
+		appointment.setBookingBy("gracia@gmail.com");
 		appointment.setSlot(slot);
 		List<Appointment> appList = new ArrayList<>();
 		appList.add(appointment);
@@ -69,14 +71,14 @@ public class BookingAppointmentServiceImplTest {
 		
 		//DOCTOR-APPOINTMENT
 		docApp=new DoctorAppointment();
-		docApp.setDoctorEmail("kala@gmail.com");
+		docApp.setDoctorEmail("raina@gmail.com");
 		docApp.setAppointments(appList);
 		
 		options1 =Optional.of(docApp);
 		
 		//PATIENT-APPOINTMENT
 		patApp= new PatientAppointment();
-		patApp.setPatientEmail("keerthi@gmail.com");
+		patApp.setPatientEmail("gracia@gmail.com");
 		patApp.setAppointments(appList);
 		
 		options2= Optional.of(patApp);
@@ -86,15 +88,20 @@ public class BookingAppointmentServiceImplTest {
 
 	@Test
 	public void getAllAppointmentByDoctorId() {
+		// when(doctorAppointment.insert((DoctorAppointment) any())).thenReturn(docApp);
 		when(doctorAppointment.findById(appointment.getBookedFor())).thenReturn(options1);
 		System.out.println(options1);
-		List<Appointment> apps = bookImpl.getAllAppointmentByDoctorId("kala@gmail.com");
-		Assert.assertEquals(docApp,options1);
+		List<Appointment> apps = bookImpl.getAllAppointmentByDoctorId(docApp.getDoctorEmail());
+		System.out.println(apps);
+		Assert.assertEquals(apps,options1);
 		}
 
 	@Test
-	public void registerDoctorFailure() {
-		//Assert.assertEquals(expected, actual);
+	public void getAllAppointmentByPatientId() {
+		when(patientAppointment.findById(appointment.getBookingBy())).thenReturn(options2);
+		System.out.println(options2);
+		List<Appointment> apps = bookImpl.getAllAppointmentByDoctorId(patApp.getPatientEmail());
+		Assert.assertEquals(patApp,options2);
 		
 	}
 
