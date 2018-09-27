@@ -61,7 +61,7 @@ public class RecordController {
 	List<String> files = new ArrayList<String>();
 
 	@PostMapping("/post")
-	@ApiOperation(" ")
+	@ApiOperation("Upload Files ")
 	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
 		String message = "";
 		try {
@@ -77,7 +77,7 @@ public class RecordController {
 	}
 
 	@GetMapping("/getallfiles")
-	@ApiOperation(" ")
+	@ApiOperation("Retrieve all files ")
 	public ResponseEntity<List<String>> getListFiles(Model model) {
 		List<String> fileNames = files
 				.stream().map(fileName -> MvcUriComponentsBuilder
@@ -89,7 +89,7 @@ public class RecordController {
 
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody
-	@ApiOperation(" ")
+	@ApiOperation("List of files ")
 	public ResponseEntity<Resource> getFile(@PathVariable String filename) {
 		Resource file = storageService.loadFile(filename);
 		return ResponseEntity.ok()
