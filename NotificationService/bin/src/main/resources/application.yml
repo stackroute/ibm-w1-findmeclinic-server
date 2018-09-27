@@ -1,5 +1,6 @@
 server:
-  port: 8081
+  port: 8087
+  
 spring:
  boot:
    admin:
@@ -9,4 +10,5 @@ cloud:
     config:
       uri:  http://172.23.239.225:8060   
 application:
-   name: patient-services
+   name: notification-service
+   

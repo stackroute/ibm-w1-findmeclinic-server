@@ -133,10 +133,24 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		flag = true;
 
 		Notification notification =new Notification();
+		
+		System.out.println("hiiiiii" +appointment.getBookedFor()+appointment.getBookingBy());
+		
 		notification.setDoctorId(appointment.getBookedFor());
+		
 		notification.setPatientId(appointment.getBookingBy());
 
-        restTemplate.postForObject("http://172.23.239.225:8009/api/v1/notify/", notification , Notification.class);
+<<<<<<< HEAD
+		System.out.println("amitttttttt"+notification.getPatientId() + notification.getDoctorId());
+		
+		 System.out.println("notification obj"+notification);
+		
+        restTemplate.postForObject("http://172.23.239.234:8087/api/v1/notify/", notification , Notification.class);
+        
+        System.out.println("notification obj"+notification);
+=======
+        restTemplate.postForObject("http://172.23.239.234:8081/api/v1/notify/", notification , Notification.class);
+>>>>>>> c1ad539b9645cb27e31f52947babf8615b7e60a1
 
 
 		
