@@ -9,12 +9,14 @@ public class Slot {
     private LocalTime slotStart;
     private long timePerPatient;
     private String status;
+    private String timing;
 
-    public Slot(long slotId, LocalTime slotStart, long timePerPatient, String status) {
+    public Slot(long slotId, LocalTime slotStart, long timePerPatient, String status,String timing) {
         this.slotId = slotId;
         this.slotStart = slotStart;
         this.timePerPatient = timePerPatient;
         this.status = status;
+        this.timing =timing;
     }
 
 
@@ -50,5 +52,16 @@ public class Slot {
     public void setTimePerPatient(long timePerPatient) {
         this.timePerPatient = timePerPatient;
     }
+
+
+	public String getTiming() {
+		return timing;
+	}
+
+
+	public void setTiming(String timing) {
+		this.timing = timing;
+	}
+    
 }
 

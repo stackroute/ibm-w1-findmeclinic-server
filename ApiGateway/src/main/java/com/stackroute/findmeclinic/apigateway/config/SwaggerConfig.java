@@ -15,33 +15,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 public class SwaggerConfig {
 
-<<<<<<< HEAD
-    @Bean
-      public Docket productApi() {
-          return new Docket(DocumentationType.SWAGGER_2)
-                  .select()                 .apis(RequestHandlerSelectors.basePackage("com.stackroute.findmeclinic.doctorservices.controller"))
-                  .paths(regex("/api/v2/doctor.*"))
-                  .build()
-                  .apiInfo(metaInfo());
-      }
 
-
-      private ApiInfo metaInfo() {
-
-          ApiInfo apiInfo = new ApiInfo(
-                  "Spring boot Doctor Service API",
-                  "Spring Boot Swagger for Doctor Service",
-                  "1.0.0",
-                  "Terms of Service",
-                  new Contact("Keerthana", "https://www.youtube.com/TechPrimers",
-                          "keerthikaruna20@gmail.com"),
-                  "Apache License Version 2.0",
-                  "https://www.apache.org/licesen.html"
-          );
-
-          return apiInfo;
-      }}
-=======
 	@Bean
 	  public Docket productApi() {
 	      return new Docket(DocumentationType.SWAGGER_2)
@@ -67,4 +41,3 @@ public class SwaggerConfig {
 
 	      return apiInfo;
 	  }}
->>>>>>> ddfd06d6eaf6d94b47f4fa5046685343c5a028d8
