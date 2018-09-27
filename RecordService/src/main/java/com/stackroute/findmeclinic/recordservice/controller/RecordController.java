@@ -81,7 +81,7 @@ public class RecordController {
 	public ResponseEntity<List<String>> getListFiles(Model model) {
 		List<String> fileNames = files
 				.stream().map(fileName -> MvcUriComponentsBuilder
-						.fromMethodName(UploadController.class, "getFile", fileName).build().toString())
+						.fromMethodName(RecordController.class, "getFile", fileName).build().toString())
 				.collect(Collectors.toList());
 
 		return ResponseEntity.ok().body(fileNames);
@@ -99,4 +99,4 @@ public class RecordController {
 }
 
 
-}
+
