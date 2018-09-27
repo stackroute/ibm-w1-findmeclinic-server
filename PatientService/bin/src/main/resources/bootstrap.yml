@@ -5,8 +5,8 @@ spring:
    admin:
      client:
        url: http://172.23.239.225:8000
- cloud:
+cloud:
     config:
       uri:  http://172.23.239.225:8060   
- application:
+application:
    name: patient-services

@@ -1,9 +1,9 @@
 server:
-  port: 8086
+  port: 8092
 spring:
   datasource:
     password: root
-    url: jdbc:mysql://localhost:3306/patientauthenDatabase
+    url: jdbc:mysql://localhost:3306/DoctorAuthDB
     username: root
   jpa:
     hibernate:
