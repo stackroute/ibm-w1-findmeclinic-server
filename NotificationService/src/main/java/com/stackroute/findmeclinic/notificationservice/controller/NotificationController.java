@@ -45,7 +45,7 @@ public class NotificationController {
 	}
 	
 	@PostMapping()
-	@ApiOperation(" ")
+	@ApiOperation("Posts the notification object from the BookingAppointmentService ")
 	public ResponseEntity<?> getNotication( @RequestBody Notification notification){
 		System.out.println("notification object"+ notification);
 		ResponseEntity<?> responseEntity = null;
@@ -61,8 +61,12 @@ public class NotificationController {
 	}
 	
 
-	@ApiOperation(" ")
+	@ApiOperation("Fetching the patient details ")
 	@GetMapping("/patient/{mail}")
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0eb474d0bb88f63ec6ae0969f0f835b59a3a23fc
 	public ResponseEntity<?> getPatientNotication( @PathVariable String mail){
 		ResponseEntity<?> responseEntity = null;
 		List<Notification> patientNotification = notificationService.getPatientNotification(mail);
@@ -81,7 +85,7 @@ public class NotificationController {
 
 	}
 	
-
+    @ApiOperation("Fetching the doctor details")
 	@GetMapping("/doctor/{mail}")	
 	public ResponseEntity<?> getDoctorNotication( @PathVariable String mail){
 		ResponseEntity<?> responseEntity = null;

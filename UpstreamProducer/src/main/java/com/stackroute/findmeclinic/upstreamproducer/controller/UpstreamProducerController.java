@@ -31,12 +31,10 @@ public class UpstreamProducerController {
 	
 
 	@PostMapping()
-<<<<<<< HEAD
-	@ApiOperation("Produce the data into the topic")
-=======
-	@ApiOperation(" ")
 
->>>>>>> ddfd06d6eaf6d94b47f4fa5046685343c5a028d8
+	@ApiOperation("Produce the data into the topic")
+
+
 	public ResponseEntity<?> sendToTopic(@RequestBody Prescription prescription){
 		System.out.println("inside controller");
 		service.sendPrescription(prescription);
