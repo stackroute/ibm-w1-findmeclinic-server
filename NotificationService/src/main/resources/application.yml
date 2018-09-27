@@ -1,10 +1,13 @@
 server:
-  port: 8081
+ port: 8087
+
 spring:
-   data:
-       mongodb:
-           database: NotificationDB
-           host: localhost
-           password: root
-           port: 27017
-           username: root3
+boot:
+  admin:
+    client:
+      url: http://172.23.239.225:8000
+cloud:
+   config:
+     uri:  http://172.23.239.225:8060
+application:
+  name: notification-service

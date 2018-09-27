@@ -136,7 +136,7 @@ public class BookingAppointmentServiceImpl implements BookingAppointmentService 
 		notification.setDoctorId(appointment.getBookedFor());
 		notification.setPatientId(appointment.getBookingBy());
 
-        restTemplate.postForObject("http://172.23.239.225:8009/api/v1/notify/", notification , Notification.class);
+        restTemplate.postForObject("http://172.23.239.234:8081/api/v1/notify/", notification , Notification.class);
 
 
 		
