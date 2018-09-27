@@ -45,6 +45,13 @@ public class ScheduleServiceImpl implements ScheduleService {
             slot.setSlotStart(startTime);
             slot.setTimePerPatient(timePerPatient);
             slot.setStatus("unblocked");
+            if(slot.getSlotStart().isAfter(LocalTime.of(07,00,00)) && slot.getSlotStart().isBefore(LocalTime.of(12,01, 00))){
+                slot.setTiming("morning");
+            }else if(slot.getSlotStart().isAfter(LocalTime.of(12,00,00)) && slot.getSlotStart().isBefore(LocalTime.of(16,59,00))){
+                slot.setTiming("afternoon");
+            }else{
+                slot.setTiming("evening");
+            }
             slots.add(slot);
             startTime = startTime.plusMinutes(timeInPatient);
             i++;
@@ -70,7 +77,7 @@ public class ScheduleServiceImpl implements ScheduleService {
                 for (Schedule existingSchedule : existingSchedules) {
                     if(existingSchedule.getScheduleDate().equals(schedule.getScheduleDate()) && existingSchedule.getStartTime().equals(schedule.getStartTime()) && existingSchedule.getEndTime().equals(schedule.getEndTime())){
                         throw new ScheduleAlreadyExistsException("Schedule Already Exists with same time");
-                    }else if((schedule.getStartTime().isAfter(existingSchedule.getStartTime()) && schedule.getStartTime().isBefore(existingSchedule.getEndTime())) || (schedule.getEndTime().isAfter(existingSchedule.getStartTime()) && schedule.getEndTime().isBefore(existingSchedule.getEndTime())) || schedule.getEndTime().equals(existingSchedule.getEndTime()) || schedule.getStartTime().equals(existingSchedule.getStartTime())){
+                    }else if((existingSchedule.getScheduleDate().equals(schedule.getScheduleDate())) && ((schedule.getStartTime().isAfter(existingSchedule.getStartTime()) && schedule.getStartTime().isBefore(existingSchedule.getEndTime())) || (schedule.getEndTime().isAfter(existingSchedule.getStartTime()) && schedule.getEndTime().isBefore(existingSchedule.getEndTime())) || schedule.getEndTime().equals(existingSchedule.getEndTime()) || schedule.getStartTime().equals(existingSchedule.getStartTime()))){
                         throw new ScheduleAlreadyExistsException("A Schedule Already Exists between time frames");
                     }
                     else{
@@ -142,6 +149,4 @@ public class ScheduleServiceImpl implements ScheduleService {
         return allSlots;
     }
 
-
 }
-

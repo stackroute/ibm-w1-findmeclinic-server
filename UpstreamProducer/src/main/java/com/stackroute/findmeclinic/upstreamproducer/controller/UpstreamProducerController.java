@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.findmeclinic.upstreamproducer.model.Prescription;
 import com.stackroute.findmeclinic.upstreamproducer.service.UpStreamProducerServiceImpl;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/api/v1/send")
 @CrossOrigin("*")
+@Api(value="Upstream Resource")
 public class UpstreamProducerController {
 	
 	
@@ -25,7 +29,12 @@ public class UpstreamProducerController {
 	}
 	
 	
+
 	@PostMapping()
+
+	@ApiOperation("Produce the data into the topic")
+
+
 	public ResponseEntity<?> sendToTopic(@RequestBody Prescription prescription){
 		System.out.println("inside controller");
 		service.sendPrescription(prescription);
