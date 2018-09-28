@@ -30,7 +30,7 @@ public class SwaggerConfig {
 	              "Spring Boot Swagger for Calendar Service",
 	              "1.0.0",
 	              "Terms of Service",
-	              new Contact("Keerthana", "https://www.youtube.com/TechPrimers",
+	              new Contact("Keerthana", "  ",
 	                      "keerthikaruna20@gmail.com"),
 	              "Apache License Version 2.0",
 	              "https://www.apache.org/licesen.html"

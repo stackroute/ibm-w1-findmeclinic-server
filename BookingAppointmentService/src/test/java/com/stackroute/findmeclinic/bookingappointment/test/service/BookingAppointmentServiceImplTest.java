@@ -69,6 +69,7 @@ public class BookingAppointmentServiceImplTest {
 		appList.add(appointment);
 		
 		
+		
 		//DOCTOR-APPOINTMENT
 		docApp=new DoctorAppointment();
 		docApp.setDoctorEmail("raina@gmail.com");
@@ -88,12 +89,11 @@ public class BookingAppointmentServiceImplTest {
 
 	@Test
 	public void getAllAppointmentByDoctorId() {
-		// when(doctorAppointment.insert((DoctorAppointment) any())).thenReturn(docApp);
 		when(doctorAppointment.findById(appointment.getBookedFor())).thenReturn(options1);
 		System.out.println(options1);
 		List<Appointment> apps = bookImpl.getAllAppointmentByDoctorId(docApp.getDoctorEmail());
 		System.out.println(apps);
-		Assert.assertEquals(apps,options1);
+		Assert.assertEquals(options1,apps);
 		}
 
 	@Test
@@ -101,7 +101,7 @@ public class BookingAppointmentServiceImplTest {
 		when(patientAppointment.findById(appointment.getBookingBy())).thenReturn(options2);
 		System.out.println(options2);
 		List<Appointment> apps = bookImpl.getAllAppointmentByDoctorId(patApp.getPatientEmail());
-		Assert.assertEquals(patApp,options2);
+		Assert.assertEquals(options2,apps);
 		
 	}
 
