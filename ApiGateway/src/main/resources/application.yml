@@ -1,0 +1,24 @@
+server:
+  port: 8091
+zuul:
+  routes:
+    patient-services:
+      url: http://localhost:8081
+    doctor-services:
+      url: http://localhost:8082
+    calendar-service:
+      url: http://localhost:8083
+    record-service:
+      url: http://localhost:8084
+    upstream-service:
+      url: http://localhost:8085
+    notification-service:
+      url:  http://localhost:8087
+    bookingappointment-service:
+      url: http://localhost:8090
+    
+    
+    
+    
+    
+      
